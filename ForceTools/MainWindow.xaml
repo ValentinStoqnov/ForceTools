@@ -1,0 +1,197 @@
+﻿<Window x:Class="ForceTools.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ForceTools"
+        mc:Ignorable="d"
+        Title="Force Tools" MinHeight="600"  MinWidth="1000" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FF8FD6FF"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFBBBBBB"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="MenuButtons" TargetType="Button">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="Background" Value="#0078D4"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF444444">
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="40"/>
+            <RowDefinition MaxHeight="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding MenuColumnWidth,RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" 
+                    Grid.Row="0" 
+                    Grid.RowSpan="3">
+            <Button x:Name="MenuExpander" 
+                Margin="0,0,0,20"
+                Style="{StaticResource MenuButtons}"
+                HorizontalAlignment="Left" 
+                Click="MenuExpander_Click">
+                <StackPanel Orientation="Horizontal" 
+                        Width="130">
+                    <Image Margin="0,0,8,0"  
+                       Source="Assets/MenuExpanderButton.png" Stretch="Uniform"/>
+                    <TextBlock Text="Меню" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="15"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="Firms" 
+                    Style="{StaticResource MenuButtons}"
+                    Click="Firms_Click">
+                <StackPanel Orientation="Horizontal" Width="130">
+                    <Image Margin="0,0,8,0" 
+                           Source="Assets/databaseWhite.png" Stretch="Uniform"/>
+                    <TextBlock Text="Пакети" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="15"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="KontragentiButton"
+                    Style="{StaticResource MenuButtons}"
+                    Click="KontragentiButton_Click">
+                <StackPanel Orientation="Horizontal" Width="130">
+                    <Image Margin="0,0,8,0" 
+                           Source="Assets/group-256.png" Stretch="Uniform"/>
+                    <TextBlock Text="Контрагенти" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="14"
+                               />
+                </StackPanel>
+            </Button>
+            <Button x:Name="PurchasesButton"
+                    Style="{StaticResource MenuButtons}"
+                    Click="PurchasesButton_Click">
+                <StackPanel Orientation="Horizontal" Width="130">
+                    <Image Margin="0,0,8,0" 
+                           Source="Assets/cash-paymentWhiteRight.png" Stretch="Uniform"/>
+                    <TextBlock Text="Покупки" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="15"
+                               />
+                </StackPanel>
+            </Button>
+            <Button x:Name="SalesButton"
+                    Style="{StaticResource MenuButtons}"
+                    Click="SalesButton_Click">
+                <StackPanel Orientation="Horizontal" Width="130">
+                    <Image Margin="0,0,8,0" 
+                           Source="Assets/cash-paymentWhiteLeft.png" Stretch="Uniform"/>
+                    <TextBlock Text="Продажби" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="15"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <Border BorderThickness="1,1,1,0"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Grid.RowSpan="2" Background="Black">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+            </Border.BorderBrush>
+            <Canvas 
+                    Background="#FFDEDEDE">
+            </Canvas>
+        </Border>
+        <Label Content="{Binding FirmNameTxt, RelativeSource={RelativeSource AncestorType=Window}, UpdateSourceTrigger=PropertyChanged}" 
+               Grid.Column="2"
+               Grid.RowSpan="2"
+               Foreground="#FFFF6900"
+               HorizontalAlignment="Center"
+               FontWeight="Bold"
+               FontSize="35"/>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="2"
+                    Grid.RowSpan="2"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Height="30"
+                    Margin="0,0,5,0">
+            <Image Source="Assets/User.png" 
+                   Stretch="Uniform"
+                   VerticalAlignment="Center"/>
+            <Label x:Name="CurrentUserLbl" 
+                   VerticalAlignment="Center"
+                   FontSize="15"/>
+        </StackPanel>
+
+        <Frame
+            x:Name="ContentFrame"
+            NavigationUIVisibility="Hidden"
+            Grid.Column="2" 
+            Grid.Row="2" 
+            Grid.RowSpan="3">
+        </Frame>
+        <StackPanel Grid.Column="0" 
+                    Grid.Row="4" 
+                    Grid.RowSpan="1" 
+                    VerticalAlignment="Bottom">
+            <Button x:Name="UsersBtn" 
+                    Style="{StaticResource MenuButtons}"
+                    Click="UsersBtn_Click">
+                <StackPanel Orientation="Horizontal" Width="130">
+                    <Image Margin="0,0,8,0" 
+                           Source="Assets/SwitchUserNew.png" Stretch="Uniform"/>
+                    <TextBlock Text="Потребител" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="15"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="Settings" 
+                    Style="{StaticResource MenuButtons}"
+                    Click="Settings_Click">
+                <StackPanel Orientation="Horizontal" Width="130">
+                    <Image Margin="0,0,8,0" 
+                           Source="Assets/SettingsIcon.png" Stretch="Uniform"/>
+                    <TextBlock Text="Настройки" 
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               FontSize="15"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

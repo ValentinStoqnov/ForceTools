@@ -1,0 +1,192 @@
+﻿<Page x:Class="ForceTools.Accounting_Controlls"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ForceTools"
+      mc:Ignorable="d" 
+      d:DesignHeight="727.487" d:DesignWidth="1357.841"
+      Title="Accounting_Controlls">
+
+    <Page.Resources>
+        <Style x:Key="BtnCornerStyle" TargetType="Button">
+            <Setter Property="Width" Value="220"/>
+            <Setter Property="Height" Value="110"/>
+            <Setter Property="Padding" Value="0,2,0,2"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+        <Style x:Key="BigBtnCornerStyle" TargetType="Button">
+            <Setter Property="Width" Value="1150"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Padding" Value="0,2,0,2"/>
+
+            <Setter Property="BorderThickness" Value="2"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="8"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Page.Resources>
+
+    <Page.Content>
+
+        <Border BorderThickness="1">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+            </Border.BorderBrush>
+            <Grid Background="#FFF0F0F0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="90"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="labelPurchasesSales"
+                   Content=""
+                   FontSize="30"
+                   FontWeight="SemiBold"
+                   Grid.Row="3"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Margin="0,60,0,0"/>
+                <Button x:Name="AllInvoicesButton"
+                    Content="Всички" 
+                    Grid.Row="4" 
+                    Background="#0078D4"
+                    Foreground="White"
+                    FontSize="15"
+                    FontWeight="DemiBold"
+                    Click="AllInvoicesButton_Click"
+                    Style="{StaticResource BigBtnCornerStyle}"/>
+                <Button Content="Дублирани"
+                    Background="#0078D4"
+                    FontSize="15"
+                    FontWeight="DemiBold"
+                    Foreground="White"
+                    Grid.Row="5"
+                    Style="{StaticResource BigBtnCornerStyle}"/>
+
+                <StackPanel Orientation="Horizontal" 
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Grid.Row="3"
+                        Margin="0,0,0,25">
+                    <Button x:Name="NewInvoicesBtn"
+                            Margin="30,5"
+                            Background="#FF32CBFF"
+                            Click="Button_Click"
+                            Style="{StaticResource BtnCornerStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="135"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image Source="../Assets/file plus.png" 
+                               Stretch="Uniform" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Нови Фактури" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="15" FontWeight="DemiBold"/>
+                            <TextBlock Text="{Binding NewCount, RelativeSource={RelativeSource AncestorType=Page}}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="15" FontWeight="SemiBold"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="UnAccountedInvoicesBtn"
+                            Margin="30,5"
+                            Background="#FFFF4949" Click="UnAccountedInvoicesBtn_Click"
+                            Style="{StaticResource BtnCornerStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="135"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image Source="../Assets/file uparrow.png" 
+                               Stretch="Uniform" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Неосчетоводени " Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="15" FontWeight="DemiBold"/>
+                            <TextBlock Text="{Binding UnAcCount, RelativeSource={RelativeSource AncestorType=Page}}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="15" FontWeight="SemiBold"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="RdyToBeExportedBtn" 
+                            Margin="30,5"
+                            Background="#FFFDB228" Click="RdyToBeExportedBtn_Click"
+                            Style="{StaticResource BtnCornerStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="135"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image Source="../Assets/file downarrow.png" 
+                               Stretch="Uniform" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Готови за експорт" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="15" FontWeight="DemiBold"/>
+                            <TextBlock Text="{Binding RdyExpCount, RelativeSource={RelativeSource AncestorType=Page}}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="15" FontWeight="SemiBold"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="ExportedInvoicesBtn" 
+                            Margin="30,5"
+                            Background="#FF01E663" Click="ExportedInvoicesBtn_Click"
+                            Style="{StaticResource BtnCornerStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="135"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Image Source="../Assets/file tick.png" 
+                               Stretch="Uniform" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" HorizontalAlignment="Left"/>
+                            <TextBlock Text="Експортирани" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="15" FontWeight="DemiBold"/>
+                            <TextBlock Text="{Binding ExportedCount, RelativeSource={RelativeSource AncestorType=Page}}" Grid.Column="1" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="15" FontWeight="SemiBold"/>
+                        </Grid>
+                    </Button>
+                </StackPanel>
+                <Button x:Name="RewindInvoicesBtn" 
+                    Grid.Row="7" 
+                    Width="270" 
+                    Content="Върни Експортираните" 
+                    Background="White" 
+                    Foreground="Orange" 
+                    HorizontalAlignment="Right"
+                    Margin="0,0,5,0"/>
+                <StackPanel Orientation="Horizontal" Grid.Row="8" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                    <Button x:Name="ExportBtn"
+                        Content="Експортирай" 
+                        Padding="30"
+                        Margin="5"
+                        Background="Orange" VerticalAlignment="Bottom" Click="ExportBtn_Click"/>
+                    <Button x:Name="FinalizerBtn"
+                        Content="Осчетоводи" 
+                        Padding="30"
+                        Margin="5"
+                        Background="Green"/>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </Page.Content>
+</Page>

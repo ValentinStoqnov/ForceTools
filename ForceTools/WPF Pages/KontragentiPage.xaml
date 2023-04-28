@@ -1,0 +1,89 @@
+﻿<Page x:Class="ForceTools.WPF_Pages.KontragentiPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ForceTools.WPF_Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="KontragentiPage">
+
+    <Border BorderThickness="1">
+        <Border.BorderBrush>
+            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+        </Border.BorderBrush>
+        <Grid Background="#FFF0F0F0">
+            <Grid.RowDefinitions>
+                <RowDefinition MaxHeight="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="SearchBarBtn"
+                                Height="40"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Top"
+                                BorderThickness="0"
+                                Grid.Column="0"
+                                Padding="5"
+                                Background="#0078D4" 
+                                Click="SearchBarBtn_Click">
+                        <Image Source="../Assets/SearchImage.png"/>
+                    </Button>
+                    <StackPanel 
+                            Grid.Column="1"
+                            Height="40"
+                            VerticalAlignment="Top"
+                            Margin="0,0,5,0">
+                        <Label x:Name="SearchBarLbl" 
+                                   Content="Търсене:"
+                                   Height="20"
+                                   Margin="0,0,0,0"
+                                   Padding="36,0"
+                                   HorizontalAlignment="Center"
+                                   Background="#0078D4"
+                                   Foreground="White"
+                                   Visibility="Collapsed"/>
+                        <TextBox x:Name="SearchBarTb" 
+                             Text=""
+                             Width="120" 
+                             VerticalAlignment="Bottom"
+                             Height="20"
+                             
+                             Visibility="Collapsed"
+                             BorderBrush="#FF0078D4" TextChanged="SearchBarTb_TextChanged"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <DataGrid   x:Name="KontragentiDg"
+                        Grid.Row="1"
+                        AutoGenerateColumns="False"
+                        HorizontalGridLinesBrush="#FF9E9E9E" 
+                        VerticalGridLinesBrush="#FF9E9E9E" 
+                        ItemsSource="{Binding KontragentiDt ,RelativeSource={RelativeSource AncestorType=Page}}" CurrentCellChanged="KontragentiDg_CurrentCellChanged" PreviewKeyDown="KontragentiDg_PreviewKeyDown">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Контрагент"
+                                        Binding="{Binding Name}"
+                                        MinWidth="100">
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="ЕИК"
+                                        Binding="{Binding EIK}"
+                                        MinWidth="100">
+
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="ДДС Номер"
+                                        Binding="{Binding DDSNumber}"
+                                        MinWidth="100">
+
+                    </DataGridTextColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Border>
+</Page>

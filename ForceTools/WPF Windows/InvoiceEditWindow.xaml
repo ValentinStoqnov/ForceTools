@@ -1,0 +1,229 @@
+﻿<Window x:Class="ForceTools.WPF_Windows.InvoiceEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ForceTools.WPF_Windows"
+        mc:Ignorable="d"
+        Title="Обработка на документи" Height="700" Width="1000" Closing="Window_Closing">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="#0078D4"/>
+            <Setter Property="Margin" Value="0,0,5,0"/>
+            <Style.Triggers>
+                <Trigger Property="Text" Value="">
+                    <Setter Property="BorderBrush" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FFF0F0F0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Popup Placement="Bottom" 
+               PlacementTarget="{Binding ElementName=EikTextBox}"
+               IsOpen="{Binding isEikPopupOpen ,RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid x:Name="PopUpDgEik"
+                      ItemsSource="{Binding SearchDtEik, RelativeSource={RelativeSource AncestorType=Window}, UpdateSourceTrigger=PropertyChanged}"
+                      AutoGenerateColumns="False" CanUserReorderColumns="False"
+                      CanUserDeleteRows="False" CanUserAddRows="False"
+                      CanUserResizeRows="False" SelectionMode="Extended"
+                      SelectionUnit="FullRow" PreviewKeyDown="PopUpDgEik_PreviewKeyDown">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Име" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="ЕИК" Binding="{Binding EIK}"/>
+                    <DataGridTextColumn Header="ДДС Номер" Binding="{Binding DDSNumber}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Popup>
+        <Popup Placement="Bottom" 
+               PlacementTarget="{Binding ElementName=DocTypeTextBox}"
+               IsOpen="{Binding isDocTypePopupOpen ,RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid x:Name="PopUpDgDocType"
+                      ItemsSource="{Binding SearchDtDocType, RelativeSource={RelativeSource AncestorType=Window}, UpdateSourceTrigger=PropertyChanged}"
+                      AutoGenerateColumns="False" CanUserReorderColumns="False"
+                      CanUserDeleteRows="False" CanUserAddRows="False"
+                      CanUserResizeRows="False" SelectionMode="Extended"
+                      SelectionUnit="FullRow" PreviewKeyDown="PopUpDgDocType_PreviewKeyDown">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Код" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Тип документ" Binding="{Binding TypeName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Popup>
+        <Popup Placement="Bottom" 
+               PlacementTarget="{Binding ElementName=DealKindTb}"
+               IsOpen="{Binding isDealKindPopupOpen ,RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid x:Name="PopUpDgDealKind"
+                      ItemsSource="{Binding SearchDtDealKind, RelativeSource={RelativeSource AncestorType=Window}, UpdateSourceTrigger=PropertyChanged}"
+                      AutoGenerateColumns="False" CanUserReorderColumns="False"
+                      CanUserDeleteRows="False" CanUserAddRows="False"
+                      CanUserResizeRows="False" SelectionMode="Extended"
+                      SelectionUnit="FullRow" PreviewKeyDown="PopUpDgDealKind_PreviewKeyDown">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Код" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Процент" Binding="{Binding Percentage}"/>
+                    <DataGridTextColumn Header="Тип сделка" Binding="{Binding DealName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Popup>
+        <Popup Placement="Bottom" 
+               PlacementTarget="{Binding ElementName=AccNumTextBox}"
+               IsOpen="{Binding isAccountsPopupOpen ,RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid x:Name="PopUpDgAccNum"
+                      ItemsSource="{Binding SearchDtAccounts, RelativeSource={RelativeSource AncestorType=Window}, UpdateSourceTrigger=PropertyChanged}"
+                      AutoGenerateColumns="False" CanUserReorderColumns="False"
+                      CanUserDeleteRows="False" CanUserAddRows="False"
+                      CanUserResizeRows="False" SelectionMode="Extended"
+                      SelectionUnit="FullRow" PreviewKeyDown="PopUpDgAccNum_PreviewKeyDown" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Номер" Binding="{Binding Account}"/>
+                    <DataGridTextColumn Header="Име" Binding="{Binding AccountName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Popup>
+        <StackPanel Grid.Column="1">
+            <Label Content="Тип документ:"/>
+            <TextBox x:Name="DocTypeTextBox" TextChanged="DocTypeTextBox_TextChanged"/>
+            <Label Content="Име на контрагент:"/>
+            <TextBox x:Name="KontTextBox"/>
+            <Label Content="ЕИК:"/>
+            <TextBox x:Name="EikTextBox" TextChanged="EikTextBox_TextChanged"/>
+            <Label Content="ДДС Номер:"/>
+            <TextBox x:Name="DDSNumberTextBox" GotFocus="DDSNumberTextBox_GotFocus"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Label Content="Дата на документ:"/>
+                    <TextBox x:Name="DocDateTextBox"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Label Content="Сч. Дата:"/>
+                    <TextBox x:Name="DocAccDateTextBox"/>
+                </StackPanel>
+            </Grid>
+            <Label Content="Номер на документ:"/>
+            <TextBox x:Name="DocNumTextBox"/>
+            <Label Content="Данъчна основа:"/>
+            <TextBox x:Name="DOTextBox">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="BorderBrush" Value="#0078D4"/>
+                        <Setter Property="Margin" Value="0,0,5,0"/>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="0,00">
+                                <Setter Property="BorderBrush" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Label Content="ДДС Стойност:"/>
+            <TextBox x:Name="DDSTextBox">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="BorderBrush" Value="#0078D4"/>
+                        <Setter Property="Margin" Value="0,0,5,0"/>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="0,00">
+                                <Setter Property="BorderBrush" Value="Gray"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Label Content="Общо:"/>
+            <TextBox x:Name="FullValueTextBox">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="BorderBrush" Value="#0078D4"/>
+                        <Setter Property="Margin" Value="0,0,5,0"/>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="0,00">
+                                <Setter Property="BorderBrush" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <Label Content="ДДС %:"/>
+            <TextBox x:Name="DealKindTb" 
+                     Margin="0,0,5,0" TextChanged="DealKindTb_TextChanged">
+                
+            </TextBox>
+            <Label Content="Сметка:"/>
+            <TextBox x:Name="AccNumTextBox" TextChanged="AccNumTextBox_TextChanged"/>
+            <Grid Margin="0,15,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <Label Content="Плащане в брой:"/>
+                    <CheckBox x:Name="isPayedCash" VerticalAlignment="Center" KeyDown="isPayedCash_KeyDown"/>
+                </StackPanel>
+                <TextBox x:Name="InCashAccountTextBox" Grid.Column="1"/>
+            </Grid>
+            <Label Content="Бележка:"/>
+            <TextBox x:Name="NoteTextBox"/>
+
+            <Grid Margin="0,40,0,0" 
+                  Height="30"
+                  KeyboardNavigation.TabNavigation="Once">
+                <Button x:Name="LeftBtn" Margin="0,0,5,0" Click="LeftBtn_Click" >
+                    <Button.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#0078D4"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                        </Style>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="4"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="../Assets/LeftBtnArrow.png"/>
+                </Button>
+                <Button x:Name="NextBtn" Content="Следващ документ" Margin="0,0,5,0" Click="NextBtn_Click">
+                    <Button.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#0078D4"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                            <Setter Property="TabIndex" Value="0"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="Background" Value="#FFFDB228"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="4"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button x:Name="RightBtn" Margin="0,0,5,0" Click="RightBtn_Click" >
+                    <Button.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#0078D4"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                        </Style>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="4"/>
+                        </Style>
+                    </Button.Resources>
+                    <Image Source="../Assets/RightBtnArrow.png"/>
+                </Button>
+            </Grid>
+        </StackPanel>
+        <ScrollViewer>
+            <Image x:Name="InvoiceImage" Grid.Column="0" Stretch="UniformToFill" 
+               Source="{Binding BitImage, RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}"/>
+        </ScrollViewer>
+    </Grid>
+</Window>

@@ -1,0 +1,411 @@
+﻿<Page x:Class="ForceTools.InvoiceGridPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ForceTools"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="InvoiceGridPage" PreviewKeyDown="Page_PreviewKeyDown">
+    <Page.Resources>
+        <!--<Style TargetType="Button">
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="4"/>
+                </Style>
+            </Style.Resources>
+        </Style>-->
+    </Page.Resources>
+    <Page.Content>
+        <Border BorderThickness="1">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+            </Border.BorderBrush>
+            <Grid Background="#FFF0F0F0">
+                <Grid.RowDefinitions>
+                    <RowDefinition MaxHeight="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label x:Name="PurchaseOrSaleLbl" 
+                       Grid.Row="0" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20"/>
+                <StackPanel Grid.Row="0" 
+                        Orientation="Horizontal" 
+                        >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="SearchBarBtn"
+                                Height="40"
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Top"
+                                BorderThickness="0"
+                                Grid.Column="0"
+                                Padding="5"
+                                Background="#0078D4" 
+                                Click="SearchBarBtn_Click">
+                            <Image Source="../Assets/SearchImage.png"/>
+                        </Button>
+                        <StackPanel 
+                            Grid.Column="1"
+                            Height="40"
+                            VerticalAlignment="Top"
+                            Margin="0,0,5,0">
+                            <Label x:Name="SearchBarLbl" 
+                                   Content="Търсене:"
+                                   Height="20"
+                                   Margin="0,0,0,0"
+                                   Padding="36,0"
+                                   HorizontalAlignment="Center"
+                                   Background="#0078D4"
+                                   Foreground="White"
+                                   Visibility="Collapsed"/>
+                            <TextBox x:Name="SearchBarTb" 
+                             Text=""
+                             Width="120" 
+                             VerticalAlignment="Bottom"
+                             Height="20"
+                             
+                             Visibility="Collapsed"
+                             BorderBrush="#FF0078D4" TextChanged="SearchBarTb_TextChanged"/>
+                        </StackPanel>
+                    </Grid>
+                    <Menu>
+                        <MenuItem 
+                              Height="40" 
+                              Margin="0,0,5,0"
+                              Header="Импортиране на фактури" 
+                              BorderThickness="0"
+                              Background="#0078D4"
+                              Foreground="White">
+                            <MenuItem x:Name="ImportFromPdfBtn"
+                                  Header="ot pdf"
+                                  BorderBrush="Black" 
+                                  Background="#FF1897F7"
+                                  Foreground="White" Click="ImportFromPdfBtn_Click">
+                                <MenuItem.Icon>
+                                    <Image Source="../Assets/pdf.png"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+
+                            <MenuItem x:Name="ImportFromExcelBtn"
+                                  Header="ot Excel"
+                                  BorderBrush="Black" 
+                                  Background="#FF1897F7"
+                                  Foreground="White" Click="ImportFromExcelBtn_Click">
+                                <MenuItem.Icon>
+                                    <Image Source="../Assets/xls.png"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </MenuItem>
+                    </Menu>
+                    <Button x:Name="NewInvoicesButton"
+                            Height="40"
+                            Margin="0,0,0,0"
+                            VerticalAlignment="Top"
+                        Content="Нови Фактури" 
+                        Padding="5,0,5,0"
+                        Click="NewInvoicesButton_Click"
+                        Background="#0078D4"
+                        Foreground="White"
+                        BorderThickness="0"
+                        IsEnabled="True"/>
+                </StackPanel>
+                <Popup x:Name="MassEditPopup" 
+                       IsOpen="False"
+                       Width="250"
+                       Height="150"
+                       Placement="Center">
+                    <Border BorderThickness="1">
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                        </Border.BorderBrush>
+                        <Grid Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0">
+                                <Label Content="Масова редакция"  
+                                       HorizontalAlignment="Center"
+                                       FontSize="16"
+                                       FontWeight="SemiBold"
+                                       Foreground="#0078D4"/>
+                                <Label x:Name="MassTypeLbl" 
+                                       HorizontalAlignment="Center"/>
+                            </StackPanel>
+                            <ComboBox x:Name="MassAccStatusCb" 
+                                      Grid.Row="1" 
+                                      Visibility="Hidden">
+                                <ComboBoxItem Content="Задържани" Background="#FF32CBFF"/>
+                                <ComboBoxItem Content="Неосчетоводени" Background="#FFFF4949"/>
+                                <ComboBoxItem Content="Готови за експорт" Background="#FFFDB228"/>
+                                <ComboBoxItem Content="Експортирани" Background="#FF01E663"/>
+                                <ComboBoxItem Content="Осчетоводени" Background="DarkGreen"/>
+                            </ComboBox>
+                            <TextBox x:Name="MassAccDateTb" 
+                                     Grid.Row="1" 
+                                     Visibility="Hidden"/>
+                            <TextBox x:Name="MassAccountTb" 
+                                     Grid.Row="1" 
+                                     Visibility="Hidden"/>
+                            <TextBox x:Name="MassNoteTb" 
+                                     Grid.Row="1" 
+                                     Visibility="Hidden"/>
+                            <Button x:Name="MassSaveBtn"
+                                Content="Запиши" 
+                                Grid.Row="2"
+                                Width="80"
+                                Margin="0,10,0,0"
+                                BorderThickness="0"
+                                HorizontalAlignment="Left"
+                                Background="#0078D4"
+                                Foreground="White" Click="MassSaveBtn_Click"/>
+                            <Button x:Name="MassCancelBtn"
+                                Content="Отказ" 
+                                Grid.Row="2"
+                                Width="80"
+                                Margin="0,10,0,0"
+                                BorderThickness="0"
+                                HorizontalAlignment="Right"
+                                Background="#0078D4"
+                                Foreground="White" Click="MassCancelBtn_Click"/>
+                            <Label x:Name="MassSelectedCountLbl" 
+                               Content="избрани документи" 
+                               Grid.Row="3"/>
+                        </Grid>
+                    </Border>
+                </Popup>
+                <DataGrid x:Name="InvoicesDataGrid" 
+                      AutoGenerateColumns="False" 
+                      Grid.Row="1"
+                      CanUserAddRows="False"
+                      IsReadOnly="True"
+                      BorderThickness="0,1,0,0"
+                      HorizontalGridLinesBrush="#FF9E9E9E" 
+                      VerticalGridLinesBrush="#FF9E9E9E" 
+                      MouseDoubleClick="InvoicesDataGrid_MouseDoubleClick" 
+                      ItemsSource="{Binding dataTable, RelativeSource={RelativeSource AncestorType=Page},UpdateSourceTrigger=PropertyChanged}">
+                    <DataGrid.BorderBrush>
+                        <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+                    </DataGrid.BorderBrush>
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Преглед и редакция на документ" 
+                                  x:Name="PreviewAndEditBtn" Click="PreviewAndEditBtn_Click"/>
+                            <Separator/>
+                            <MenuItem Header="Масова редакция">
+                                <MenuItem x:Name="MassEditAccDate" 
+                                          Header="Счетоводна дата"
+                                          Click="MassEditAccDate_Click"/>
+                                <MenuItem x:Name="MassEditAccStatus"  
+                                          Header="Счетоводен статус"
+                                          Click="MassEditAccStatus_Click"/>
+                                <MenuItem x:Name="MassEditAccount"
+                                          Header="Сметка"
+                                          Click="MassEditAccount_Click"/>
+                                <MenuItem x:Name="MassEditNote"
+                                          Header="Бележка"
+                                          Click="MassEditNote_Click"/>
+                            </MenuItem>
+                            <Separator/>
+                            <MenuItem Header="Обединяване"/>
+                            <Separator/>
+                            <MenuItem Header="Копиране"/>
+                            <MenuItem x:Name="DeleteBtn" 
+                                      Header="Изтриване" 
+                                      Click="DeleteBtn_Click"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding AccDate, StringFormat=d, ConverterCulture=en-GB}" Header="Сч. Дата" MinWidth="100" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="Blue"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding AccDate , FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#19FF0000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Date, StringFormat=d, ConverterCulture=en-GB}" Header="Дата" MinWidth="100" >
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Date , FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#19FF0000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Number}" Header="Номер" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Number, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#19FF0000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Name}" Header="Контрагент" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Name, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#19FF0000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding EIK}" Header="ЕИК" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding EIK, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#19FF0000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding DDSNumber}" Header="ДДС Номер" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding DDSNumber, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#19FF0000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding DO}" Header="ДО" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding DO, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#19FF0000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding DDS}" Header="ДДС" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding DDS, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#FFF0F0F0"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding FullValue}" Header="Стойност" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding FullValue, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#19FF0000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding InCashAccount}" Header="В брой" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding InCashAccount, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#FFF0F0F0"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Account}" Header="Сметка" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Account, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#19FF0000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Бележка" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Note, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#FFF0F0F0"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding TypeName}" Header="Тип Документ" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding TypeName, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#19FF0000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding DealName}" Header="Тип сделка" MinWidth="100">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding DealName, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                            <Setter Property="Background" Value="#19FF0000"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding AccountingStatus}" Header="Счетоводен Статус">
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding AccountingStatus}" Value="Нови           ">
+                                            <Setter Property="Background" Value="#FF32CBFF"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding AccountingStatus}" Value="Неосчетоводени ">
+                                            <Setter Property="Background" Value="#FFFF4949"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding AccountingStatus}" Value="ГотовиЗаЕкспорт">
+                                            <Setter Property="Background" Value="#FFFDB228"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding AccountingStatus}" Value="Експортирани   ">
+                                            <Setter Property="Background" Value="#FF01E663"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding AccountingStatus}" Value="Осчетоводени   ">
+                                            <Setter Property="Background" Value="DarkGreen"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding Id }" Header="Id" Visibility="Hidden"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Page.Content>
+</Page>
