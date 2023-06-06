@@ -21,57 +21,78 @@ namespace ForceTools.WPF_Windows
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window, INotifyPropertyChanged
+    public partial class LoginWindow : Window
     {
-        private string _Account;
-        private string _Password;
-        public string Account { get { return _Account; } set { _Account = value; OnPropertyChanged(); } }
-        public string Password { get { return _Password; } set { _Password = value; OnPropertyChanged(); } }
+        public string Account { get; set; }
+        public string Password { get; set; }
 
-        private string DataFolderPath = AppDomain.CurrentDomain.BaseDirectory + "\\Database";
-        private string TempFolderPath = AppDomain.CurrentDomain.BaseDirectory + "\\Temp";
-
-        private bool IsFirstTimeLogin = false;
+        private bool isFirstTimeLogin = false;
 
         public LoginWindow()
         {
             InitializeComponent();
-            //DebugConnection();
+            //SqlConnectionsHandler.RemoveSavedServersFromConfig();
             PasswordTb.Focus();
             //Account = "sa";
             //Password = "1";
 
-            CheckForDatabaseFolder();
-            CheckForTempFolder();
-            CheckConfigFileConnection();
+            FileSystemHelper.CheckAndCreateDatabaseFolder();
+            FileSystemHelper.CheckAndCreateTempFolder();
+            SetUpWindowControls();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private async Task GetServers()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            //Fills combo box with available servers
+            ServerConectionCb.ItemsSource = await SqlConnectionsHandler.GetListOfAvailableServersAsync();
+
+            //Select the first Server in the Combo Box if not empty
+            if (ServerConectionCb.Items.Count > 0) ServerConectionCb.SelectedIndex = 0;
         }
-
-        private void CheckForDatabaseFolder()
+        private async void SetUpWindowControls()
         {
-            if (!Directory.Exists(DataFolderPath))
+            if (SqlConnectionsHandler.DoesConfigFileHaveSavedServers() == false)
             {
-                Directory.CreateDirectory(DataFolderPath);
+                isFirstTimeLogin = true;
+                LoginBtn.IsEnabled = false;
+                LoadingAnimationMe.Source = new Uri($@"{AppDomain.CurrentDomain.BaseDirectory}\LoadingGif.gif");
+                SearchLoadingSp.Visibility = Visibility.Visible;
+                await GetServers();
+                SearchLoadingSp.Visibility = Visibility.Collapsed;
+                ServerPickingTc.Visibility = Visibility.Visible;
+                LoginBtn.IsEnabled = true;
+            }
+            else
+            {
+                isFirstTimeLogin = false;
+                ServerPickingTc.Visibility = Visibility.Collapsed;
+                SearchLoadingSp.Visibility = Visibility.Collapsed;
             }
         }
-
-        private void CheckForTempFolder()
+        private void ConnectToServerOrReset()
         {
-            if (!Directory.Exists(TempFolderPath))
+            if (SqlConnectionsHandler.CheckIfServerConnectionIsValid() == true)
             {
-                Directory.CreateDirectory(TempFolderPath);
+                if (isFirstTimeLogin == true) SqlHelper.FirstTimeLoginSettingsSetter(Account);
+                UiNavigationHelper.OpenMainWindow(Account);
+                this.Close();
+            }
+            else 
+            {
+                if (isFirstTimeLogin == true)
+                {
+                    MessageBox.Show("Съвъра не същестува, няма достъп до него или грешно потребителско име или парола.", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    SqlConnectionsHandler.RemoveSavedServersFromConfig();
+                }
+                else
+                {
+                    MessageBox.Show("Грешно потребителско име или парола.", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
-
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (Account == null || Account == "") 
+            if (Account == null || Account == "")
             {
                 MessageBox.Show("Потребителското име не може да бъде празно !", "", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -81,213 +102,29 @@ namespace ForceTools.WPF_Windows
                 MessageBox.Show("Паролата не може да бъде празна !", "", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            if (ServerPickingTc.Visibility == Visibility.Visible)
+            if (isFirstTimeLogin == true)
             {
-                SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder();
-                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                var settings = configFile.ConnectionStrings.ConnectionStrings;
-
                 switch (ServerPickingTc.SelectedIndex)
                 {
                     case 0:
-                        scsb.DataSource = ServerConectionCb.SelectedItem.ToString();
-                        scsb.UserID = Account;
-                        scsb.Password = Password;
-                        scsb.ConnectTimeout = 30;
-                        scsb.ApplicationIntent = ApplicationIntent.ReadWrite;
-                        settings["DefaultSqlConnection"].ConnectionString = scsb.ToString();
-                        settings["Server"].ConnectionString = ServerConectionCb.SelectedItem.ToString();
-                        configFile.Save(ConfigurationSaveMode.Modified);
-                        ConfigurationManager.RefreshSection(configFile.ConnectionStrings.SectionInformation.Name);
-                        Properties.Settings.Default.Reload();
+                        string DataSource = ServerConectionCb.SelectedItem.ToString();
+                        SqlConnectionsHandler.SaveServerCredentialsToConfigFile(DataSource, Account, Password);
                         break;
                     case 1:
-                        scsb.DataSource = $"{IpTb.Text},{PortTb.Text}";
-                        scsb.UserID = Account;
-                        scsb.Password = Password;
-                        settings["DefaultSqlConnection"].ConnectionString = scsb.ToString();
-                        settings["Server"].ConnectionString = $"{IpTb.Text},{PortTb.Text}";
-                        configFile.Save(ConfigurationSaveMode.Modified);
-                        ConfigurationManager.RefreshSection(configFile.ConnectionStrings.SectionInformation.Name);
-                        Properties.Settings.Default.Reload();
+                        SqlConnectionsHandler.SaveServerCredentialsToConfigFile($"{IpTb.Text},{PortTb.Text}", Account, Password);
                         break;
                 }
-
             }
             else
             {
-                SqlConnectionStringBuilder scsb = new SqlConnectionStringBuilder();
-                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                var settings = configFile.ConnectionStrings.ConnectionStrings;
-
-                scsb.DataSource = settings["Server"].ConnectionString;
-                scsb.UserID = Account;
-                scsb.Password = Password;
-                settings["DefaultSqlConnection"].ConnectionString = scsb.ToString();
-                configFile.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection(configFile.ConnectionStrings.SectionInformation.Name);
-                Properties.Settings.Default.Reload();
+                SqlConnectionsHandler.AlterUserIdAndPasswordInConfigFile(Account, Password);
             }
-            CheckServerAndConnect();
+            ConnectToServerOrReset();
         }
-
-        private async void CheckConfigFileConnection()
-        {
-            var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var settings = configFile.ConnectionStrings.ConnectionStrings;
-            if (settings["Server"].ToString() == string.Empty)
-            {
-                LoginBtn.IsEnabled = false;
-                LoadingAnimationMe.Source = new Uri($@"{AppDomain.CurrentDomain.BaseDirectory}\LoadingGif.gif");
-                SearchLoadingSp.Visibility = Visibility.Visible;
-                await Task.Run(() => GetServers());
-                SearchLoadingSp.Visibility = Visibility.Collapsed;
-                ServerPickingTc.Visibility = Visibility.Visible;
-                LoginBtn.IsEnabled = true;
-                IsFirstTimeLogin = true;
-            }
-            else
-            {
-                ServerPickingTc.Visibility = Visibility.Collapsed;
-                SearchLoadingSp.Visibility = Visibility.Collapsed;
-                IsFirstTimeLogin = false;
-            }
-        }
-
-        private void DebugConnection()
-        {
-            var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var settings = configFile.ConnectionStrings.ConnectionStrings;
-            settings["DefaultSqlConnection"].ConnectionString = String.Empty;
-            settings["Server"].ConnectionString = String.Empty;
-            configFile.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection(configFile.ConnectionStrings.SectionInformation.Name);
-            Properties.Settings.Default.Reload();
-        }
-
-        private void ResetDefaultConString() 
-        {
-            var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var settings = configFile.ConnectionStrings.ConnectionStrings;
-            settings["DefaultSqlConnection"].ConnectionString = String.Empty;
-            configFile.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection(configFile.ConnectionStrings.SectionInformation.Name);
-            Properties.Settings.Default.Reload();
-        }
-
-        private void GetServers()
-        {
-            DataTable AvailableServersDT = SqlDataSourceEnumerator.Instance.GetDataSources();
-
-            //Fill the Server Connection Combo Box with available SQL servers
-            foreach (DataRow row in AvailableServersDT.Rows)
-            {
-                if (row.Field<string>("ServerName") != null)
-                {
-                    string ServerStrings = row.Field<string>("ServerName") + @"\" + row.Field<string>("InstanceName");
-                    ServerConectionCb.Dispatcher.Invoke(new Action(() =>
-                    {
-                        ServerConectionCb.Items.Add(ServerStrings);
-                    }));
-
-                }
-            }
-
-            //Select the first Server in ServerCon Combo Box if not empty 
-            if (ServerConectionCb.Items.Count > 0)
-            {
-                ServerConectionCb.Dispatcher.Invoke(new Action(() =>
-                {
-                    ServerConectionCb.SelectedIndex = 0;
-                }));
-            }
-        }
-
-        private void CheckServerAndConnect()
-        {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultSqlConnection"].ConnectionString);
-            try
-            {
-                con.Open();
-
-            }
-            catch (System.Exception ex)
-            {
-                if (ServerPickingTc.Visibility == Visibility.Visible)
-                {
-                    MessageBox.Show("Съвъра не същестува, няма достъп до него или грешно потребителско име или парола.","",MessageBoxButton.OK,MessageBoxImage.Error);
-                }
-                else 
-                {
-                    MessageBox.Show("Грешно потребителско име или парола.","", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                Console.WriteLine(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            finally
-            {
-                if (con.State == ConnectionState.Open)
-                {
-                    MainWindow mw;
-                    switch (IsFirstTimeLogin)
-                    {
-                        case true:
-                            SqlHelper.FirstTimeLoginSettingsSetter(Account);
-                            mw = new MainWindow(Account, CheckIfUserIsAdmin());
-                            mw.Show();
-                            this.Close();
-                            break;
-                        case false:
-                            mw = new MainWindow(Account, CheckIfUserIsAdmin());
-                            mw.Show();
-                            this.Close();
-                            break;
-                    }
-                }
-                else
-                {
-                    ResetDefaultConString(); //Have to change this with logic if the server is correct but the login is not only reset the login in thte con string
-                }
-            }
-        }
-
-        private string CheckIfUserIsAdmin()
-        {
-            if (Account == "sa")
-            {
-                return "admin";
-            }
-            else
-            {
-                using (SqlConnection Con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultSqlConnection"].ConnectionString))
-                {
-                    string command = $"select r.name as Role, m.name as Principal\r\n\r\nfrom\r\n\r\n    master.sys.server_role_members rm\r\n\r\n    inner join\r\n\r\n    master.sys.server_principals r on r.principal_id = rm.role_principal_id and r.type = 'R'\r\n\r\n    inner join\r\n\r\n    master.sys.server_principals m on m.principal_id = rm.member_principal_id\r\n\r\nwhere m.name = '{Account}' and r.name = 'ForceToolsAdmin'";
-
-                    using (SqlCommand sqlcmd = new SqlCommand(command, Con))
-                    {
-                        Con.Open();
-                        using (SqlDataAdapter Adapter = new SqlDataAdapter(sqlcmd))
-                        {
-                            DataTable checkIfAdmin = new DataTable();
-                            Adapter.Fill(checkIfAdmin);
-
-                            if (checkIfAdmin.Rows.Count > 0)
-                            {
-                                return "admin";
-                            }
-                            else
-                            {
-                                return "operator";
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         private void MediaElement_MediaEnded(object sender, RoutedEventArgs e)
         {
             LoadingAnimationMe.Position = new TimeSpan(0, 0, 1);
         }
 
-    } 
+    }
 }

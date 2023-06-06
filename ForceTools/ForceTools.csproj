@@ -362,14 +362,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Enums.cs" />
+    <Compile Include="FileSystemHelper.cs" />
     <Compile Include="Models\Databases.cs" />
     <Compile Include="Models\InvoiceImage.cs" />
     <Compile Include="Models\MainListOfLists.cs" />
+    <Compile Include="SqlLogic\SqlConnectionsHandler.cs" />
+    <Compile Include="UiNavigationHelper.cs" />
     <Compile Include="ViewModels\BaseOpcEvent.cs" />
     <Compile Include="Models\InvoiceImageList.cs" />
     <Compile Include="ViewModels\DataGridCustom.cs" />
     <Compile Include="ViewModels\PdfConverter.cs" />
-    <Compile Include="ViewModels\SqlHelper.cs" />
+    <Compile Include="SqlLogic\SqlHelper.cs" />
     <Compile Include="WPF Pages\FirmPackets.xaml.cs">
       <DependentUpon>FirmPackets.xaml</DependentUpon>
     </Compile>

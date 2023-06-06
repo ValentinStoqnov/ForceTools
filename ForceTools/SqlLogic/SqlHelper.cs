@@ -16,7 +16,7 @@ using System.ServiceProcess;
 using Microsoft.SqlServer.Management.Smo;
 using System.ComponentModel.Design;
 
-namespace ForceTools.ViewModels
+namespace ForceTools
 {
     public class SqlHelper
     {
@@ -785,10 +785,6 @@ namespace ForceTools.ViewModels
             //    }
             //}
             #endregion
-        }
-        public SqlHelper()
-        {
-
         }
     }
 }

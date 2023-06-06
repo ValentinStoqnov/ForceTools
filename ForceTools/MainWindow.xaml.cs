@@ -40,14 +40,14 @@ namespace ForceTools
         public MainWindow()
         {
             InitializeComponent();
-            SetInitialPageAndValues();   
+            SetInitialPageAndValues();
         }
 
-        public MainWindow(string CurrentUser, string Access) : this()
+        public MainWindow(string CurrentUser, UserPermissions userPermissions) : this()
         {
             CurrentUserLbl.Content = CurrentUser;
 
-            if (Access == "admin")
+            if (userPermissions == UserPermissions.Admin)
             {
                 IsUserAdmin = true;
             }
