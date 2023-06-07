@@ -7,7 +7,7 @@ namespace ForceTools
     public static class InvoiceExtractionDataRetriever
     {
         private static SqlConnection sqlConnection;
-        private static SqlCommand sqlCommand;
+        private static SqlCommand sqlCommand = new SqlCommand();
         private static SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
         private static DataTable operationsDatatable = new DataTable();
 

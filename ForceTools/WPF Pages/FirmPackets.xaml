@@ -10,7 +10,7 @@
 
     <Grid Background="White">
         <ListView x:Name="PacketsLv"
-                  ItemsSource="{Binding DataBaseCol, RelativeSource={RelativeSource AncestorType=Page}}"
+                  ItemsSource="{Binding DataBaseCol, RelativeSource={RelativeSource AncestorType=Page},UpdateSourceTrigger=PropertyChanged}"
                   Background="#FFF0F0F0" MouseDoubleClick="ListView_MouseDoubleClick">
             <ListView.ItemTemplate>
                 <DataTemplate>

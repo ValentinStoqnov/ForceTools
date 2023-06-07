@@ -11,6 +11,8 @@ namespace ForceTools
     {
         public static string DataFolderPath = AppDomain.CurrentDomain.BaseDirectory + "\\Database";
         public static string TempFolderPath = AppDomain.CurrentDomain.BaseDirectory + "\\Temp";
+        public static string dbSelectedImg = @"\Assets\databaseSelected.png";
+        public static string dbDefaultImg = @"\Assets\database.png";
 
         public static void CheckAndCreateDatabaseFolder()
         {

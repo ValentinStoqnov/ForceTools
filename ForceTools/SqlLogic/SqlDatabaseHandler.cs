@@ -1,24 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.IO;
-using System.Drawing.Design;
+using System.Collections.ObjectModel;
 using ForceTools.Models;
-using System.Drawing;
-using Microsoft.SqlServer.Management.Smo.Wmi;
-using System.ServiceProcess;
 using Microsoft.SqlServer.Management.Smo;
-using System.ComponentModel.Design;
 
 namespace ForceTools
 {
-    public class SqlHelper
+    public class SqlDatabaseHandler
     {
         // SqlConnectionString ---> Dynamic Connection string for Database use
         // DefaultServerString ---> Dynamic Connection string for Server use
@@ -26,31 +17,6 @@ namespace ForceTools
         
         private static string DataFolderPath = AppDomain.CurrentDomain.BaseDirectory + "\\Database";
 
-        public static void ConnectToDifferentDatabase(string DbName)
-        {
-            string connectionString = string.Format("{1};Initial Catalog={0}", DbName, ConfigurationManager.ConnectionStrings["DefaultSqlConnection"].ConnectionString);
-
-            try
-            {
-                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                var settings = configFile.ConnectionStrings.ConnectionStrings;
-                if (settings["SqlConnectionString"] == null)
-                {
-                    settings.Add(new ConnectionStringSettings("SqlConnectionString", connectionString));
-                }
-                else
-                {
-                    settings["SqlConnectionString"].ConnectionString = connectionString;
-                }
-                configFile.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection(configFile.ConnectionStrings.SectionInformation.Name);
-                Properties.Settings.Default.Reload();
-            }
-            catch (ConfigurationErrorsException)
-            {
-                MessageBox.Show("Couldn't change the Database connection in the config file!", "Database Connection Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
         public static void CreateNewDatabase(string DbName, string Connection)
         {
             #region Creating The Database
@@ -785,6 +751,28 @@ namespace ForceTools
             //    }
             //}
             #endregion
+        }
+        public static ObservableCollection<Databases> GetUserCreatedDatabasesObservableCollection() 
+        { 
+            ObservableCollection<Databases> databaseObserbavleCollection = new ObservableCollection<Databases>();
+            using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultSqlConnection"].ConnectionString))
+            {
+                con.Open();
+                DataTable databases = con.GetSchema("Databases");
+                foreach (DataRow database in databases.Rows)
+                {
+                    String databaseName = database.Field<String>("database_name");
+                    string dbID = database.Field<short>("dbid").ToString();
+                    //DateTime creationDate = database.Field<DateTime>("create_date");
+
+                    if (databaseName != "master" && databaseName != "tempdb" && databaseName != "model" && databaseName != "msdb" && databaseName != "Users")
+                    {
+                        Databases data = new Databases(databaseName, dbID, BitmapCreator.DefaultDatabaseBitmapImage());
+                        databaseObserbavleCollection.Add(data);
+                    }
+                }
+            }
+            return databaseObserbavleCollection;
         }
     }
 }

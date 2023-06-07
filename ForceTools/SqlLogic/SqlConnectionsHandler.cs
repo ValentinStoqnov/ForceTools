@@ -133,7 +133,7 @@ namespace ForceTools
                 }
             }
         }
-        public static bool CheckIfServerConnectionIsValid() 
+        public static bool CheckIfServerConnectionIsValid()
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultSqlConnection"].ConnectionString);
             bool userCanConnect = false;
@@ -143,11 +143,28 @@ namespace ForceTools
                 if (con.State == ConnectionState.Open) userCanConnect = true;
             }
             catch (System.Exception ex)
-            { 
+            {
                 Console.WriteLine(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
                 userCanConnect = false;
             }
             return userCanConnect;
+        }
+        public static void ConnectToDifferentDatabase(string DbName)
+        {
+            string DatabaseConnectionString = $"{ConfigurationManager.ConnectionStrings["DefaultSqlConnection"].ConnectionString};Initial Catalog={DbName}";
+            var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var settings = configFile.ConnectionStrings.ConnectionStrings;
+            if (settings["SqlConnectionString"] == null)
+            {
+                settings.Add(new ConnectionStringSettings("SqlConnectionString", DatabaseConnectionString));
+            }
+            else
+            {
+                settings["SqlConnectionString"].ConnectionString = DatabaseConnectionString;
+            }
+            configFile.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection(configFile.ConnectionStrings.SectionInformation.Name);
+            Properties.Settings.Default.Reload();
         }
     }
 }

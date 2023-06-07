@@ -73,7 +73,7 @@ namespace ForceTools.WPF_Windows
         {
             if (SqlConnectionsHandler.CheckIfServerConnectionIsValid() == true)
             {
-                if (isFirstTimeLogin == true) SqlHelper.FirstTimeLoginSettingsSetter(Account);
+                if (isFirstTimeLogin == true) SqlDatabaseHandler.FirstTimeLoginSettingsSetter(Account);
                 UiNavigationHelper.OpenMainWindow(Account);
                 this.Close();
             }

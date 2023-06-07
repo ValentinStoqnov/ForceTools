@@ -31,9 +31,8 @@ namespace ForceTools
         private string _FirmNameTxt;
 
         private UserPermissions UserPermissions;
-        private List<Button> buttonsList; // new, continue from here
-
-        private BrushConverter bc = new BrushConverter();
+        private List<Button> buttonsList;
+        private BrushConverter brushConverter = new BrushConverter();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -60,7 +59,7 @@ namespace ForceTools
 
         private void SetInitialPageAndValues() 
         {
-            Firms.Background = (Brush)bc.ConvertFrom("#FFFF6900");
+            Firms.Background = (Brush)brushConverter.ConvertFrom("#FFFF6900");
             ContentFrame.Content = new FirmPackets().Content;
             FirmNameTxt = "Изберете пакет";
             PurchasesButton.IsEnabled = false;
@@ -74,23 +73,23 @@ namespace ForceTools
             {
                 if (button == clickedButton)
                 {
-                    button.Background = (Brush)bc.ConvertFrom("#FFFF6900");
+                    button.Background = (Brush)brushConverter.ConvertFrom("#FFFF6900");
                 }
                 else 
                 {
-                    button.Background = (Brush)bc.ConvertFrom("#0078D4");
+                    button.Background = (Brush)brushConverter.ConvertFrom("#0078D4");
                 }
             }
         }
 
         private void PurchasesButton_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.Content = new Accounting_Controlls(OperationType.Purchase).Content; //Change overload to enum
+            ContentFrame.Content = new Accounting_Controlls(OperationType.Purchase).Content;
             SetButtonBackgroundColorWhenClicked(sender as Button);
         }
         private void SalesButton_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.Content = new Accounting_Controlls(OperationType.Sale).Content; //Change overload to enum
+            ContentFrame.Content = new Accounting_Controlls(OperationType.Sale).Content; 
             SetButtonBackgroundColorWhenClicked(sender as Button);
         }
         private void Firms_Click(object sender, RoutedEventArgs e)
