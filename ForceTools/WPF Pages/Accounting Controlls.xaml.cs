@@ -40,7 +40,7 @@ namespace ForceTools
         public string ExportedCount { get; set; }
         public string AllCount { get; set; }
 
-        private string isPurchaseOrSale;
+        private string isPurchaseOrSale; // Continue From here => change to enum to change it in mainwindow too !!!!!!!!
 
         public Accounting_Controlls()
         {

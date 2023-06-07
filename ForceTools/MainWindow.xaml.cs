@@ -3,7 +3,6 @@ using ForceTools.WPF_Windows;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -26,12 +25,13 @@ namespace ForceTools
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private int _MenuClumnWidth = 150;
         public int MenuColumnWidth { get { return _MenuClumnWidth; } set { _MenuClumnWidth = value; OnPropertyChanged(); } }
-        private string _FirmNameTxt;
         public string FirmNameTxt { get { return _FirmNameTxt; } set { _FirmNameTxt = value; OnPropertyChanged(); } }
+        private int _MenuClumnWidth = 150;
+        private string _FirmNameTxt;
 
-        private bool IsUserAdmin = false;
+        private UserPermissions UserPermissions;
+        private List<Button> buttonsList; // new, continue from here
 
         private BrushConverter bc = new BrushConverter();
 
@@ -46,86 +46,67 @@ namespace ForceTools
         public MainWindow(string CurrentUser, UserPermissions userPermissions) : this()
         {
             CurrentUserLbl.Content = CurrentUser;
+            UserPermissions = userPermissions;
 
-            if (userPermissions == UserPermissions.Admin)
+            buttonsList = new List<Button>()
             {
-                IsUserAdmin = true;
-            }
-            else 
-            {
-                IsUserAdmin = false;
-            }
+                PurchasesButton,
+                SalesButton,
+                KontragentiButton,
+                Firms,
+                Settings
+            }; 
         }
 
         private void SetInitialPageAndValues() 
         {
-            Firms.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#FFFF6900");
-            FirmPackets Fp = new FirmPackets();
-            ContentFrame.Content = Fp.Content;
+            Firms.Background = (Brush)bc.ConvertFrom("#FFFF6900");
+            ContentFrame.Content = new FirmPackets().Content;
             FirmNameTxt = "Изберете пакет";
             PurchasesButton.IsEnabled = false;
             SalesButton.IsEnabled = false;
             Settings.IsEnabled = false;
             KontragentiButton.IsEnabled = false;
         }
-        
+        private void SetButtonBackgroundColorWhenClicked(Button clickedButton) 
+        {
+            foreach (Button button in buttonsList) 
+            {
+                if (button == clickedButton)
+                {
+                    button.Background = (Brush)bc.ConvertFrom("#FFFF6900");
+                }
+                else 
+                {
+                    button.Background = (Brush)bc.ConvertFrom("#0078D4");
+                }
+            }
+        }
+
         private void PurchasesButton_Click(object sender, RoutedEventArgs e)
         {
-            Accounting_Controlls ac = new Accounting_Controlls("Purchase");
-            ContentFrame.Content = ac.Content;
-
-            PurchasesButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#FFFF6900");
-            SalesButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            Firms.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            Settings.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            KontragentiButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-
+            ContentFrame.Content = new Accounting_Controlls("Purchase").Content; //Change overload to enum
+            SetButtonBackgroundColorWhenClicked(sender as Button);
         }
         private void SalesButton_Click(object sender, RoutedEventArgs e)
         {
-            Accounting_Controlls ac = new Accounting_Controlls("Sale");
-            ContentFrame.Content = ac.Content;
-
-            PurchasesButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            SalesButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#FFFF6900");
-            Firms.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            Settings.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            KontragentiButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
+            ContentFrame.Content = new Accounting_Controlls("Sale").Content; //Change overload to enum
+            SetButtonBackgroundColorWhenClicked(sender as Button);
         }
         private void Firms_Click(object sender, RoutedEventArgs e)
         {
-            FirmPackets Fp = new FirmPackets(FirmNameTxt);
-            ContentFrame.Content = Fp.Content;
-
-            PurchasesButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            SalesButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            Firms.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#FFFF6900");
-            Settings.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            KontragentiButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
+            ContentFrame.Content = new FirmPackets(FirmNameTxt).Content;
+            SetButtonBackgroundColorWhenClicked(sender as Button);
         }
         private void KontragentiButton_Click(object sender, RoutedEventArgs e)
         {
-            KontragentiPage Kp = new KontragentiPage();
-            ContentFrame.Content = Kp.Content;
-
-            PurchasesButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            SalesButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            Firms.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            Settings.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            KontragentiButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#FFFF6900");
+            ContentFrame.Content = new KontragentiPage().Content;
+            SetButtonBackgroundColorWhenClicked(sender as Button);
         }
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            SettingsPage Sp = new SettingsPage(IsUserAdmin);
-            ContentFrame.Content = Sp.Content;
-            
-            
-
-            PurchasesButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            SalesButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            Firms.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
-            Settings.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#FFFF6900");
-            KontragentiButton.Background = (System.Windows.Media.Brush)bc.ConvertFrom("#0078D4");
+            ContentFrame.Content = new SettingsPage(UserPermissions).Content;
+            SetButtonBackgroundColorWhenClicked(sender as Button);
         }
         private void MenuExpander_Click(object sender, RoutedEventArgs e)
         {
@@ -138,17 +119,15 @@ namespace ForceTools
                 MenuColumnWidth = 150;
             }
         }
+        private void UsersBtn_Click(object sender, RoutedEventArgs e)
+        {
+            UiNavigationHelper.OpenLoginWindow();
+            this.Close();
+        }
 
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private void UsersBtn_Click(object sender, RoutedEventArgs e)
-        {
-            LoginWindow LW = new LoginWindow();
-            LW.Show();
-            this.Close();
         }
     }
 }

@@ -369,10 +369,10 @@
     <Compile Include="Models\MainListOfLists.cs" />
     <Compile Include="SqlLogic\SqlConnectionsHandler.cs" />
     <Compile Include="UiNavigationHelper.cs" />
-    <Compile Include="ViewModels\BaseOpcEvent.cs" />
+    <Compile Include="BaseOpcEvent.cs" />
     <Compile Include="Models\InvoiceImageList.cs" />
-    <Compile Include="ViewModels\DataGridCustom.cs" />
-    <Compile Include="ViewModels\PdfConverter.cs" />
+    <Compile Include="UserControls\DataGridCustom.cs" />
+    <Compile Include="PdfConverter.cs" />
     <Compile Include="SqlLogic\SqlHelper.cs" />
     <Compile Include="WPF Pages\FirmPackets.xaml.cs">
       <DependentUpon>FirmPackets.xaml</DependentUpon>
@@ -563,9 +563,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\PassIconBlack.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\Tesseract.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />

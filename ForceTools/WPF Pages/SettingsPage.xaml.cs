@@ -40,14 +40,14 @@ namespace ForceTools.WPF_Pages
             GetUsersData();
         }
 
-        public SettingsPage(bool IsUserAdmin) : this()
+        public SettingsPage(UserPermissions userPermissions) : this()
         {
-            GetAdminSettingsAccess(IsUserAdmin);
+            GetAdminSettingsAccess(userPermissions);
         }
 
-        private void GetAdminSettingsAccess(bool IsUserAdmin)
+        private void GetAdminSettingsAccess(UserPermissions userPermissions)
         {
-            if (IsUserAdmin == true)
+            if (userPermissions == UserPermissions.Admin)
             {
                 AdminTab.IsEnabled = true;
             }

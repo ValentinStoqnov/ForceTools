@@ -12,4 +12,9 @@ namespace ForceTools
         Admin,
         Operator
     }
+    public enum OperationType 
+    { 
+        Purchase,
+        Sale
+    }
 }
