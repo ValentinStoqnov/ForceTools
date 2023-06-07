@@ -35,7 +35,7 @@ namespace ForceTools
         public DataTable dataTable { get { return _dataTable; } set { _dataTable = value; OnPropertyChanged();} }
         private DataTable _dataTable;
         private int DocStatusId;
-        private string isPurchaseOrSale;
+        private OperationType OperationType;
         private int MassEditType;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -47,9 +47,9 @@ namespace ForceTools
 
 
 
-        public InvoiceGridPage(int StatusId, string PurchaseOrSale) : this()
+        public InvoiceGridPage(int StatusId, OperationType operationType) : this()
         {
-            isPurchaseOrSale = PurchaseOrSale;
+            OperationType = operationType;
             DocStatusId = StatusId;
             BindDataGridtoSqlDatabase(DocStatusId);
             SetPurchaseOrSaleLbl();
@@ -59,12 +59,12 @@ namespace ForceTools
         {
             string TranslatedPorS = "";
 
-            switch (isPurchaseOrSale)
+            switch (OperationType)
             {
-                case "Purchase":
+                case OperationType.Purchase:
                     TranslatedPorS = "Покупки";
                     break;
-                case "Sale":
+                case OperationType.Sale:
                     TranslatedPorS = "Продажби";
                     break;
             }
@@ -96,9 +96,9 @@ namespace ForceTools
             sqlConnection.Open();
             SqCmd = new SqlCommand();
 
-            switch (isPurchaseOrSale)
+            switch (OperationType)
             {
-                case "Purchase":
+                case OperationType.Purchase:
                     switch (ChosenFilter)
                     {
                         case 0:
@@ -119,7 +119,7 @@ namespace ForceTools
 
                     }
                     break;
-                case "Sale":
+                case OperationType.Sale:
                     switch (ChosenFilter)
                     {
                         case 0:
@@ -151,7 +151,7 @@ namespace ForceTools
 
         private void NewInvoicesButton_Click(object sender, RoutedEventArgs e)
         {
-            NICW InvCreWin = new NICW(isPurchaseOrSale);
+            NICW InvCreWin = new NICW(OperationType);
             InvCreWin.ShowDialog();
         }
 
@@ -177,7 +177,7 @@ namespace ForceTools
 
         private void ImportFromPdfBtn_Click(object sender, RoutedEventArgs e)
         {
-            PdfUploaderWindow PUW = new PdfUploaderWindow(isPurchaseOrSale);
+            PdfUploaderWindow PUW = new PdfUploaderWindow(OperationType); 
             PUW.ShowDialog();
         }
 
@@ -188,7 +188,7 @@ namespace ForceTools
             if (dataRow != null)
             {
                 int FakID = Convert.ToInt32(dataRow.Row.ItemArray[0]);
-                InvoiceEditWindow IEW = new InvoiceEditWindow(FakID, DocStatusId,isPurchaseOrSale);
+                InvoiceEditWindow IEW = new InvoiceEditWindow(FakID, DocStatusId,OperationType); 
                 IEW.ShowDialog();
             }
             else
@@ -204,7 +204,7 @@ namespace ForceTools
             if (dataRow != null)
             {
                 int FakID = Convert.ToInt32(dataRow.Row.ItemArray[0]);
-                InvoiceEditWindow IEW = new InvoiceEditWindow(FakID, DocStatusId,isPurchaseOrSale);
+                InvoiceEditWindow IEW = new InvoiceEditWindow(FakID, DocStatusId,OperationType); 
                 IEW.ShowDialog();
             }
             else
@@ -235,9 +235,9 @@ namespace ForceTools
             {
                 using (SqCmd = new SqlCommand())
                 {
-                    switch (isPurchaseOrSale)
+                    switch (OperationType)
                     {
-                        case "Purchase":
+                        case OperationType.Purchase:
                             switch (DocStatusId)
                             {
                                 case 0:
@@ -258,7 +258,7 @@ namespace ForceTools
 
                             }
                             break;
-                        case "Sale":
+                        case OperationType.Sale:
                             switch (DocStatusId)
                             {
                                 case 0:

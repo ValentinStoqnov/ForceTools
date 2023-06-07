@@ -85,12 +85,12 @@ namespace ForceTools
 
         private void PurchasesButton_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.Content = new Accounting_Controlls("Purchase").Content; //Change overload to enum
+            ContentFrame.Content = new Accounting_Controlls(OperationType.Purchase).Content; //Change overload to enum
             SetButtonBackgroundColorWhenClicked(sender as Button);
         }
         private void SalesButton_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.Content = new Accounting_Controlls("Sale").Content; //Change overload to enum
+            ContentFrame.Content = new Accounting_Controlls(OperationType.Sale).Content; //Change overload to enum
             SetButtonBackgroundColorWhenClicked(sender as Button);
         }
         private void Firms_Click(object sender, RoutedEventArgs e)

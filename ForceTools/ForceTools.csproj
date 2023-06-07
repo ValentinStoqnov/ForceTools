@@ -363,10 +363,13 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Enums.cs" />
+    <Compile Include="ExcelExtractor.cs" />
     <Compile Include="FileSystemHelper.cs" />
     <Compile Include="Models\Databases.cs" />
     <Compile Include="Models\InvoiceImage.cs" />
     <Compile Include="Models\MainListOfLists.cs" />
+    <Compile Include="SqlLogic\DataRetrieval\InvoiceCounter.cs" />
+    <Compile Include="SqlLogic\DataRetrieval\InvoiceExtractionDataRetriever.cs" />
     <Compile Include="SqlLogic\SqlConnectionsHandler.cs" />
     <Compile Include="UiNavigationHelper.cs" />
     <Compile Include="BaseOpcEvent.cs" />

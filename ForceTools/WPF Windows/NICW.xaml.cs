@@ -30,7 +30,7 @@ namespace ForceTools
     public partial class NICW : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private string isPurchaseOrSale;
+        private OperationType OperationType;
 
         //Search Strings
         private string _SearchText;
@@ -52,9 +52,9 @@ namespace ForceTools
             FillKontragenti();
         }
 
-        public NICW(string PurchaseOrSale) : this()
+        public NICW(OperationType operationType) : this()
         {
-            isPurchaseOrSale = PurchaseOrSale;
+            OperationType = operationType;
         }
 
         #region Helpers
@@ -279,7 +279,7 @@ namespace ForceTools
                 SqlCommand SqCmd = new SqlCommand("INSERT into Fakturi (KontragentiId, Date, Number, DO,DDS,FullValue,AccountingStatusId) SELECT KontragentiId, Date, Number, DO, DDS, FullValue, AccountingStatusId From ImportList", sqlConnection);
                 SqCmd.ExecuteNonQuery();
                 sqlConnection.Close();
-                InvoiceGridPage igp = new InvoiceGridPage(2, isPurchaseOrSale);
+                InvoiceGridPage igp = new InvoiceGridPage(2, OperationType);
                 MainWindow mw = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive) as MainWindow;
                 mw.ContentFrame.Content = igp.Content;
             }

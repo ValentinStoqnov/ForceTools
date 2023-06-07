@@ -64,7 +64,7 @@ namespace ForceTools
         List<InvoiceImage> selectedInvoiceImages = new List<InvoiceImage>();
 
         //Getting if the User is working on Purchases or Sales
-        private string isPurchaseOrSale;
+        private OperationType OperationType;
 
         //Document drag/drop navigation Variables
         private System.Windows.Point startPoint = new System.Windows.Point();
@@ -113,9 +113,9 @@ namespace ForceTools
             GetDefaultValues();
         }
 
-        public PdfUploaderWindow(string PurchaseOrSale) : this()
+        public PdfUploaderWindow(OperationType operationType) : this()
         {
-            isPurchaseOrSale = PurchaseOrSale;
+            OperationType = operationType;
             SetPurchaseOrSaleLbl();
         }
 
@@ -127,12 +127,12 @@ namespace ForceTools
 
         private void SetPurchaseOrSaleLbl()
         {
-            switch (isPurchaseOrSale)
+            switch (OperationType)
             {
-                case "Purchase":
+                case OperationType.Purchase:
                     PurchaseOrSaleLbl.Content = "Импортиране на фактури за покупки";
                     break;
-                case "Sale":
+                case OperationType.Sale:
                     PurchaseOrSaleLbl.Content = "Импортиране на фактури за продажби";
                     break;
             }
@@ -347,7 +347,7 @@ namespace ForceTools
             ClearTempAndMemory();
             //Closing the PDF Uploader Window and Updating info in Invoice Grid Page
             this.Close();
-            InvoiceGridPage igp = new InvoiceGridPage(2, isPurchaseOrSale);
+            InvoiceGridPage igp = new InvoiceGridPage(2, OperationType);
             MainWindow mw = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive) as MainWindow;
             mw.ContentFrame.Content = igp.Content; //BUG
         }
@@ -972,13 +972,13 @@ namespace ForceTools
             //Getting Kontragent Name / Determening if the document is for a purchase or a sale
             Regex kontragentExtraction = new Regex("");
             Regex kontragentExtractionPT2 = new Regex("");
-            switch (isPurchaseOrSale)
+            switch (OperationType)
             {
-                case "Purchase":
+                case OperationType.Purchase:
                     kontragentExtraction = new Regex(@"(?<=Доставчик:?).*", RegexOptions.IgnoreCase);
                     kontragentExtractionPT2 = new Regex(@"(?<=Доставчик:?\n).*", RegexOptions.IgnoreCase);
                     break;
-                case "Sale":
+                case OperationType.Sale:
                     kontragentExtraction = new Regex(@"(?<=Получател:?).*", RegexOptions.IgnoreCase);
                     kontragentExtractionPT2 = new Regex(@"(?<=Получател:?\n).*", RegexOptions.IgnoreCase);
                     break;
@@ -1197,9 +1197,9 @@ namespace ForceTools
             }
             //Setting DealKind considering DO, FullValue and Purchase or Sale document
             int DealKindIdInt = 0;
-            switch (isPurchaseOrSale)
+            switch (OperationType)
             {
-                case "Purchase":
+                case OperationType.Purchase:
                     if (DoDec != 0 && FullValueDec != 0)
                     {
                         if (DoDec == FullValueDec)
@@ -1212,7 +1212,7 @@ namespace ForceTools
                         }
                     }
                     break;
-                case "Sale":
+                case OperationType.Sale:
                     if (DoDec != 0 && FullValueDec != 0)
                     {
                         if (DoDec == FullValueDec)
@@ -1277,13 +1277,13 @@ namespace ForceTools
             SqCmd.Parameters.AddWithValue("@InCashAccount", DefaultCashRegAccount);
             SqCmd.Parameters.AddWithValue("@Note", DefaultNote);
             //Setting DocType Specific info 
-            switch (isPurchaseOrSale)
+            switch (OperationType)
             {
-                case "Purchase":
+                case OperationType.Purchase:
                     SqCmd.Parameters.AddWithValue("@Account", DefaultPurchaseAccount);
                     SqCmd.Parameters.AddWithValue("@PurchaseOrSale", "Purchase");
                     break;
-                case "Sale":
+                case OperationType.Sale:
                     SqCmd.Parameters.AddWithValue("@Account", DefaultSaleAccount);
                     SqCmd.Parameters.AddWithValue("@PurchaseOrSale", "Sale");
                     break;

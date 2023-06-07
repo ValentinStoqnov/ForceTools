@@ -78,7 +78,8 @@ namespace ForceTools.WPF_Windows
 
         private int AccStatusChosen;
 
-        private string isPurchaseOrSale;
+        //private string isPurchaseOrSale;
+        private OperationType OperationType;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -87,9 +88,9 @@ namespace ForceTools.WPF_Windows
             InitializeComponent();
         }
 
-        public InvoiceEditWindow(int invoiceId, int accStatusChosen, string PurchaseOrSale) : this()
+        public InvoiceEditWindow(int invoiceId, int accStatusChosen, OperationType operationType) : this()
         {
-            isPurchaseOrSale = PurchaseOrSale;
+            OperationType = operationType;
 
             using (SqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
@@ -376,9 +377,9 @@ namespace ForceTools.WPF_Windows
                 }
                 int StopCheck = 0;
 
-                switch (isPurchaseOrSale) 
+                switch (OperationType) 
                 {
-                    case "Purchase":
+                    case OperationType.Purchase:
                         switch (AccStatusChosen)
                         {
                             case 0:
@@ -399,7 +400,7 @@ namespace ForceTools.WPF_Windows
 
                         }
                         break;
-                    case "Sale":
+                    case OperationType.Sale:
                         switch (AccStatusChosen)
                         {
                             case 0:
@@ -444,9 +445,9 @@ namespace ForceTools.WPF_Windows
 
                         StopCheck++;
 
-                        switch (isPurchaseOrSale)
+                        switch (OperationType)
                         {
-                            case "Purchase":
+                            case OperationType.Purchase:
                                 switch (AccStatusChosen)
                                 {
                                     case 0:
@@ -467,7 +468,7 @@ namespace ForceTools.WPF_Windows
 
                                 }
                                 break;
-                            case "Sale":
+                            case OperationType.Sale:
                                 switch (AccStatusChosen)
                                 {
                                     case 0:
