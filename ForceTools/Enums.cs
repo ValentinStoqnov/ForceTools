@@ -17,4 +17,19 @@ namespace ForceTools
         Purchase,
         Sale
     }
+    public enum DocumentStatuses 
+    { 
+        AccountedDocuments = 0,
+        HeldDocuments = 1,
+        UnAccountedDocuments = 2,
+        ReadyToBeExportedDocuments = 3,
+        ExportedDocuments = 4
+    }
+    public enum MassEditOperationType 
+    { 
+        AccountingDate,
+        AccountingStatus,
+        Account,
+        Note
+    }
 }

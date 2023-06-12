@@ -35,7 +35,6 @@ namespace ForceTools.WPF_Windows
             PasswordTb.Focus();
             //Account = "sa";
             //Password = "1";
-
             FileSystemHelper.CheckAndCreateDatabaseFolder();
             FileSystemHelper.CheckAndCreateTempFolder();
             SetUpWindowControls();

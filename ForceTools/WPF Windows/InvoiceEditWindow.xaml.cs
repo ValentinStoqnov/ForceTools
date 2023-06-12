@@ -88,7 +88,7 @@ namespace ForceTools.WPF_Windows
             InitializeComponent();
         }
 
-        public InvoiceEditWindow(int invoiceId, int accStatusChosen, OperationType operationType) : this()
+        public InvoiceEditWindow(int invoiceId, DocumentStatuses accStatusChosen, OperationType operationType) : this()
         {
             OperationType = operationType;
 
@@ -251,7 +251,7 @@ namespace ForceTools.WPF_Windows
                     isDealKindPopupOpen = false;
                 }
             }
-            AccStatusChosen = accStatusChosen;
+            AccStatusChosen = (int)accStatusChosen;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

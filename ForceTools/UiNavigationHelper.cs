@@ -26,5 +26,20 @@ namespace ForceTools
             LoginWindow LW = new LoginWindow();
             LW.Show();
         }
+        public static void OpenNICWWindow(OperationType operationType) 
+        {
+            NICW InvCreWin = new NICW(operationType);
+            InvCreWin.ShowDialog();
+        }
+        public static void OpenPdfUploaderWindow(OperationType operationType) 
+        {
+            PdfUploaderWindow PUW = new PdfUploaderWindow(operationType);
+            PUW.ShowDialog();
+        }
+        public static void OpenInvoiceEditWindow(int InvoiceId, OperationType operationType, DocumentStatuses documentStatuses) 
+        {
+            InvoiceEditWindow IEW = new InvoiceEditWindow(InvoiceId, documentStatuses, operationType);
+            IEW.ShowDialog();
+        }
     }
 }

@@ -1,25 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Data;
-using System.Data.SqlClient;
-using System.Configuration;
-using Microsoft.Win32;
-using ForceTools.WPF_Windows;
-using ForceTools.ViewModels;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections.Generic;
 
 namespace ForceTools
 {
@@ -28,15 +14,11 @@ namespace ForceTools
     /// </summary>
     public partial class InvoiceGridPage : Page, INotifyPropertyChanged
     {
-
-        SqlConnection sqlConnection;
-        SqlCommand SqCmd;
-        SqlDataAdapter sqlDataAdapter;
-        public DataTable dataTable { get { return _dataTable; } set { _dataTable = value; OnPropertyChanged();} }
+        public DataTable dataTable { get { return _dataTable; } set { _dataTable = value; OnPropertyChanged(); } }
         private DataTable _dataTable;
-        private int DocStatusId;
-        private OperationType OperationType;
-        private int MassEditType;
+        private DocumentStatuses _docStatusId;
+        private OperationType _operationType;
+        private MassEditOperationType _massEditOperationType;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -44,175 +26,153 @@ namespace ForceTools
         {
             InitializeComponent();
         }
-
-
-
-        public InvoiceGridPage(int StatusId, OperationType operationType) : this()
+        public InvoiceGridPage(DocumentStatuses statusId, OperationType operationType) : this()
         {
-            OperationType = operationType;
-            DocStatusId = StatusId;
-            BindDataGridtoSqlDatabase(DocStatusId);
-            SetPurchaseOrSaleLbl();
+            _operationType = operationType;
+            _docStatusId = statusId;
+            RefreshGridDataTable(operationType, statusId);
+            SetPurchaseOrSaleLbl(operationType, statusId);
         }
 
-        private void SetPurchaseOrSaleLbl()
+        private void SetPurchaseOrSaleLbl(OperationType operationType, DocumentStatuses statusId)
         {
-            string TranslatedPorS = "";
+            string purchaseOrSaleOperationText = "";
+            string purchaseOrSaleStatusText = "";
 
-            switch (OperationType)
+            switch (_operationType)
             {
                 case OperationType.Purchase:
-                    TranslatedPorS = "Покупки";
+                    purchaseOrSaleOperationText = "Покупки";
                     break;
                 case OperationType.Sale:
-                    TranslatedPorS = "Продажби";
+                    purchaseOrSaleOperationText = "Продажби";
                     break;
             }
 
-            switch (DocStatusId)
+            switch (_docStatusId)
             {
-                case 0:
-                    PurchaseOrSaleLbl.Content = $"{TranslatedPorS} - Всчики";
+                case DocumentStatuses.AccountedDocuments:
+                    purchaseOrSaleStatusText = "Всчики";
                     break;
-                case 1:
-                    PurchaseOrSaleLbl.Content = $"{TranslatedPorS} - Задържани";
+                case DocumentStatuses.HeldDocuments:
+                    purchaseOrSaleStatusText = "Задържани";
                     break;
-                case 2:
-                    PurchaseOrSaleLbl.Content = $"{TranslatedPorS} - Неосчетоводени";
+                case DocumentStatuses.UnAccountedDocuments:
+                    purchaseOrSaleStatusText = "Неосчетоводени";
                     break;
-                case 3:
-                    PurchaseOrSaleLbl.Content = $"{TranslatedPorS} - Готови за експорт";
+                case DocumentStatuses.ReadyToBeExportedDocuments:
+                    purchaseOrSaleStatusText = "Готови за експорт";
                     break;
-                case 4:
-                    PurchaseOrSaleLbl.Content = $"{TranslatedPorS} - Експортирани";
+                case DocumentStatuses.ExportedDocuments:
+                    purchaseOrSaleStatusText = "Експортирани";
                     break;
             }
+            PurchaseOrSaleLbl.Content = $"{purchaseOrSaleOperationText} - {purchaseOrSaleStatusText}";
         }
-
-        public void BindDataGridtoSqlDatabase(int ChosenFilter)
+        private void RefreshGridDataTable(OperationType operationType, DocumentStatuses ChosenFilter)
         {
-            sqlConnection = new SqlConnection();
-            sqlConnection.ConnectionString = ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString;
-            sqlConnection.Open();
-            SqCmd = new SqlCommand();
-
-            switch (OperationType)
+            dataTable = InvoiceDataFilters.GetInvoiceDataTableByStatusAndOperation(operationType, ChosenFilter);
+        }
+        private void GetInvoiceIdAndOpenEditingWindow(object sender)
+        {
+            DataGrid dg = (DataGrid)sender;
+            DataRowView dataRow = (DataRowView)dg.SelectedItem;
+            if (dataRow == null) return;
+            int FakID = Convert.ToInt32(dataRow.Row.ItemArray[0]);
+            UiNavigationHelper.OpenInvoiceEditWindow(FakID, _operationType, _docStatusId);
+        }
+        private void OpenMassEdit(MassEditOperationType massEditOperationType)
+        {
+            MassNoteTb.Visibility = Visibility.Hidden;
+            MassAccountTb.Visibility = Visibility.Hidden;
+            MassAccStatusCb.Visibility = Visibility.Hidden;
+            MassAccDateTb.Visibility = Visibility.Hidden;
+            switch (massEditOperationType)
             {
-                case OperationType.Purchase:
-                    switch (ChosenFilter)
-                    {
-                        case 0:
-                            SqCmd.CommandText = "Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE PurchaseOrSale = 'Purchase'";
-                            break;
-                        case 1:
-                            SqCmd.CommandText = "Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 1 and PurchaseOrSale = 'Purchase')";
-                            break;
-                        case 2:
-                            SqCmd.CommandText = "Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 2 and PurchaseOrSale = 'Purchase')";
-                            break;
-                        case 3:
-                            SqCmd.CommandText = "Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 3 and PurchaseOrSale = 'Purchase')";
-                            break;
-                        case 4:
-                            SqCmd.CommandText = "Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 4 and PurchaseOrSale = 'Purchase')";
-                            break;
-
-                    }
+                case MassEditOperationType.AccountingDate:
+                    MassTypeLbl.Content = "Счетоводна дата";
+                    MassAccDateTb.Visibility = Visibility.Visible;
                     break;
-                case OperationType.Sale:
-                    switch (ChosenFilter)
-                    {
-                        case 0:
-                            SqCmd.CommandText = "Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE PurchaseOrSale = 'Sale'";
-                            break;
-                        case 1:
-                            SqCmd.CommandText = "Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 1 and PurchaseOrSale = 'Sale')";
-                            break;
-                        case 2:
-                            SqCmd.CommandText = "Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 2 and PurchaseOrSale = 'Sale')";
-                            break;
-                        case 3:
-                            SqCmd.CommandText = "Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 3 and PurchaseOrSale = 'Sale')";
-                            break;
-                        case 4:
-                            SqCmd.CommandText = "Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 4 and PurchaseOrSale = 'Sale')";
-                            break;
-
-                    }
+                case MassEditOperationType.AccountingStatus:
+                    MassTypeLbl.Content = "Счетоводен статус";
+                    MassAccStatusCb.Visibility = Visibility.Visible;
+                    break;
+                case MassEditOperationType.Account:
+                    MassTypeLbl.Content = "Сметка";
+                    MassAccountTb.Visibility = Visibility.Visible;
+                    break;
+                case MassEditOperationType.Note:
+                    MassTypeLbl.Content = "Бележка";
+                    MassNoteTb.Visibility = Visibility.Visible;
                     break;
             }
-            SqCmd.Connection = sqlConnection;
-            sqlDataAdapter = new SqlDataAdapter(SqCmd);
-            dataTable = new DataTable("Fakturi");
-            sqlDataAdapter.Fill(dataTable);
-            //InvoicesDataGrid.ItemsSource = dataTable.DefaultView; ///////////////THIS WAS BEFORE THE BINDING
-            sqlConnection.Close();
+            MassSelectedCountLbl.Content = $"Брой избрани документи: {InvoicesDataGrid.SelectedItems.Count}";
+            MassEditPopup.IsOpen = true;
+            _massEditOperationType = massEditOperationType;
+        }
+        private void SaveMassEdit(MassEditOperationType massEditOperationType)
+        {
+            List<string> InvoicesToBeAffected = new List<string>();
+            foreach (DataRowView dataRowView in InvoicesDataGrid.SelectedItems)
+            {
+                InvoicesToBeAffected.Add(dataRowView.Row.ItemArray[0].ToString());
+            }
+            switch (massEditOperationType)
+            {
+                case MassEditOperationType.AccountingDate: 
+                    if (MassAccDateTb.Text == "") { MessageBox.Show("Полето не може да бъде празно"); return; }
+                    InvoicesMassEditor.ChangeInvoicesDates(InvoicesToBeAffected, MassAccDateTb.Text);
+                    break;
+                case MassEditOperationType.AccountingStatus: 
+                    if (MassAccStatusCb.SelectedIndex == -1) { MessageBox.Show("Полето не може да бъде празно"); return; }
+                    InvoicesMassEditor.ChangeInvoicesStatuses(InvoicesToBeAffected, MassAccStatusCb.SelectedIndex);
+                    break;
+                case MassEditOperationType.Account: 
+                    if (MassAccountTb.Text == "") { MessageBox.Show("Полето не може да бъде празно"); return; }
+                    InvoicesMassEditor.ChangeInvoicesAccounts(InvoicesToBeAffected, MassAccountTb.Text);
+                    break;
+                case MassEditOperationType.Note: 
+                    if (MassNoteTb.Text == "") { MessageBox.Show("Полето не може да бъде празно"); return; }
+                    InvoicesMassEditor.ChangeInvoicesNotes(InvoicesToBeAffected, MassNoteTb.Text);
+                    break;
+            }
+            RefreshGridDataTable(_operationType, _docStatusId);
+            MassEditPopup.IsOpen = false;
         }
 
         private void NewInvoicesButton_Click(object sender, RoutedEventArgs e)
         {
-            NICW InvCreWin = new NICW(OperationType);
-            InvCreWin.ShowDialog();
+            UiNavigationHelper.OpenNICWWindow(_operationType);
         }
-
         private void ImportFromExcelBtn_Click(object sender, RoutedEventArgs e)
         {
-            string ExcelFileName;
+            MessageBox.Show("Not Implemented yet");
 
 
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
-            if (ofd.ShowDialog() == true)
-            {
-                ExcelFileName = ofd.FileName;
+            //string ExcelFileName;
 
 
-            }
+            //OpenFileDialog ofd = new OpenFileDialog();
+            //ofd.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
+            //if (ofd.ShowDialog() == true)
+            //{
+            //    ExcelFileName = ofd.FileName;
+
+
+            //}
         }
-
-        private void Page_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            MessageBox.Show("a key was pressed");
-        }
-
         private void ImportFromPdfBtn_Click(object sender, RoutedEventArgs e)
         {
-            PdfUploaderWindow PUW = new PdfUploaderWindow(OperationType); 
-            PUW.ShowDialog();
+            UiNavigationHelper.OpenPdfUploaderWindow(_operationType);
         }
-
         private void InvoicesDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            DataGrid dg = (DataGrid)sender;
-            DataRowView dataRow = (DataRowView)dg.SelectedItem;
-            if (dataRow != null)
-            {
-                int FakID = Convert.ToInt32(dataRow.Row.ItemArray[0]);
-                InvoiceEditWindow IEW = new InvoiceEditWindow(FakID, DocStatusId,OperationType); 
-                IEW.ShowDialog();
-            }
-            else
-            {
-                return;
-            }
+            GetInvoiceIdAndOpenEditingWindow(sender);
         }
-
         private void PreviewAndEditBtn_Click(object sender, RoutedEventArgs e)
         {
-            DataGrid dg = InvoicesDataGrid;
-            DataRowView dataRow = (DataRowView)dg.SelectedItem;
-            if (dataRow != null)
-            {
-                int FakID = Convert.ToInt32(dataRow.Row.ItemArray[0]);
-                InvoiceEditWindow IEW = new InvoiceEditWindow(FakID, DocStatusId,OperationType); 
-                IEW.ShowDialog();
-            }
-            else
-            {
-                return;
-            }
+            GetInvoiceIdAndOpenEditingWindow(sender);
         }
-
         private void SearchBarBtn_Click(object sender, RoutedEventArgs e)
         {
             if (SearchBarTb.IsVisible == true && SearchBarLbl.IsVisible == true)
@@ -228,303 +188,51 @@ namespace ForceTools
             }
 
         }
-
-        private void SearchBarTb_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
-            {
-                using (SqCmd = new SqlCommand())
-                {
-                    switch (OperationType)
-                    {
-                        case OperationType.Purchase:
-                            switch (DocStatusId)
-                            {
-                                case 0:
-                                    SqCmd.CommandText = $"Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE PurchaseOrSale = 'Purchase' and (Number like N'%{SearchBarTb.Text}%' Or AccDate like N'%{SearchBarTb.Text}%' Or Date like N'%{SearchBarTb.Text}%' Or Name like N'%{SearchBarTb.Text}%' Or EIK like N'%{SearchBarTb.Text}%' Or DDSNumber like N'%{SearchBarTb.Text}%' Or DO like N'%{SearchBarTb.Text}%' Or DDS like N'%{SearchBarTb.Text}%' Or FullValue like N'%{SearchBarTb.Text}%' Or Account like N'%{SearchBarTb.Text}%' Or InCashAccount like N'%{SearchBarTb.Text}%' Or Note like N'%{SearchBarTb.Text}%' Or TypeName like N'%{SearchBarTb.Text}%' Or DealName like N'%{SearchBarTb.Text}%')";
-                                    break;
-                                case 1:
-                                    SqCmd.CommandText = $"Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 1 and PurchaseOrSale = 'Purchase') and (Number like N'%{SearchBarTb.Text}%' Or AccDate like N'%{SearchBarTb.Text}%' Or Date like N'%{SearchBarTb.Text}%' Or Name like N'%{SearchBarTb.Text}%' Or EIK like N'%{SearchBarTb.Text}%' Or DDSNumber like N'%{SearchBarTb.Text}%' Or DO like N'%{SearchBarTb.Text}%' Or DDS like N'%{SearchBarTb.Text}%' Or FullValue like N'%{SearchBarTb.Text}%' Or Account like N'%{SearchBarTb.Text}%' Or InCashAccount like N'%{SearchBarTb.Text}%' Or Note like N'%{SearchBarTb.Text}%' Or TypeName like N'%{SearchBarTb.Text}%' Or DealName like N'%{SearchBarTb.Text}%')";
-                                    break;
-                                case 2:
-                                    SqCmd.CommandText = $"Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 2 and PurchaseOrSale = 'Purchase') and (Number like N'%{SearchBarTb.Text}%' Or AccDate like N'%{SearchBarTb.Text}%' Or Date like N'%{SearchBarTb.Text}%' Or Name like N'%{SearchBarTb.Text}%' Or EIK like N'%{SearchBarTb.Text}%' Or DDSNumber like N'%{SearchBarTb.Text}%' Or DO like N'%{SearchBarTb.Text}%' Or DDS like N'%{SearchBarTb.Text}%' Or FullValue like N'%{SearchBarTb.Text}%' Or Account like N'%{SearchBarTb.Text}%' Or InCashAccount like N'%{SearchBarTb.Text}%' Or Note like N'%{SearchBarTb.Text}%' Or TypeName like N'%{SearchBarTb.Text}%' Or DealName like N'%{SearchBarTb.Text}%')";
-                                    break;
-                                case 3:
-                                    SqCmd.CommandText = $"Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 3 and PurchaseOrSale = 'Purchase') and (Number like N'%{SearchBarTb.Text}%' Or AccDate like N'%{SearchBarTb.Text}%' Or Date like N'%{SearchBarTb.Text}%' Or Name like N'%{SearchBarTb.Text}%' Or EIK like N'%{SearchBarTb.Text}%' Or DDSNumber like N'%{SearchBarTb.Text}%' Or DO like N'%{SearchBarTb.Text}%' Or DDS like N'%{SearchBarTb.Text}%' Or FullValue like N'%{SearchBarTb.Text}%' Or Account like N'%{SearchBarTb.Text}%' Or InCashAccount like N'%{SearchBarTb.Text}%' Or Note like N'%{SearchBarTb.Text}%' Or TypeName like N'%{SearchBarTb.Text}%' Or DealName like N'%{SearchBarTb.Text}%')";
-                                    break;
-                                case 4:
-                                    SqCmd.CommandText = $"Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 4 and PurchaseOrSale = 'Purchase') and (Number like N'%{SearchBarTb.Text}%' Or AccDate like N'%{SearchBarTb.Text}%' Or Date like N'%{SearchBarTb.Text}%' Or Name like N'%{SearchBarTb.Text}%' Or EIK like N'%{SearchBarTb.Text}%' Or DDSNumber like N'%{SearchBarTb.Text}%' Or DO like N'%{SearchBarTb.Text}%' Or DDS like N'%{SearchBarTb.Text}%' Or FullValue like N'%{SearchBarTb.Text}%' Or Account like N'%{SearchBarTb.Text}%' Or InCashAccount like N'%{SearchBarTb.Text}%' Or Note like N'%{SearchBarTb.Text}%' Or TypeName like N'%{SearchBarTb.Text}%' Or DealName like N'%{SearchBarTb.Text}%')";
-                                    break;
-
-                            }
-                            break;
-                        case OperationType.Sale:
-                            switch (DocStatusId)
-                            {
-                                case 0:
-                                    SqCmd.CommandText = $"Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE PurchaseOrSale = 'Sale' and (Number like N'%{SearchBarTb.Text}%' Or AccDate like N'%{SearchBarTb.Text}%' Or Date like N'%{SearchBarTb.Text}%' Or Name like N'%{SearchBarTb.Text}%' Or EIK like N'%{SearchBarTb.Text}%' Or DDSNumber like N'%{SearchBarTb.Text}%' Or DO like N'%{SearchBarTb.Text}%' Or DDS like N'%{SearchBarTb.Text}%' Or FullValue like N'%{SearchBarTb.Text}%' Or Account like N'%{SearchBarTb.Text}%' Or InCashAccount like N'%{SearchBarTb.Text}%' Or Note like N'%{SearchBarTb.Text}%' Or TypeName like N'%{SearchBarTb.Text}%' Or DealName like N'%{SearchBarTb.Text}%')";
-                                    break;
-                                case 1:
-                                    SqCmd.CommandText = $"Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 1 and PurchaseOrSale = 'Sale') and (Number like N'%{SearchBarTb.Text}%' Or AccDate like N'%{SearchBarTb.Text}%' Or Date like N'%{SearchBarTb.Text}%' Or Name like N'%{SearchBarTb.Text}%' Or EIK like N'%{SearchBarTb.Text}%' Or DDSNumber like N'%{SearchBarTb.Text}%' Or DO like N'%{SearchBarTb.Text}%' Or DDS like N'%{SearchBarTb.Text}%' Or FullValue like N'%{SearchBarTb.Text}%' Or Account like N'%{SearchBarTb.Text}%' Or InCashAccount like N'%{SearchBarTb.Text}%' Or Note like N'%{SearchBarTb.Text}%' Or TypeName like N'%{SearchBarTb.Text}%' Or DealName like N'%{SearchBarTb.Text}%')";
-                                    break;
-                                case 2:
-                                    SqCmd.CommandText = $"Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 2 and PurchaseOrSale = 'Sale') and (Number like N'%{SearchBarTb.Text}%' Or AccDate like N'%{SearchBarTb.Text}%' Or Date like N'%{SearchBarTb.Text}%' Or Name like N'%{SearchBarTb.Text}%' Or EIK like N'%{SearchBarTb.Text}%' Or DDSNumber like N'%{SearchBarTb.Text}%' Or DO like N'%{SearchBarTb.Text}%' Or DDS like N'%{SearchBarTb.Text}%' Or FullValue like N'%{SearchBarTb.Text}%' Or Account like N'%{SearchBarTb.Text}%' Or InCashAccount like N'%{SearchBarTb.Text}%' Or Note like N'%{SearchBarTb.Text}%' Or TypeName like N'%{SearchBarTb.Text}%' Or DealName like N'%{SearchBarTb.Text}%')";
-                                    break;
-                                case 3:
-                                    SqCmd.CommandText = $"Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 3 and PurchaseOrSale = 'Sale') and (Number like N'%{SearchBarTb.Text}%' Or AccDate like N'%{SearchBarTb.Text}%' Or Date like N'%{SearchBarTb.Text}%' Or Name like N'%{SearchBarTb.Text}%' Or EIK like N'%{SearchBarTb.Text}%' Or DDSNumber like N'%{SearchBarTb.Text}%' Or DO like N'%{SearchBarTb.Text}%' Or DDS like N'%{SearchBarTb.Text}%' Or FullValue like N'%{SearchBarTb.Text}%' Or Account like N'%{SearchBarTb.Text}%' Or InCashAccount like N'%{SearchBarTb.Text}%' Or Note like N'%{SearchBarTb.Text}%' Or TypeName like N'%{SearchBarTb.Text}%' Or DealName like N'%{SearchBarTb.Text}%')";
-                                    break;
-                                case 4:
-                                    SqCmd.CommandText = $"Select Fakturi.Id, Fakturi.Number, Fakturi.AccDate, Fakturi.Date, Kontragenti.Name,Kontragenti.EIK, Kontragenti.DDSNumber,Fakturi.DO, Fakturi.DDS, Fakturi.FullValue, Fakturi.Account, Fakturi.InCashAccount, Fakturi.Note, DocumentTypes.TypeName, KindOfDeals.DealName, AccountingStatuses.AccountingStatus From Fakturi LEFT JOIN Kontragenti On Fakturi.KontragentiId = Kontragenti.Id LEFT JOIN DocumentTypes on Fakturi.DocTypeId = DocumentTypes.Id LEFT JOIN KindOfDeals on Fakturi.DealKindId = KindOfDeals.Id JOIN AccountingStatuses on Fakturi.AccountingStatusId = AccountingStatuses.Id WHERE (AccountingStatusId = 4 and PurchaseOrSale = 'Sale') and (Number like N'%{SearchBarTb.Text}%' Or AccDate like N'%{SearchBarTb.Text}%' Or Date like N'%{SearchBarTb.Text}%' Or Name like N'%{SearchBarTb.Text}%' Or EIK like N'%{SearchBarTb.Text}%' Or DDSNumber like N'%{SearchBarTb.Text}%' Or DO like N'%{SearchBarTb.Text}%' Or DDS like N'%{SearchBarTb.Text}%' Or FullValue like N'%{SearchBarTb.Text}%' Or Account like N'%{SearchBarTb.Text}%' Or InCashAccount like N'%{SearchBarTb.Text}%' Or Note like N'%{SearchBarTb.Text}%' Or TypeName like N'%{SearchBarTb.Text}%' Or DealName like N'%{SearchBarTb.Text}%')";
-                                    break;
-
-                            }
-                            break;
-                    }
-                    SqCmd.Connection = sqlConnection;
-                    sqlDataAdapter = new SqlDataAdapter(SqCmd);
-                    dataTable = new DataTable("Fakturi");
-                    sqlDataAdapter.Fill(dataTable);
-                    InvoicesDataGrid.ItemsSource = dataTable.DefaultView;
-                }
-            }
-        }
-
         private void MassEditAccDate_Click(object sender, RoutedEventArgs e)
         {
-            OpenMassEdit(1);
+            OpenMassEdit(MassEditOperationType.AccountingDate);
         }
-
         private void MassEditAccStatus_Click(object sender, RoutedEventArgs e)
         {
-            OpenMassEdit(2);
+            OpenMassEdit(MassEditOperationType.AccountingStatus);
         }
-
         private void MassEditAccount_Click(object sender, RoutedEventArgs e)
         {
-            OpenMassEdit(3);
+            OpenMassEdit(MassEditOperationType.Account);
         }
-
         private void MassEditNote_Click(object sender, RoutedEventArgs e)
         {
-            OpenMassEdit(4);
+            OpenMassEdit(MassEditOperationType.Note);
         }
-
         private void MassSaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            SaveMassEdit(MassEditType);
+            SaveMassEdit(_massEditOperationType);
         }
-
         private void MassCancelBtn_Click(object sender, RoutedEventArgs e)
         {
             MassEditPopup.IsOpen = false;
         }
-
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
             var Res = MessageBox.Show($"Сигурни ли сте че искате да изтриете {InvoicesDataGrid.SelectedItems.Count} документа ?", "Изтриване на документи", MessageBoxButton.YesNoCancel, MessageBoxImage.Warning);
-
-            if (Res == MessageBoxResult.Yes)
+            if (Res != MessageBoxResult.Yes) return;
+            List<string> InvoicesToBeDeletedList = new List<string>();
+            foreach (DataRowView dataRowView in InvoicesDataGrid.SelectedItems)
             {
-                foreach (DataRowView dataRowView in InvoicesDataGrid.SelectedItems)
-                {
-
-                    using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
-                    {
-                        using (SqCmd = new SqlCommand())
-                        {
-                            SqCmd.CommandText = $"DELETE FROM Fakturi WHERE id = {dataRowView.Row.ItemArray[0].ToString()}";
-                        }
-                        sqlConnection.Open();
-                        SqCmd.Connection = sqlConnection;
-                        SqCmd.ExecuteNonQuery();
-                        sqlConnection.Close();
-                    }
-                }
-                BindDataGridtoSqlDatabase(DocStatusId);
+                InvoicesToBeDeletedList.Add(dataRowView.Row.ItemArray[0].ToString());
             }
-            else
-            {
-                return;
-            }
+            InvoicesMassEditor.DeleteInvoicesFromFakturiTable(InvoicesToBeDeletedList);
+            RefreshGridDataTable(_operationType, _docStatusId);
         }
 
-        private void OpenMassEdit(int Case)
+        private void Page_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            MassEditPopup.IsOpen = true;
-            MassSelectedCountLbl.Content = $"Брой избрани документи: {InvoicesDataGrid.SelectedItems.Count}";
 
-            switch (Case)
-            {
-                case 1: //Accounting Date
-                    MassTypeLbl.Content = "Счетоводна дата";
-                    MassNoteTb.Visibility = Visibility.Hidden;
-                    MassAccountTb.Visibility = Visibility.Hidden;
-                    MassAccStatusCb.Visibility = Visibility.Hidden;
-                    MassAccDateTb.Visibility = Visibility.Visible;
-                    break;
-                case 2: //Accounting status
-                    MassTypeLbl.Content = "Счетоводен статус";
-                    MassNoteTb.Visibility = Visibility.Hidden;
-                    MassAccountTb.Visibility = Visibility.Hidden;
-                    MassAccDateTb.Visibility = Visibility.Hidden;
-                    MassAccStatusCb.Visibility = Visibility.Visible;
-                    break;
-                case 3: //Account
-                    MassTypeLbl.Content = "Сметка";
-                    MassNoteTb.Visibility = Visibility.Hidden;
-                    MassAccountTb.Visibility = Visibility.Visible;
-                    MassAccDateTb.Visibility = Visibility.Hidden;
-                    MassAccStatusCb.Visibility = Visibility.Hidden;
-                    break;
-                case 4: //Note
-                    MassTypeLbl.Content = "Бележка";
-                    MassNoteTb.Visibility = Visibility.Visible;
-                    MassAccountTb.Visibility = Visibility.Hidden;
-                    MassAccDateTb.Visibility = Visibility.Hidden;
-                    MassAccStatusCb.Visibility = Visibility.Hidden;
-                    break;
-            }
-
-            MassEditType = Case;
         }
-        private void SaveMassEdit(int Case)
+        private void SearchBarTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            switch (Case)
-            {
-                case 1: //Accounting Date
-                    foreach (DataRowView dataRowView in InvoicesDataGrid.SelectedItems)
-                    {
-
-                        using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
-                        {
-                            using (SqCmd = new SqlCommand())
-                            {
-                                SqCmd.CommandText = $"select * from Fakturi where id = {dataRowView.Row.ItemArray[0].ToString()}";
-                            }
-                            SqCmd.Connection = sqlConnection;
-                            sqlDataAdapter = new SqlDataAdapter(SqCmd);
-                            DataTable UpdateDt = new DataTable("UpdateDt");
-                            sqlDataAdapter.Fill(UpdateDt);
-
-                            if (MassAccDateTb.Text != "")
-                            {
-                                UpdateDt.Rows[0][3] = MassAccDateTb.Text;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Полето не може да бъде празно");
-                            }
-                            SqlCommandBuilder builder = new SqlCommandBuilder(sqlDataAdapter);
-                            sqlDataAdapter.UpdateCommand = builder.GetUpdateCommand();
-                            sqlDataAdapter.Update(UpdateDt);
-                        }
-                    }
-                    break;
-                case 2: //Accounting status
-                    foreach (DataRowView dataRowView in InvoicesDataGrid.SelectedItems)
-                    {
-
-                        using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
-                        {
-                            using (SqCmd = new SqlCommand())
-                            {
-                                SqCmd.CommandText = $"select * from Fakturi where id = {dataRowView.Row.ItemArray[0].ToString()}";
-                            }
-                            SqCmd.Connection = sqlConnection;
-                            sqlDataAdapter = new SqlDataAdapter(SqCmd);
-                            DataTable UpdateDt = new DataTable("UpdateDt");
-                            sqlDataAdapter.Fill(UpdateDt);
-
-                            switch (MassAccStatusCb.SelectedIndex)
-                            {
-                                case 0:
-                                    UpdateDt.Rows[0][15] = 1;
-                                    break;
-                                case 1:
-                                    UpdateDt.Rows[0][15] = 2;
-                                    break;
-                                case 2:
-                                    UpdateDt.Rows[0][15] = 3;
-                                    break;
-                                case 3:
-                                    UpdateDt.Rows[0][15] = 4;
-                                    break;
-                                case 4:
-                                    UpdateDt.Rows[0][15] = 5;
-                                    break;
-                            }
-
-
-
-                            SqlCommandBuilder builder = new SqlCommandBuilder(sqlDataAdapter);
-                            sqlDataAdapter.UpdateCommand = builder.GetUpdateCommand();
-                            sqlDataAdapter.Update(UpdateDt);
-                        }
-                    }
-                    break;
-                case 3: //Account
-                    foreach (DataRowView dataRowView in InvoicesDataGrid.SelectedItems)
-                    {
-
-                        using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
-                        {
-                            using (SqCmd = new SqlCommand())
-                            {
-                                SqCmd.CommandText = $"select * from Fakturi where id = {dataRowView.Row.ItemArray[0].ToString()}";
-                            }
-                            SqCmd.Connection = sqlConnection;
-                            sqlDataAdapter = new SqlDataAdapter(SqCmd);
-                            DataTable UpdateDt = new DataTable("UpdateDt");
-                            sqlDataAdapter.Fill(UpdateDt);
-
-                            if (MassAccountTb.Text != "")
-                            {
-                                UpdateDt.Rows[0][11] = MassAccountTb.Text;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Полето не може да бъде празно");
-                            }
-                            SqlCommandBuilder builder = new SqlCommandBuilder(sqlDataAdapter);
-                            sqlDataAdapter.UpdateCommand = builder.GetUpdateCommand();
-                            sqlDataAdapter.Update(UpdateDt);
-                        }
-                    }
-                    break;
-                case 4: //Note
-                    foreach (DataRowView dataRowView in InvoicesDataGrid.SelectedItems)
-                    {
-
-                        using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
-                        {
-                            using (SqCmd = new SqlCommand())
-                            {
-                                SqCmd.CommandText = $"select * from Fakturi where id = {dataRowView.Row.ItemArray[0].ToString()}";
-                            }
-                            SqCmd.Connection = sqlConnection;
-                            sqlDataAdapter = new SqlDataAdapter(SqCmd);
-                            DataTable UpdateDt = new DataTable("UpdateDt");
-                            sqlDataAdapter.Fill(UpdateDt);
-
-                            if (MassNoteTb.Text != "")
-                            {
-                                UpdateDt.Rows[0][13] = MassNoteTb.Text;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Полето не може да бъде празно");
-                            }
-                            SqlCommandBuilder builder = new SqlCommandBuilder(sqlDataAdapter);
-                            sqlDataAdapter.UpdateCommand = builder.GetUpdateCommand();
-                            sqlDataAdapter.Update(UpdateDt);
-                        }
-                    }
-                    break;
-            }
-            BindDataGridtoSqlDatabase(DocStatusId);
-            MassEditPopup.IsOpen = false;
+            dataTable = InvoiceDataFilters.GetInvoiceDataTableByStatusAndOperationAndSearchText(SearchBarTb.Text, _operationType, _docStatusId);
         }
-
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

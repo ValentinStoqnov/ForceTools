@@ -347,7 +347,7 @@ namespace ForceTools
             ClearTempAndMemory();
             //Closing the PDF Uploader Window and Updating info in Invoice Grid Page
             this.Close();
-            InvoiceGridPage igp = new InvoiceGridPage(2, OperationType);
+            InvoiceGridPage igp = new InvoiceGridPage(DocumentStatuses.UnAccountedDocuments, OperationType);
             MainWindow mw = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive) as MainWindow;
             mw.ContentFrame.Content = igp.Content; //BUG
         }

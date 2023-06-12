@@ -83,10 +83,10 @@
                             VerticalAlignment="Bottom"
                             Grid.Row="3"
                         Margin="0,0,0,25">
-                    <Button x:Name="NewInvoicesBtn"
+                    <Button x:Name="HeldInvoicesBtn"
                             Margin="30,5"
                             Background="#FF32CBFF"
-                            Click="Button_Click"
+                            Click="HeldInvoicesButton_Click"
                             Style="{StaticResource BtnCornerStyle}">
                         <Grid>
                             <Grid.ColumnDefinitions>

@@ -51,23 +51,23 @@ namespace ForceTools
 
         private void AllInvoicesButton_Click(object sender, RoutedEventArgs e)
         {
-            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(0, OperationType);
+            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.AccountedDocuments, OperationType);
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void HeldInvoicesButton_Click(object sender, RoutedEventArgs e)
         {
-            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(1, OperationType);
+            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.HeldDocuments, OperationType);
         }
         private void UnAccountedInvoicesBtn_Click(object sender, RoutedEventArgs e)
         {
-            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(2, OperationType);
+            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.UnAccountedDocuments, OperationType);
         }
         private void RdyToBeExportedBtn_Click(object sender, RoutedEventArgs e)
         {
-            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(3, OperationType);
+            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.ReadyToBeExportedDocuments, OperationType);
         }
         private void ExportedInvoicesBtn_Click(object sender, RoutedEventArgs e)
         {
-            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(4, OperationType);
+            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.ExportedDocuments, OperationType);
         }
         private void ExportBtn_Click(object sender, RoutedEventArgs e)
         {
