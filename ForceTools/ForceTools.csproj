@@ -369,9 +369,11 @@
     <Compile Include="Models\Databases.cs" />
     <Compile Include="Models\InvoiceImage.cs" />
     <Compile Include="Models\MainListOfLists.cs" />
+    <Compile Include="SqlLogic\DataManipulation\InvoiceSingleEditor.cs" />
     <Compile Include="SqlLogic\DataManipulation\InvoicesMassEditor.cs" />
     <Compile Include="SqlLogic\DataRetrieval\InvoiceCounter.cs" />
     <Compile Include="SqlLogic\DataRetrieval\InvoiceDataFilters.cs" />
+    <Compile Include="InvoiceDataReader.cs" />
     <Compile Include="SqlLogic\DataRetrieval\InvoiceExtractionDataRetriever.cs" />
     <Compile Include="SqlLogic\SqlConnectionsHandler.cs" />
     <Compile Include="UiNavigationHelper.cs" />

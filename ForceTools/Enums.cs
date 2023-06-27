@@ -32,4 +32,9 @@ namespace ForceTools
         Account,
         Note
     }
+    public enum InvoiceLoadOperators 
+    { 
+        LoadNext,
+        LoadPrevious
+    }
 }
