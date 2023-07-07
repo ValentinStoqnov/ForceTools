@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Threading;
+﻿using System.Collections.ObjectModel;
 
 namespace ForceTools.Models
 {
-    public class MainListOfLists
+    public class MainListOfLists : ObservableCollection<InvoiceImageList>
     {
         private ObservableCollection<InvoiceImageList> _MainList;
 
-        public virtual ObservableCollection<InvoiceImageList> MainList
+        public ObservableCollection<InvoiceImageList> MainList
         {
             get { return _MainList; }
             set
@@ -23,11 +17,6 @@ namespace ForceTools.Models
         public MainListOfLists()
         {
             MainList = new ObservableCollection<InvoiceImageList>();
-        }
-
-        public void Add(InvoiceImageList icl)
-        {
-            MainList.Add(icl);
         }
     }
 }

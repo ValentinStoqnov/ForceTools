@@ -2,7 +2,6 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.Remoting.Contexts;
 
 namespace ForceTools
 {
@@ -12,7 +11,7 @@ namespace ForceTools
         private static SqlCommand sqlCommand;
         private static SqlDataAdapter sqlDataAdapter;
 
-        public static int GetKontragentIdAndUpdateTable(string eikText, string kontText, string ddsNumberText)
+        public static int GetKontragentIdAndUpdateSqlTable(string kontText, string eikText, string ddsNumberText)
         {
             using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
@@ -23,14 +22,14 @@ namespace ForceTools
                 sqlDataAdapter.Fill(KontByIdTb);
                 if (KontByIdTb.Rows.Count == 0)
                 {
-                    InsertNewKontragentInTable(eikText, kontText, ddsNumberText);
+                    InsertNewKontragentInSqlTable(kontText, eikText, ddsNumberText);
                     KontByIdTb.Clear();
                     sqlDataAdapter.Fill(KontByIdTb);
                 }
                 return KontByIdTb.Rows[0].Field<int>("Id");
             }
         }
-        public static void InsertNewKontragentInTable(string kontText, string eikText, string ddsNumberText)
+        public static void InsertNewKontragentInSqlTable(string kontText, string eikText, string ddsNumberText)
         {
             using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
@@ -69,7 +68,7 @@ namespace ForceTools
                    14 - Image
                    15 - AccountingStatusId */
 
-                FakturiUpdateDt.Rows[0][2] = GetKontragentIdAndUpdateTable(kontText, eikText, ddsNumberText);
+                FakturiUpdateDt.Rows[0][2] = GetKontragentIdAndUpdateSqlTable(kontText, eikText, ddsNumberText);
                 FakturiUpdateDt.Rows[0][4] = Convert.ToDateTime(docDateText);
                 FakturiUpdateDt.Rows[0][5] = Convert.ToInt64(docNumberText);
                 FakturiUpdateDt.Rows[0][6] = Convert.ToDecimal(doText.Replace(".", ","));
@@ -87,6 +86,45 @@ namespace ForceTools
                 SqlCommandBuilder builder = new SqlCommandBuilder(sqlDataAdapter);
                 sqlDataAdapter.UpdateCommand = builder.GetUpdateCommand();
                 sqlDataAdapter.Update(FakturiUpdateDt);
+            }
+        }
+        public static void InsertNewInvoiceInSqlTableFromMassUploader(OperationType operationType, string imageFilePath)
+        {
+            //Getting all the data
+            InvoiceExtractedDataInterpreter Interpreter = new InvoiceExtractedDataInterpreter(operationType, imageFilePath);
+            int KontragentId = GetKontragentIdAndUpdateSqlTable(Interpreter.KontragentName, Interpreter.EIK, Interpreter.DDSNumber);
+            //Adding Data to Fakturi Table
+            using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
+            {
+                sqlConnection.Open();
+                sqlCommand = new SqlCommand("INSERT into Fakturi (KontragentiId, Date, Number, DO, DDS, FullValue,AccountingStatusId,image,AccDate, DealKindId, DocTypeId, Account, InCashAccount, Note, PurchaseOrSale) VALUES (@KontragentiId, @Date, @Number, @DO, @DDS, @FullValue,@AccountingStatusId,@image, @AccDate, @DealKindId, @DocTypeId, @Account, @InCashAccount, @Note, @PurchaseOrSale)", sqlConnection);
+
+                sqlCommand.Parameters.AddWithValue("@KontragentiId", KontragentId);
+                sqlCommand.Parameters.AddWithValue("@Date", Interpreter.DocumentDate);
+                sqlCommand.Parameters.AddWithValue("@Number", Interpreter.InvoiceNumber);
+                sqlCommand.Parameters.AddWithValue("@DO", Interpreter.DanOsn);
+                sqlCommand.Parameters.AddWithValue("@DDS", Interpreter.FullValue - Interpreter.DanOsn);
+                sqlCommand.Parameters.AddWithValue("@FullValue", Interpreter.FullValue);
+                sqlCommand.Parameters.AddWithValue("@AccountingStatusId", 2);
+                sqlCommand.Parameters.AddWithValue("@image", Interpreter.ImageInBytes);
+                sqlCommand.Parameters.AddWithValue("@AccDate", Interpreter.DocumentDate);
+                sqlCommand.Parameters.AddWithValue("@DealKindId", Interpreter.DealKindId);
+                sqlCommand.Parameters.AddWithValue("@DocTypeId", Interpreter.DocTypeId);
+                sqlCommand.Parameters.AddWithValue("@InCashAccount", Interpreter.DefaultCashRegAccount);
+                sqlCommand.Parameters.AddWithValue("@Note", Interpreter.Note);
+                //Setting DocType Specific info 
+                switch (operationType)
+                {
+                    case OperationType.Purchase:
+                        sqlCommand.Parameters.AddWithValue("@Account", Interpreter.DefaultPurchaseAccount);
+                        sqlCommand.Parameters.AddWithValue("@PurchaseOrSale", "Purchase");
+                        break;
+                    case OperationType.Sale:
+                        sqlCommand.Parameters.AddWithValue("@Account", Interpreter.DefaultSaleAccount);
+                        sqlCommand.Parameters.AddWithValue("@PurchaseOrSale", "Sale");
+                        break;
+                }
+                sqlCommand.ExecuteNonQuery();
             }
         }
     }

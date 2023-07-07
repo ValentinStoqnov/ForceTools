@@ -86,6 +86,11 @@ namespace ForceTools
             string filter = GetAccountNumberFilterCommandBySearchText(searchText);
             return GetFilteredDataTable(filter);
         }
+        public static DataTable GetDefaultValuesDataTable() 
+        {
+            string filter = "Select * from DefaultValues";
+            return GetFilteredDataTable(filter); 
+        }
 
         private static DataTable GetFilteredDataTable(string filter) 
         {

@@ -37,4 +37,15 @@ namespace ForceTools
         LoadNext,
         LoadPrevious
     }
+    public enum DocumentSides 
+    { 
+        LeftSide,
+        RightSide
+    }
+    public enum RegexExtractionMethod 
+    { 
+        One = 1,
+        Two = 2,
+        Three = 3
+    }
 }

@@ -23,7 +23,7 @@
                 Padding="5,0,5,0"/>
         <ListView Grid.Row="1"
                   x:Name="PuWListView" 
-                  ItemsSource="{Binding MainList}"
+                  ItemsSource="{Binding MainList,RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}"
                   Background="LightGray"
                   SelectionChanged="PuWListView_SelectionChanged" 
                   MouseLeftButtonDown="PuWListView_MouseLeftButtonDown"

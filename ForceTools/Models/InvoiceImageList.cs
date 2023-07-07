@@ -1,11 +1,4 @@
-﻿using ForceTools.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
-
-using System.Runtime.CompilerServices;
+﻿using System.Collections.ObjectModel;
 
 
 namespace ForceTools.Models
@@ -28,6 +21,11 @@ namespace ForceTools.Models
         public InvoiceImageList()
         {
             ListOfImages = new ObservableCollection<InvoiceImage>();
+        }
+
+        public InvoiceImageList(InvoiceImage invoiceImage) : this()
+        {
+            ListOfImages.Add(invoiceImage);
         }
 
         public void Add(InvoiceImage ic) 

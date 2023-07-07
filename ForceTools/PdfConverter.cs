@@ -84,6 +84,13 @@ namespace ForceTools.ViewModels
                 ProcessPDF2Filesystem(outputFolder, scale, compression, filename, pagenumbers);
             }
         }
+        public static void WriteMultipleImages(string[] files, string outputFolder, Scale scale, CompressionLevel compression, List<int> pagenumbers = null) 
+        {
+            foreach (string file in files) 
+            {
+                WriteImages(file, outputFolder, scale, compression, pagenumbers);
+            }
+        }
 
         public static List<byte[]> ExtractJpeg(string file)
         {

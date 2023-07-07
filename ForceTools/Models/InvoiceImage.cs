@@ -36,9 +36,9 @@ namespace ForceTools.Models
 
         }
 
-        public InvoiceImage(BitmapImage imageList, string imagePath)
+        public InvoiceImage(BitmapImage bitmapImage, string imagePath)
         {
-            BitImage = imageList;
+            BitImage = bitmapImage;
             ImagePath = imagePath;
         }
 
