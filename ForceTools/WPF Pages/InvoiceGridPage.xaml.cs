@@ -171,7 +171,7 @@ namespace ForceTools
         }
         private void PreviewAndEditBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetInvoiceIdAndOpenEditingWindow(sender);
+            GetInvoiceIdAndOpenEditingWindow(InvoicesDataGrid);
         }
         private void SearchBarBtn_Click(object sender, RoutedEventArgs e)
         {
