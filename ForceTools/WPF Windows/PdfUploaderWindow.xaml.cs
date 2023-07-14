@@ -102,8 +102,8 @@ namespace ForceTools
 
         private async void PdfAddBtn_Click(object sender, RoutedEventArgs e)
         {
-            var ImagesForOcr = FileSystemHelper.GetAllJpgFilePathsInTempFolder();
             InvoiceImageListsManipulations.CombineInvoiceFromMainListOfLists(MainList);
+            var ImagesForOcr = FileSystemHelper.GetAllJpgFilePathsInTempFolder();
 
             ProgbarPopupOpen = true;
             ProgbarValue = 0;
@@ -190,53 +190,6 @@ namespace ForceTools
         private void PuWListView_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             startPoint = e.GetPosition(null);
-        }
-
-        private void PuWListView_MouseMove(object sender, MouseEventArgs e)
-        {
-            #region OriginalCode
-            //// Get the current mouse position
-            //System.Windows.Point mousePos = e.GetPosition(null);
-            //Vector diff = startPoint - mousePos;
-
-            //if (e.LeftButton == MouseButtonState.Pressed &&
-            //    (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
-            //           Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
-            //{
-            //    // Get the dragged ListViewItem
-            //    var listView = sender as ListView;
-            //    var listViewItem = FindAnchestor<ListViewItem>((DependencyObject)e.OriginalSource);
-            //    // Abort
-            //    if (listViewItem == null) return;
-            //    // Find the data behind the ListViewItem
-
-            //    try
-            //    {
-            //        InvoiceImageList item = (InvoiceImageList)listView.ItemContainerGenerator.ItemFromContainer(listViewItem);
-            //        // Abort
-            //        if (item == null) return;
-            //        // Initialize the drag & drop operation
-
-            //        foreach (var im in item.ListOfImages)
-            //        {
-            //            selectedInvoiceImages.Add(im);
-            //        }
-            //        startIndex = listView.SelectedIndex;
-            //        ComingFrom = "mainlist";
-            //        DataObject dragData = new DataObject("InvoiceImage", item);
-            //        DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Copy | DragDropEffects.Move);
-            //    }
-            //    catch
-            //    {
-            //        return;
-            //    }
-            //}
-            #endregion
-            #region NewReworked Code
-            var listView = sender as ListView;
-            startIndex = listView.SelectedIndex;
-            ComingFrom = "mainlist";
-            #endregion
         }
 
         private void PuWListView_DragEnter(object sender, DragEventArgs e)
@@ -381,19 +334,20 @@ namespace ForceTools
                     {
                         IIL.Add(im);
                     }
-                    MainList.MainList.Add(IIL);
+                    MainList.Add(IIL);
                     selectedInvoiceImages.Clear();
+                    Console.WriteLine("Selected list Cleared SENT FROM OUTSIDE LIST"); // DEBUGING HERE
 
                     switch (ComingFrom)
                     {
                         case "mainlist":
-                            MainList.MainList.RemoveAt(startIndex);
+                            MainList.RemoveAt(startIndex);
                             break;
                         case "InnerList":
-                            MainList.MainList[startIndex].ListOfImages.RemoveAt(innerStartIndex);
-                            if (MainList.MainList[startIndex].ListOfImages.Count <= 0)
+                            MainList[startIndex].ListOfImages.RemoveAt(innerStartIndex);
+                            if (MainList[startIndex].ListOfImages.Count <= 0)
                             {
-                                MainList.MainList.RemoveAt(startIndex);
+                                MainList.RemoveAt(startIndex);
                             }
                             break;
                         default:
@@ -414,19 +368,20 @@ namespace ForceTools
                         {
                             IIL.Add(im);
                         }
-                        MainList.MainList.Add(IIL);
+                        MainList.Add(IIL);
                         selectedInvoiceImages.Clear();
+                        Console.WriteLine("Selected list Cleared SENT FROM OUTSIDE LIST"); // DEBUGING HERE
 
                         switch (ComingFrom)
                         {
                             case "mainlist":
-                                MainList.MainList.RemoveAt(startIndex);
+                                MainList.RemoveAt(startIndex);
                                 break;
                             case "InnerList":
-                                MainList.MainList[startIndex].ListOfImages.RemoveAt(innerStartIndex);
-                                if (MainList.MainList[startIndex].ListOfImages.Count <= 0)
+                                MainList[startIndex].ListOfImages.RemoveAt(innerStartIndex);
+                                if (MainList[startIndex].ListOfImages.Count <= 0)
                                 {
-                                    MainList.MainList.RemoveAt(startIndex);
+                                    MainList.RemoveAt(startIndex);
                                 }
                                 break;
                             default:
@@ -523,8 +478,9 @@ namespace ForceTools
                     if (item == null) return;
                     // Initialize the drag & drop operation
                     selectedInvoiceImages.Add(item);
+                    Console.WriteLine("Selected list ITEM ADDED"); // DEBUGING HERE
 
-                    startIndex = MainList.MainList.IndexOf(listItem);
+                    startIndex = MainList.IndexOf(listItem);
                     innerStartIndex = listView.SelectedIndex;
                     ComingFrom = "InnerList";
                     DataObject dragData = new DataObject("InvoiceImage", item);
@@ -564,7 +520,7 @@ namespace ForceTools
                     // Move item into observable collection 
                     // (this will be automatically reflected to lstView.ItemsSource)
                     e.Effects = DragDropEffects.Move;
-                    index = MainList.MainList.IndexOf(item);
+                    index = MainList.IndexOf(item);
                     if (startIndex >= 0 && index >= 0)
                     {
 
@@ -577,22 +533,21 @@ namespace ForceTools
                         }
                     }
                     selectedInvoiceImages.Clear();
+                    Console.WriteLine("Selected list Cleared SENT FROM INSIDE LIST"); // DEBUGING HERE
                     try
                     {
-
-
                         if (startIndex != index)
                         {
                             switch (ComingFrom)
                             {
                                 case "mainlist":
-                                    MainList.MainList.RemoveAt(startIndex);
+                                    MainList.RemoveAt(startIndex);
                                     break;
                                 case "InnerList":
-                                    MainList.MainList[startIndex].ListOfImages.RemoveAt(innerStartIndex);
-                                    if (MainList.MainList[startIndex].ListOfImages.Count <= 0)
+                                    MainList[startIndex].ListOfImages.RemoveAt(innerStartIndex);
+                                    if (MainList[startIndex].ListOfImages.Count <= 0)
                                     {
-                                        MainList.MainList.RemoveAt(startIndex);
+                                        MainList.RemoveAt(startIndex);
                                     }
                                     break;
                                 default:
@@ -616,8 +571,6 @@ namespace ForceTools
 
                     return;
                 }
-
-
                 startIndex = -1;        // Done!
                 innerStartIndex = -1;
             }
@@ -643,7 +596,7 @@ namespace ForceTools
 
         private void ClearTempAndMemory()
         {
-            MainList.MainList.Clear();
+            MainList.Clear();
             FileSystemHelper.ClearTempFolder();
         }
 

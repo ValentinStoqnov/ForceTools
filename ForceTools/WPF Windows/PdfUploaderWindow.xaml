@@ -30,7 +30,6 @@
                   AllowDrop="True" 
                   DragEnter="PuWListView_DragEnter" 
                   Drop="PuWListView_Drop"
-                  MouseMove="PuWListView_MouseMove"
                   VirtualizingPanel.VirtualizationMode="Standard" 
                   DragOver="PuWListView_DragOver">
             <ListView.ItemsPanel>

@@ -52,10 +52,10 @@ namespace ForceTools
             }
             return imagesInTempFolder.ToArray();
         }
-        public static void DelteFilesFromList(List<string> filesToBeDeleted) 
+        public static void DelteFilesFromList(List<string> filesToBeDeleted)
         {
             foreach (string s in filesToBeDeleted)
-            {
+            { 
                 File.Delete(s);
             }
         }

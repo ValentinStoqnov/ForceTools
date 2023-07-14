@@ -47,6 +47,9 @@ namespace ForceTools
         }
         public static BitmapImage InvoiceImageFromFilePathHighQuality(string filePath)
         {
+            FileInfo fileInfo = new FileInfo(filePath);
+            if (fileInfo.Exists == false) return null;
+
             BitmapImage InvoiceImage = new BitmapImage();
             InvoiceImage.BeginInit();
             InvoiceImage.CacheOption = BitmapCacheOption.OnLoad;
@@ -78,7 +81,6 @@ namespace ForceTools
                 g.DrawImage(image, localWidth, localHeight);
                 localHeight += image.Height + 50;
             }
-
             string[] files = Directory.GetFiles(FileSystemHelper.TempFolderPath, "Combined*.jpg");
             string baseName = Path.Combine(FileSystemHelper.TempFolderPath, "Combined");
             string filename;
@@ -89,6 +91,10 @@ namespace ForceTools
             } while (files.Contains(filename));
 
             bitmap.Save(filename, System.Drawing.Imaging.ImageFormat.Jpeg);
+            foreach (var image in bitmapList) 
+            {
+                image.Dispose();
+            }
         }
     }
 }

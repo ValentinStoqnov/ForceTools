@@ -279,9 +279,7 @@ namespace ForceTools
                 SqlCommand SqCmd = new SqlCommand("INSERT into Fakturi (KontragentiId, Date, Number, DO,DDS,FullValue,AccountingStatusId) SELECT KontragentiId, Date, Number, DO, DDS, FullValue, AccountingStatusId From ImportList", sqlConnection);
                 SqCmd.ExecuteNonQuery();
                 sqlConnection.Close();
-                InvoiceGridPage igp = new InvoiceGridPage(DocumentStatuses.UnAccountedDocuments, OperationType);
-                MainWindow mw = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive) as MainWindow;
-                mw.ContentFrame.Content = igp.Content;
+                UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.UnAccountedDocuments, OperationType);
             }
         }
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

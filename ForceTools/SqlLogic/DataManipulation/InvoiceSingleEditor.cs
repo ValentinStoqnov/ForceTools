@@ -43,6 +43,7 @@ namespace ForceTools
         }
         public static void UpdateInvoiceDataFields(int InvoiceId, string kontText, string eikText, string ddsNumberText, string docDateText, string docNumberText, string doText, string ddsText, string fullValueText, int? dealKindId, int? docTypeId, string AccNumText, string inCashAccountText, string noteText)
         {
+            int KontragentId = GetKontragentIdAndUpdateSqlTable(kontText, eikText, ddsNumberText);
             using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
                 sqlConnection.Open();
@@ -68,7 +69,7 @@ namespace ForceTools
                    14 - Image
                    15 - AccountingStatusId */
 
-                FakturiUpdateDt.Rows[0][2] = GetKontragentIdAndUpdateSqlTable(kontText, eikText, ddsNumberText);
+                FakturiUpdateDt.Rows[0][2] = KontragentId;
                 FakturiUpdateDt.Rows[0][4] = Convert.ToDateTime(docDateText);
                 FakturiUpdateDt.Rows[0][5] = Convert.ToInt64(docNumberText);
                 FakturiUpdateDt.Rows[0][6] = Convert.ToDecimal(doText.Replace(".", ","));
