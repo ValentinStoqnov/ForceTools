@@ -31,6 +31,10 @@ namespace ForceTools
             {
                 Directory.CreateDirectory(FileSystemHelper.TempFolderPath);
             }
+            if (!Directory.Exists(FileSystemHelper.OcrTempFolder))
+            {
+                Directory.CreateDirectory(FileSystemHelper.OcrTempFolder);
+            }
         }
 
         public static string[] OpenFileDialogAndGetPdfFilePaths()

@@ -60,31 +60,11 @@ namespace ForceTools
             string KontragentName;
             string EIK;
             string DDS;
-
-            //Logic determining if Kontragent is on the Right or Left side of the document.
-            if (dataExtractor.KontragentNameExtract(_operationType, DocumentSides.RightSide, RegexExtractionMethod.One) != String.Empty)
-            {
+            //Logic determening if Kontragent is on the Right or Left side of the document.
+            if (dataExtractor.KontragentSideExtract(_operationType, DocumentSides.RightSide) != false)
                 sideWhereKontragentIsFound = DocumentSides.RightSide;
-                KontragentName = dataExtractor.KontragentNameExtract(_operationType, DocumentSides.RightSide, RegexExtractionMethod.One);
-
-            }
-            else if (dataExtractor.KontragentNameExtract(_operationType, DocumentSides.LeftSide, RegexExtractionMethod.One) != String.Empty)
-            {
+            else if (dataExtractor.KontragentSideExtract(_operationType, DocumentSides.LeftSide) != false)
                 sideWhereKontragentIsFound = DocumentSides.LeftSide;
-                KontragentName = dataExtractor.KontragentNameExtract(_operationType, DocumentSides.LeftSide, RegexExtractionMethod.One);
-
-            }
-            else if (dataExtractor.KontragentNameExtract(_operationType, DocumentSides.RightSide, RegexExtractionMethod.Two) != String.Empty)
-            {
-                sideWhereKontragentIsFound = DocumentSides.RightSide;
-                KontragentName = dataExtractor.KontragentNameExtract(_operationType, DocumentSides.RightSide, RegexExtractionMethod.Two);
-
-            }
-            else if (dataExtractor.KontragentNameExtract(_operationType, DocumentSides.LeftSide, RegexExtractionMethod.Two) != String.Empty)
-            {
-                sideWhereKontragentIsFound = DocumentSides.LeftSide;
-                KontragentName = dataExtractor.KontragentNameExtract(_operationType, DocumentSides.LeftSide, RegexExtractionMethod.Two);
-            }
             else
             {
                 //Returning empty if not found
@@ -93,12 +73,16 @@ namespace ForceTools
                 kontragent.DdsNumber = "";
                 return kontragent;
             }
+            //Extracting Kontragent Name if Kontragent is found
+            KontragentName = dataExtractor.KontragentNameExtract(_operationType);
             //Extracting EIK if Kontragent is found
-            EIK = dataExtractor.EIKExtract(sideWhereKontragentIsFound);
+            EIK = dataExtractor.EIKExtract(sideWhereKontragentIsFound, RegexExtractionMethod.One);
+            if (EIK == string.Empty) EIK = dataExtractor.EIKExtract(sideWhereKontragentIsFound, RegexExtractionMethod.Two);
             //Extracting DDS if Kontragent is found
-            if (EIK != "" && EIK.ToString().Length < 10)
+            bool isDDSFound = dataExtractor.DDSExtract(sideWhereKontragentIsFound);
+            if (EIK != "" && EIK.ToString().Length < 10 && isDDSFound != false)
             {
-                DDS = dataExtractor.DDSExtract(sideWhereKontragentIsFound);
+                DDS = $"BG{EIK}";
             }
             else if (EIK != "")
             {
@@ -116,7 +100,12 @@ namespace ForceTools
         private long InterperetInvoiceNumber(RegexDataExtractor dataExtractor)
         {
             long InvoiceNumber;
-            long.TryParse(dataExtractor.InvoiceNumberExtract(), out InvoiceNumber);
+            string ExtractedInvoiceNumber;
+            if (dataExtractor.InvoiceNumberExtract(RegexExtractionMethod.One) != string.Empty)
+                ExtractedInvoiceNumber = dataExtractor.InvoiceNumberExtract(RegexExtractionMethod.One);
+            else
+                ExtractedInvoiceNumber = dataExtractor.InvoiceNumberExtract(RegexExtractionMethod.Two);
+            long.TryParse(ExtractedInvoiceNumber, out InvoiceNumber);
             return InvoiceNumber;
         }
         private decimal InterperetFullValue(RegexDataExtractor dataExtractor)

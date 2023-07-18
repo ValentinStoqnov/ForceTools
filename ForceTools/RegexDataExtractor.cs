@@ -16,49 +16,68 @@ namespace ForceTools
             TextRightFIle = File.ReadAllText(FileSystemHelper.RightOcrTxtFilePath);
             TextFullFile = File.ReadAllText(FileSystemHelper.FullOcrTxtFilePath);
         }
-
-        public string KontragentNameExtract(OperationType operationType, DocumentSides documentSide, RegexExtractionMethod extractionMethod)
+        public bool KontragentSideExtract(OperationType operationType, DocumentSides documentSide)
         {
-            string KontragentName = "";
             string PathToChosenDocumentSide = "";
-            Regex kontragentExtractionPT1 = new Regex("");
-            Regex kontragentExtractionPT2 = new Regex("");
+            Regex DostavchikOrPoluchatelRegex = new Regex("");
+            switch (documentSide)
+            {
+                case DocumentSides.LeftSide:
+                    PathToChosenDocumentSide = TextLeftFile;
+                    break;
+                case DocumentSides.RightSide:
+                    PathToChosenDocumentSide = TextRightFIle;
+                    break;
+            }
             switch (operationType)
             {
                 case OperationType.Purchase:
-                    kontragentExtractionPT1 = new Regex(@"(?<=Доставчик:?).*", RegexOptions.IgnoreCase);
-                    kontragentExtractionPT2 = new Regex(@"(?<=Доставчик:?\n).*", RegexOptions.IgnoreCase);
+                    DostavchikOrPoluchatelRegex = new Regex(@"(?=Доставчик:?).*", RegexOptions.IgnoreCase);
+
                     break;
                 case OperationType.Sale:
-                    kontragentExtractionPT1 = new Regex(@"(?<=Получател:?).*", RegexOptions.IgnoreCase);
-                    kontragentExtractionPT2 = new Regex(@"(?<=Получател:?\n).*", RegexOptions.IgnoreCase);
+                    DostavchikOrPoluchatelRegex = new Regex(@"(?=Получател:?).*", RegexOptions.IgnoreCase);
+
                     break;
             }
-            switch (documentSide)
+            bool DataFound = DostavchikOrPoluchatelRegex.IsMatch(PathToChosenDocumentSide);
+            return DataFound;
+        }
+        public string KontragentNameExtract(OperationType operationType)
+        {
+            string KontragentName = "";
+            string replacementString = "";
+            Regex FullLineRegex = new Regex("");
+            Regex ExcluderRegex = new Regex("");
+            switch (operationType)
             {
-                case DocumentSides.LeftSide:
-                    PathToChosenDocumentSide = TextLeftFile;
+                case OperationType.Purchase:
+                    FullLineRegex = new Regex(@"(?<=Доставчик:?).*", RegexOptions.IgnoreCase);
+                    ExcluderRegex = new Regex(@"(?=Получател:?).*", RegexOptions.IgnoreCase);
+
                     break;
-                case DocumentSides.RightSide:
-                    PathToChosenDocumentSide = TextRightFIle;
+                case OperationType.Sale:
+                    FullLineRegex = new Regex(@"(?<=Получател:?).*", RegexOptions.IgnoreCase);
+                    ExcluderRegex = new Regex(@"(?=Доставчик:?).*", RegexOptions.IgnoreCase);
+
                     break;
             }
-            switch (extractionMethod) 
+            KontragentName = FullLineRegex.Match(TextFullFile).ToString();
+            replacementString = ExcluderRegex.Match(KontragentName).ToString();
+            if (replacementString != string.Empty)
             {
-                case RegexExtractionMethod.One:
-                    KontragentName = kontragentExtractionPT1.Match(PathToChosenDocumentSide).ToString().Trim();
-                    break;
-                case RegexExtractionMethod.Two:
-                    KontragentName = kontragentExtractionPT2.Match(PathToChosenDocumentSide).ToString().Trim();
-                    break;
+                KontragentName = KontragentName.Replace(replacementString, "");
             }
+            KontragentName = KontragentName.Replace(":", "");
+            KontragentName = KontragentName.Trim();
             return KontragentName;
         }
-        public string EIKExtract(DocumentSides documentSide) 
+        public string EIKExtract(DocumentSides documentSide, RegexExtractionMethod regexExtractionMethod)
         {
             string PathToChosenDocumentSide = "";
-            Regex EikExtractionPT1 = new Regex(@"(?<=ЕИК|Идент|Ном\.:).*", RegexOptions.IgnoreCase);
-            Regex EikExtractionPT2 = new Regex("[0-9]{9,10}");
+            string EikString = "";
+            Regex FullLineRegex = new Regex(@"(?<=ЕИК|Идент|Ном\.:).*", RegexOptions.IgnoreCase);
+            Regex NumbersOnlyExtraction = new Regex("[0-9]{9,10}");
             switch (documentSide)
             {
                 case DocumentSides.LeftSide:
@@ -68,15 +87,25 @@ namespace ForceTools
                     PathToChosenDocumentSide = TextRightFIle;
                     break;
             }
-            string EikStringPT1 = EikExtractionPT1.Match(PathToChosenDocumentSide).ToString();
-            string EIK = EikExtractionPT2.Match(EikStringPT1).ToString();
-            return EIK;
+            switch (regexExtractionMethod)
+            {
+                case RegexExtractionMethod.One:
+                    EikString = FullLineRegex.Match(PathToChosenDocumentSide).ToString().Replace("В6", "");
+                    EikString = EikString.Replace("В06", "");
+                    EikString = NumbersOnlyExtraction.Match(EikString).ToString();
+                    break;
+                case RegexExtractionMethod.Two:
+                    EikString = NumbersOnlyExtraction.Match(PathToChosenDocumentSide).ToString();
+                    break;
+            }
+
+            return EikString;
         }
-        public string DDSExtract(DocumentSides documentSide) 
+        public bool DDSExtract(DocumentSides documentSide)
         {
             string PathToChosenDocumentSide = "";
-            Regex DDSNumberRegexPT1 = new Regex(@"(?<=ДДС).{11,30}", RegexOptions.IgnoreCase);
-            Regex DDSNumberRegexPT2 = new Regex(@"(\d{9})");
+            Regex FullLineExtraction = new Regex(@"(?<=ДДС).{11,30}", RegexOptions.IgnoreCase);
+            Regex NumbersOnlyExtraction = new Regex(@"(\d{9})");
             switch (documentSide)
             {
                 case DocumentSides.LeftSide:
@@ -86,21 +115,36 @@ namespace ForceTools
                     PathToChosenDocumentSide = TextRightFIle;
                     break;
             }
-            string DDSNumberStringPt1 = DDSNumberRegexPT1.Match(PathToChosenDocumentSide).ToString();
-            string DDS = $"BG{DDSNumberRegexPT2.Match(DDSNumberStringPt1)}";
-            return DDS;
+            bool isDDSFound = false;
+            string DDSNumberString;
+            DDSNumberString = FullLineExtraction.Match(PathToChosenDocumentSide).ToString();
+            DDSNumberString = NumbersOnlyExtraction.Match(DDSNumberString).ToString();
+            if (DDSNumberString != string.Empty)
+                isDDSFound = true;
+            return isDDSFound;
         }
-        public string InvoiceNumberExtract()
+        public string InvoiceNumberExtract(RegexExtractionMethod regexExtractionMethod)
         {
-            Regex InvoiceNumberExtraction = new Regex("[0-9]{10}", RegexOptions.IgnoreCase);
-            string InvoiceNumber = InvoiceNumberExtraction.Match(TextFullFile).ToString();
+            Regex FullLineExtraction = new Regex(@"(?<=Фактура:?).*");
+            Regex NumbersOnlyExtraction = new Regex("[0-9]{10}", RegexOptions.IgnoreCase);
+            string InvoiceNumber = "";
+            switch (regexExtractionMethod)
+            {
+                case RegexExtractionMethod.One:
+                    InvoiceNumber = FullLineExtraction.Match(TextFullFile).ToString();
+                    InvoiceNumber = NumbersOnlyExtraction.Match(InvoiceNumber).ToString();
+                    break;
+                case RegexExtractionMethod.Two:
+                    InvoiceNumber = NumbersOnlyExtraction.Match(TextFullFile).ToString();
+                    break;
+            }
             return InvoiceNumber;
         }
         public string FullValueExtract()
         {
             Regex FullValueExtractionPt1 = new Regex(@"(?<=Сума за плащане:?\s?|Общо:?\s?|Всичко:?\s?).*", RegexOptions.IgnoreCase);
             Regex FullValueExtractionPt2 = new Regex(@"\d{1,5},\d{0,2}");
-            string FullValueStringPt1 = FullValueExtractionPt1.Match(TextFullFile).ToString().Trim().Replace(" ", "");
+            string FullValueStringPt1 = FullValueExtractionPt1.Match(TextFullFile).ToString().Trim().Replace(" ", "").Replace(".", ",");
             string FullValue = FullValueExtractionPt2.Match(FullValueStringPt1).ToString();
             return FullValue;
         }
@@ -114,9 +158,9 @@ namespace ForceTools
         }
         public string DanOsnExtract()
         {
-            Regex DanOsnExtractionPt1 = new Regex(@"(?<=Данъчна основа:?\s?|ДО:\s?|Дан. основа:?\s?).*", RegexOptions.IgnoreCase);
-            Regex DanOsnExtractionPt2 = new Regex(@"\d{1,5},\d{0,2}");
-            string DanOsnPt1 = DanOsnExtractionPt1.Match(TextFullFile).ToString().Trim().Replace(" ", "");
+            Regex DanOsnExtractionPt1 = new Regex(@"(?<=Данъчна основа:?\s?|ДО:\s?|Дан\. основа:?\s?|основа:?\s?).*", RegexOptions.IgnoreCase);
+            Regex DanOsnExtractionPt2 = new Regex(@"\d{1,5},\d{0,2}|\d{1,5}\.\d{0,2}");
+            string DanOsnPt1 = DanOsnExtractionPt1.Match(TextFullFile).ToString().Trim().Replace(" ", "").Replace(".", ",");
             string DoDec = DanOsnExtractionPt2.Match(DanOsnPt1).ToString();
             return DoDec;
         }
