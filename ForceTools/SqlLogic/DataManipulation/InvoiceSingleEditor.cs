@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.SqlServer.Management.Dmf;
+using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Runtime.Remoting.Contexts;
 
 namespace ForceTools
 {
@@ -11,39 +13,9 @@ namespace ForceTools
         private static SqlCommand sqlCommand;
         private static SqlDataAdapter sqlDataAdapter;
 
-        public static int GetKontragentIdAndUpdateSqlTable(string kontText, string eikText, string ddsNumberText)
+        public static void UpdateKontragentAndInvoiceDataFields(int InvoiceId, string kontText, string eikText, string ddsNumberText, string docDateText, string docNumberText, string doText, string ddsText, string fullValueText, int? dealKindId, int? docTypeId, string AccNumText, string inCashAccountText, string noteText, OperationType operationType)
         {
-            using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
-            {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand("Select Kontragenti.Id from Kontragenti where EIK like '%" + eikText + "%'", sqlConnection);
-                sqlDataAdapter = new SqlDataAdapter(sqlCommand);
-                DataTable KontByIdTb = new DataTable("KontById");
-                sqlDataAdapter.Fill(KontByIdTb);
-                if (KontByIdTb.Rows.Count == 0)
-                {
-                    InsertNewKontragentInSqlTable(kontText, eikText, ddsNumberText);
-                    KontByIdTb.Clear();
-                    sqlDataAdapter.Fill(KontByIdTb);
-                }
-                return KontByIdTb.Rows[0].Field<int>("Id");
-            }
-        }
-        public static void InsertNewKontragentInSqlTable(string kontText, string eikText, string ddsNumberText)
-        {
-            using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
-            {
-                sqlConnection.Open();
-                sqlCommand = new SqlCommand("INSERT into Kontragenti (Name, EIK, DDSNumber) VALUES (@KontragentName, @EIK, @DDSNumber)", sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@KontragentName", kontText);
-                sqlCommand.Parameters.AddWithValue("@EIK", eikText);
-                sqlCommand.Parameters.AddWithValue("@DDSNumber", ddsNumberText);
-                sqlCommand.ExecuteNonQuery();
-            }
-        }
-        public static void UpdateInvoiceDataFields(int InvoiceId, string kontText, string eikText, string ddsNumberText, string docDateText, string docNumberText, string doText, string ddsText, string fullValueText, int? dealKindId, int? docTypeId, string AccNumText, string inCashAccountText, string noteText)
-        {
-            int KontragentId = GetKontragentIdAndUpdateSqlTable(kontText, eikText, ddsNumberText);
+            Kontragent kontragent = KontragentEditor.GetOrCreateNewKontragent(kontText, eikText, ddsNumberText);
             using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
                 sqlConnection.Open();
@@ -69,7 +41,7 @@ namespace ForceTools
                    14 - Image
                    15 - AccountingStatusId */
 
-                FakturiUpdateDt.Rows[0][2] = KontragentId;
+                FakturiUpdateDt.Rows[0][2] = kontragent.Id;
                 FakturiUpdateDt.Rows[0][4] = Convert.ToDateTime(docDateText);
                 FakturiUpdateDt.Rows[0][5] = Convert.ToInt64(docNumberText);
                 FakturiUpdateDt.Rows[0][6] = Convert.ToDecimal(doText.Replace(".", ","));
@@ -88,19 +60,21 @@ namespace ForceTools
                 sqlDataAdapter.UpdateCommand = builder.GetUpdateCommand();
                 sqlDataAdapter.Update(FakturiUpdateDt);
             }
+
         }
         public static void InsertNewInvoiceInSqlTableFromMassUploader(OperationType operationType, string imageFilePath)
         {
             //Getting all the data
             InvoiceExtractedDataInterpreter Interpreter = new InvoiceExtractedDataInterpreter(operationType, imageFilePath);
-            int KontragentId = GetKontragentIdAndUpdateSqlTable(Interpreter.KontragentName, Interpreter.EIK, Interpreter.DDSNumber);
+            Kontragent kontragent = KontragentEditor.GetOrCreateNewKontragent(Interpreter.KontragentName, Interpreter.EIK, Interpreter.DDSNumber);
+
             //Adding Data to Fakturi Table
             using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
                 sqlConnection.Open();
                 sqlCommand = new SqlCommand("INSERT into Fakturi (KontragentiId, Date, Number, DO, DDS, FullValue,AccountingStatusId,image,AccDate, DealKindId, DocTypeId, Account, InCashAccount, Note, PurchaseOrSale) VALUES (@KontragentiId, @Date, @Number, @DO, @DDS, @FullValue,@AccountingStatusId,@image, @AccDate, @DealKindId, @DocTypeId, @Account, @InCashAccount, @Note, @PurchaseOrSale)", sqlConnection);
 
-                sqlCommand.Parameters.AddWithValue("@KontragentiId", KontragentId);
+                sqlCommand.Parameters.AddWithValue("@KontragentiId", kontragent.Id);
                 sqlCommand.Parameters.AddWithValue("@Date", Interpreter.DocumentDate);
                 sqlCommand.Parameters.AddWithValue("@Number", Interpreter.InvoiceNumber);
                 sqlCommand.Parameters.AddWithValue("@DO", Interpreter.DanOsn);

@@ -115,7 +115,7 @@ namespace ForceTools.WPF_Windows
         {
             if (EikTextBox.Text != "")
             {
-                InvoiceSingleEditor.UpdateInvoiceDataFields(CurrentOpenInvoice, KontTextBox.Text, EikTextBox.Text, DDSNumberTextBox.Text, DocDateTextBox.Text, DocNumTextBox.Text, DOTextBox.Text, DDSTextBox.Text, FullValueTextBox.Text, DealKindId, DocTypeId, AccNumTextBox.Text, InCashAccountTextBox.Text, NoteTextBox.Text);
+                InvoiceSingleEditor.UpdateKontragentAndInvoiceDataFields(CurrentOpenInvoice, KontTextBox.Text, EikTextBox.Text, DDSNumberTextBox.Text, DocDateTextBox.Text, DocNumTextBox.Text, DOTextBox.Text, DDSTextBox.Text, FullValueTextBox.Text, DealKindId, DocTypeId, AccNumTextBox.Text, InCashAccountTextBox.Text, NoteTextBox.Text, OperationType);
                 LoadNextOrPrevious(InvoiceLoadOperators.LoadNext);
             }
             else

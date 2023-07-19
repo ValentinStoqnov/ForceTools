@@ -32,7 +32,7 @@ namespace ForceTools
             _operationType = operationType;
             SetDefaultValuesFromSqlTable();
             _kontragent = InterperetKontragent(DataExtractor);
-            KontragentName = _kontragent.KontragentName;
+            KontragentName = _kontragent.Name;
             EIK = _kontragent.EIK;
             DDSNumber = _kontragent.DdsNumber;
             InvoiceNumber = InterperetInvoiceNumber(DataExtractor);
@@ -68,7 +68,7 @@ namespace ForceTools
             else
             {
                 //Returning empty if not found
-                kontragent.KontragentName = "";
+                kontragent.Name = "";
                 kontragent.EIK = "";
                 kontragent.DdsNumber = "";
                 return kontragent;
@@ -92,7 +92,7 @@ namespace ForceTools
             {
                 DDS = "";
             }
-            kontragent.KontragentName = KontragentName;
+            kontragent.Name = KontragentName;
             kontragent.EIK = EIK;
             kontragent.DdsNumber = DDS;
             return kontragent;
