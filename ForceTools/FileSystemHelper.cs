@@ -11,7 +11,7 @@ namespace ForceTools
         public static string TempFolderPath = AppDomain.CurrentDomain.BaseDirectory + "\\Temp";
         public static string dbSelectedImg = @"\Assets\databaseSelected.png";
         public static string dbDefaultImg = @"\Assets\database.png";
-        public static string TessTrainedDataFolder = AppDomain.CurrentDomain.BaseDirectory + "\\TessTrainedData";
+        public static string TessTrainedDataFolder = @"TrainedData";
         public static string OcrTempFolder = TempFolderPath + "\\Ocr\\";
         public static string RightOcrTxtFilePath = OcrTempFolder + "RightOcrTempText.txt";
         public static string LeftOcrTxtFilePath = OcrTempFolder + "LeftOcrTempText.txt";
