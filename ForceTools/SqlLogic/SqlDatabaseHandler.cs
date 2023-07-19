@@ -13,8 +13,8 @@ namespace ForceTools
     {
         // SqlConnectionString ---> Dynamic Connection string for Database use
         // DefaultServerString ---> Dynamic Connection string for Server use
-        
-        
+
+
         private static string DataFolderPath = AppDomain.CurrentDomain.BaseDirectory + "\\Database";
 
         public static void CreateNewDatabase(string DbName, string Connection)
@@ -265,7 +265,7 @@ namespace ForceTools
             #region Creating Kontragenti Table
             using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
             {
-                string Dbstr = "CREATE TABLE [dbo].[Kontragenti] (\r\n    [Id]        INT           IDENTITY (1, 1) NOT NULL,\r\n    [Name]      NVARCHAR (50) NULL,\r\n    [EIK]       NVARCHAR (12)        NULL,\r\n    [DDSNumber] NVARCHAR (50) NULL,\r\n    PRIMARY KEY CLUSTERED ([Id] ASC)\r\n);";
+                string Dbstr = "CREATE TABLE [dbo].[Kontragenti] (\r\n    [Id]             INT           IDENTITY (1, 1) NOT NULL,\r\n    [Name]           NVARCHAR (50) NULL,\r\n    [EIK]            NVARCHAR (12) NULL,\r\n    [DDSNumber]      NVARCHAR (50) NULL,\r\n    [LastUsedDataId] INT           NULL,\r\n    PRIMARY KEY CLUSTERED ([Id] ASC)\r\n);";
 
 
                 using (var myCommand = new SqlCommand(Dbstr, con))
@@ -652,6 +652,33 @@ namespace ForceTools
 
 
             #endregion
+            #region Creating LastUsedKontragentData Table
+            using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
+            {
+                string Dbstr = "CREATE TABLE [dbo].[LastUsedKontragentData]\r\n(\r\n\t[Id] INT NOT NULL PRIMARY KEY, \r\n    [PurchaseAcc] INT NULL, \r\n    [SaleAcc] INT NULL, \r\n    [PurchaseNote] NVARCHAR(50) NULL, \r\n    [SaleNote] NVARCHAR(50) NULL\r\n)";
+
+
+                using (var myCommand = new SqlCommand(Dbstr, con))
+                {
+                    try
+                    {
+                        con.Open();
+                        myCommand.ExecuteNonQuery();
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    finally
+                    {
+                        if (con.State == ConnectionState.Open)
+                        {
+                            con.Close();
+                        }
+                    }
+                }
+            }
+            #endregion
             #endregion
         }
         public static void DeleteDatabase(string DbName, string Connection)
@@ -692,7 +719,7 @@ namespace ForceTools
                     SqlDataAdapter Adapter = new SqlDataAdapter(sqcmd);
                     DataTable dataTableRoleCheck = new DataTable();
                     Adapter.Fill(dataTableRoleCheck);
-                    if (dataTableRoleCheck.Rows.Count <= 0) 
+                    if (dataTableRoleCheck.Rows.Count <= 0)
                     {
                         //Creating the ForceToolsAdmin Server role and Adding the first logged in account to the role
                         using (SqlCommand cmd = new SqlCommand($"CREATE SERVER ROLE ForceToolsAdmin;", Con))
@@ -752,8 +779,8 @@ namespace ForceTools
             //}
             #endregion
         }
-        public static ObservableCollection<Databases> GetUserCreatedDatabasesObservableCollection() 
-        { 
+        public static ObservableCollection<Databases> GetUserCreatedDatabasesObservableCollection()
+        {
             ObservableCollection<Databases> databaseObserbavleCollection = new ObservableCollection<Databases>();
             using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultSqlConnection"].ConnectionString))
             {
