@@ -56,7 +56,7 @@ namespace ForceTools
         private Kontragent InterperetKontragent(RegexDataExtractor dataExtractor)
         {
             DocumentSides sideWhereKontragentIsFound;
-            Kontragent kontragent;
+            Kontragent kontragent = new Kontragent();
             string KontragentName;
             string EIK;
             string DDS;

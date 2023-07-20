@@ -7,8 +7,8 @@
         public string EIK;
         public string DdsNumber;
         public int LastUsedDataId;
-        public string LastPurchaseAccount;
-        public string LastSaleAccount;
+        public int? LastPurchaseAccount;
+        public int? LastSaleAccount;
         public string LastPurchaseNote;
         public string LastSaleNote;
     }

@@ -16,6 +16,17 @@ namespace ForceTools
         public static void UpdateKontragentAndInvoiceDataFields(int InvoiceId, string kontText, string eikText, string ddsNumberText, string docDateText, string docNumberText, string doText, string ddsText, string fullValueText, int? dealKindId, int? docTypeId, string AccNumText, string inCashAccountText, string noteText, OperationType operationType)
         {
             Kontragent kontragent = KontragentEditor.GetOrCreateNewKontragent(kontText, eikText, ddsNumberText);
+            if (operationType == OperationType.Purchase)
+            {
+                kontragent.LastPurchaseAccount = Convert.ToInt32(AccNumText);
+                kontragent.LastPurchaseNote = noteText;
+            }
+            else
+            {
+                kontragent.LastSaleAccount = Convert.ToInt32(AccNumText);
+                kontragent.LastSaleNote = noteText;
+            }
+            KontragentEditor.UpdateKontragentAccAndNoteData(kontragent, operationType);
             using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
                 sqlConnection.Open();
@@ -86,16 +97,33 @@ namespace ForceTools
                 sqlCommand.Parameters.AddWithValue("@DealKindId", Interpreter.DealKindId);
                 sqlCommand.Parameters.AddWithValue("@DocTypeId", Interpreter.DocTypeId);
                 sqlCommand.Parameters.AddWithValue("@InCashAccount", Interpreter.DefaultCashRegAccount);
-                sqlCommand.Parameters.AddWithValue("@Note", Interpreter.Note);
                 //Setting DocType Specific info 
                 switch (operationType)
                 {
                     case OperationType.Purchase:
-                        sqlCommand.Parameters.AddWithValue("@Account", Interpreter.DefaultPurchaseAccount);
+                        if (kontragent.LastPurchaseAccount != null && Interpreter.Note != "КИ") 
+                        {
+                            sqlCommand.Parameters.AddWithValue("@Account", kontragent.LastPurchaseAccount);
+                            sqlCommand.Parameters.AddWithValue("@Note", kontragent.LastPurchaseNote);
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@Account", Interpreter.DefaultPurchaseAccount);
+                            sqlCommand.Parameters.AddWithValue("@Note", Interpreter.Note);
+                        }
                         sqlCommand.Parameters.AddWithValue("@PurchaseOrSale", "Purchase");
                         break;
                     case OperationType.Sale:
-                        sqlCommand.Parameters.AddWithValue("@Account", Interpreter.DefaultSaleAccount);
+                        if (kontragent.LastSaleAccount != null && Interpreter.Note != "КИ")
+                        {
+                            sqlCommand.Parameters.AddWithValue("@Account", kontragent.LastSaleAccount);
+                            sqlCommand.Parameters.AddWithValue("@Note", kontragent.LastSaleNote);
+                        }
+                        else
+                        {
+                            sqlCommand.Parameters.AddWithValue("@Account", Interpreter.DefaultSaleAccount);
+                            sqlCommand.Parameters.AddWithValue("@Note", Interpreter.Note);
+                        }
                         sqlCommand.Parameters.AddWithValue("@PurchaseOrSale", "Sale");
                         break;
                 }

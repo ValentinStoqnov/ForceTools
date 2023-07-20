@@ -655,7 +655,7 @@ namespace ForceTools
             #region Creating LastUsedKontragentData Table
             using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
             {
-                string Dbstr = "CREATE TABLE [dbo].[LastUsedKontragentData]\r\n(\r\n\t[Id] INT NOT NULL PRIMARY KEY, \r\n    [PurchaseAcc] INT NULL, \r\n    [SaleAcc] INT NULL, \r\n    [PurchaseNote] NVARCHAR(50) NULL, \r\n    [SaleNote] NVARCHAR(50) NULL\r\n)";
+                string Dbstr = "CREATE TABLE [dbo].[LastUsedKontragentData] (\r\n    [Id]           INT           IDENTITY (1, 1) NOT NULL,\r\n    [PurchaseAcc]  INT           NULL,\r\n    [SaleAcc]      INT           NULL,\r\n    [PurchaseNote] NVARCHAR (50) NULL,\r\n    [SaleNote]     NVARCHAR (50) NULL,\r\n    PRIMARY KEY CLUSTERED ([Id] ASC)\r\n)";
 
 
                 using (var myCommand = new SqlCommand(Dbstr, con))
