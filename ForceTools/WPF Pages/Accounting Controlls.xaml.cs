@@ -71,7 +71,7 @@ namespace ForceTools
         }
         private void ExportBtn_Click(object sender, RoutedEventArgs e)
         {
-            ExcelExtractor.ExtractFromDataTable(InvoiceExtractionDataRetriever.GetDataTableForExcelFullExport());
+            ExcelExporter.ExtractFromDataTable(InvoiceExtractionDataRetriever.GetDataTableForExcelFullExport());
         }
     }
 }

@@ -364,9 +364,12 @@
     </Page>
     <Compile Include="BitmapCreator.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="ExcelExtractor.cs" />
+    <Compile Include="ExcelDataExtractor.cs" />
+    <Compile Include="ExcelExporter.cs" />
+    <Compile Include="ExcelExtractedDataInterpreter.cs" />
     <Compile Include="FileSystemHelper.cs" />
-    <Compile Include="InvoiceExtractedDataInterpreter.cs" />
+    <Compile Include="IExtractedDataInterpreter.cs" />
+    <Compile Include="RegexExtractedDataInterpreter.cs" />
     <Compile Include="Models\Kontragent.cs" />
     <Compile Include="RegexDataExtractor.cs" />
     <Compile Include="Models\Databases.cs" />

@@ -4,15 +4,15 @@ using System.IO;
 
 namespace ForceTools
 {
-    public class InvoiceExtractedDataInterpreter
+    public class RegexExtractedDataInterpreter : IExtractedDataInterpreter
     {
-        private OperationType _operationType;
+        private readonly OperationType _operationType;
         private Kontragent _kontragent;
 
-        public int DefaultPurchaseAccount;
-        public int DefaultSaleAccount;
-        public int DefaultCashRegAccount;
-        public string DefaultNote;
+        public int DefaultPurchaseAccount { get; set; }
+        public int DefaultSaleAccount { get; set; }
+        public int DefaultCashRegAccount { get; set; }
+        public string DefaultNote { get; set; }
 
         public string KontragentName { get; set; }
         public string EIK { get; set; }
@@ -26,28 +26,28 @@ namespace ForceTools
         public string Note { get; set; }
         public byte[] ImageInBytes { get; set; }
 
-        public InvoiceExtractedDataInterpreter(OperationType operationType, string imageFilePath)
+        public RegexExtractedDataInterpreter(OperationType operationType, string imageFilePath)
         {
-            RegexDataExtractor DataExtractor = new RegexDataExtractor();
+            RegexDataExtractor dataExtractor = new RegexDataExtractor();
             _operationType = operationType;
             SetDefaultValuesFromSqlTable();
-            _kontragent = InterperetKontragent(DataExtractor);
+            _kontragent = InterperetKontragent(dataExtractor);
             KontragentName = _kontragent.Name;
             EIK = _kontragent.EIK;
             DDSNumber = _kontragent.DdsNumber;
-            InvoiceNumber = InterperetInvoiceNumber(DataExtractor);
-            FullValue = InterperetFullValue(DataExtractor);
-            DocumentDate = InterperetDocumentDate(DataExtractor);
-            DanOsn = InterperetDanuchnaOsnova(DataExtractor);
-            DocTypeId = InterperetDocumentType(DataExtractor);
+            InvoiceNumber = InterperetInvoiceNumber(dataExtractor);
+            FullValue = InterperetFullValue(dataExtractor);
+            DocumentDate = InterperetDocumentDate(dataExtractor);
+            DanOsn = InterperetDanuchnaOsnova(dataExtractor);
+            DocTypeId = InterperetDocumentType(dataExtractor);
             DealKindId = GetDealKindId();
             Note = GetNote();
             ImageInBytes = GetImageFromBytes(imageFilePath);
             DoFinalConversions();
         }
-        private void SetDefaultValuesFromSqlTable() 
+        private void SetDefaultValuesFromSqlTable()
         {
-            DataTable DefaultValuesTable = InvoiceDataFilters.GetDefaultValuesDataTable(); 
+            DataTable DefaultValuesTable = InvoiceDataFilters.GetDefaultValuesDataTable();
             DefaultPurchaseAccount = Convert.ToInt32(DefaultValuesTable.Rows[0][2]);
             DefaultSaleAccount = Convert.ToInt32(DefaultValuesTable.Rows[1][2]);
             DefaultCashRegAccount = Convert.ToInt32(DefaultValuesTable.Rows[2][2]);
@@ -99,31 +99,27 @@ namespace ForceTools
         }
         private long InterperetInvoiceNumber(RegexDataExtractor dataExtractor)
         {
-            long InvoiceNumber;
             string ExtractedInvoiceNumber;
             if (dataExtractor.InvoiceNumberExtract(RegexExtractionMethod.One) != string.Empty)
                 ExtractedInvoiceNumber = dataExtractor.InvoiceNumberExtract(RegexExtractionMethod.One);
             else
                 ExtractedInvoiceNumber = dataExtractor.InvoiceNumberExtract(RegexExtractionMethod.Two);
-            long.TryParse(ExtractedInvoiceNumber, out InvoiceNumber);
+            long.TryParse(ExtractedInvoiceNumber, out long InvoiceNumber);
             return InvoiceNumber;
         }
         private decimal InterperetFullValue(RegexDataExtractor dataExtractor)
         {
-            decimal FullValue;
-            decimal.TryParse(dataExtractor.FullValueExtract(), out FullValue);
+            decimal.TryParse(dataExtractor.FullValueExtract(), out decimal FullValue);
             return FullValue;
         }
         private DateTime InterperetDocumentDate(RegexDataExtractor dataExtractor)
         {
-            DateTime dateTime;
-            DateTime.TryParse(dataExtractor.DateExtract(), out dateTime);
+            DateTime.TryParse(dataExtractor.DateExtract(), out DateTime dateTime);
             return dateTime;
         }
         private decimal InterperetDanuchnaOsnova(RegexDataExtractor dataExtractor)
         {
-            decimal DanuchnaOsnova;
-            decimal.TryParse(dataExtractor.DanOsnExtract(), out DanuchnaOsnova);
+            decimal.TryParse(dataExtractor.DanOsnExtract(), out decimal DanuchnaOsnova);
             return DanuchnaOsnova;
         }
         private int InterperetDocumentType(RegexDataExtractor dataExtractor)
@@ -197,7 +193,7 @@ namespace ForceTools
         }
         private string GetNote()
         {
-            string Note = "";
+            string Note;
             if (DocTypeId == 3)
             {
                 Note = "КИ";

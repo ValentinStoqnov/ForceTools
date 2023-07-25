@@ -7,7 +7,7 @@ using DataTable = System.Data.DataTable;
 
 namespace ForceTools
 {
-    public static class ExcelExtractor
+    public static class ExcelExporter
     {
         public static void ExtractFromDataTable(DataTable dataToExtract) 
         {

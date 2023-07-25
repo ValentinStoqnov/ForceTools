@@ -113,7 +113,7 @@ namespace ForceTools
             foreach (string OcrFilePath in ImagesForOcr)
             {
                 await Task.WhenAll(Task.Run(() => OcrHelper.RunOcr(OcrFilePath)));
-                InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromMassUploader(OperationType,OcrFilePath);
+                InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromPdfUploader(OperationType,OcrFilePath);
                 ProgbarValue++;
                 ProgbarText = $"{ProgbarValue} / {ProgbarMaximum}";
             }

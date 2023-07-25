@@ -164,7 +164,7 @@ namespace ForceTools
             string DoDec = DanOsnExtractionPt2.Match(DanOsnPt1).ToString();
             return DoDec;
         }
-        public Tuple<bool,bool,bool> DocTypeExtract()
+        public Tuple<bool, bool, bool> DocTypeExtract()
         {
             Regex FakturaRegex = new Regex(@"(Фактура)", RegexOptions.IgnoreCase);
             Regex KreditRegex = new Regex(@"(Кредитно известие)", RegexOptions.IgnoreCase);
