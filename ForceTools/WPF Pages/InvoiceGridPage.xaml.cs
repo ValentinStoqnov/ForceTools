@@ -146,20 +146,7 @@ namespace ForceTools
         }
         private void ImportFromExcelBtn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Not Implemented yet");
-
-
-            //string ExcelFileName;
-
-
-            //OpenFileDialog ofd = new OpenFileDialog();
-            //ofd.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
-            //if (ofd.ShowDialog() == true)
-            //{
-            //    ExcelFileName = ofd.FileName;
-
-
-            //}
+            UiNavigationHelper.OpenExcelUploaderWindow(_operationType);
         }
         private void ImportFromPdfBtn_Click(object sender, RoutedEventArgs e)
         {

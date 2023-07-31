@@ -1,9 +1,9 @@
-﻿using Microsoft.SqlServer.Management.Dmf;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.Remoting.Contexts;
+using System.Windows.Controls;
 
 namespace ForceTools
 {
@@ -78,9 +78,9 @@ namespace ForceTools
             RegexExtractedDataInterpreter interpreter = new RegexExtractedDataInterpreter(operationType, imageFilePath);
             InsertNewInvoiceInSqlTableFromMassUploaders(interpreter, operationType);
         }
-        public static void InsertNewInvoiceInSqlTableFromExcelUploader(OperationType operationType) 
+        public static void InsertNewInvoiceInSqlTableFromExcelUploader(OperationType operationType, int currentRow, List<ComboBox> comboBoxList, DataTable excelDataTable) 
         { 
-            ExcelExtractedDataInterpreter interpreter = new ExcelExtractedDataInterpreter(operationType);
+            ExcelExtractedDataInterpreter interpreter = new ExcelExtractedDataInterpreter(operationType, currentRow,comboBoxList,excelDataTable);
             InsertNewInvoiceInSqlTableFromMassUploaders(interpreter, operationType);
         }
         private static void InsertNewInvoiceInSqlTableFromMassUploaders<T>(T interpreter,OperationType operationType) where T : IExtractedDataInterpreter

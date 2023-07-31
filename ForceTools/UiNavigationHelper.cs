@@ -36,5 +36,10 @@ namespace ForceTools
             InvoiceEditWindow IEW = new InvoiceEditWindow(InvoiceId, documentStatuses, operationType);
             IEW.ShowDialog();
         }
+        public static void OpenExcelUploaderWindow(OperationType operationType)
+        {
+            ExcelUploaderWindow EUW = new ExcelUploaderWindow(operationType);
+            EUW.ShowDialog();
+        }
     }
 }

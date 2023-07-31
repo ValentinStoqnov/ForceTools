@@ -596,7 +596,7 @@ namespace ForceTools
 
         private void ClearTempAndMemory()
         {
-            MainList.Clear();
+            if(MainList != null) MainList.Clear();
             FileSystemHelper.ClearTempFolder();
         }
 
