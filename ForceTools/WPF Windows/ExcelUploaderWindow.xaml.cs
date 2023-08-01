@@ -28,6 +28,17 @@ namespace ForceTools.WPF_Windows
             ExcelDataGrid.ItemsSource = excelDataTable.DefaultView;
             CreateComboBoxes();
         }
+        private void AddDocumentsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int currentRow = 0;
+            int totalRows = excelDataTable.Rows.Count;
+            while (currentRow < totalRows)
+            {
+                InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromExcelUploader(_operationType, currentRow, comboBoxList, excelDataTable);
+                currentRow++;
+            }
+        }
+
         private void CreateComboBoxes()
         {
             for (int i = 0; i < ExcelDataGrid.Columns.Count; i++)
@@ -60,7 +71,6 @@ namespace ForceTools.WPF_Windows
                 newCb.SelectionChanged += NewCb_SelectionChanged;
             }
         }
-
         private void NewCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             comboBoxSelectedIndexesList.Clear();
@@ -86,26 +96,14 @@ namespace ForceTools.WPF_Windows
                 if (comboBoxSelectedIndexesList.Contains(5) == false && comboBoxSelectedIndexesList.Contains(9) == false) DdsNumLbl.Background = Brushes.Red;
                 if (comboBoxSelectedIndexesList.Contains(6) == false) DoLbl.Background = Brushes.Red;
                 if (comboBoxSelectedIndexesList.Contains(7) == false) DdsLbl.Background = Brushes.Red;
-                if (comboBoxSelectedIndexesList.Contains(8) == false && comboBoxSelectedIndexesList.Contains(6) && comboBoxSelectedIndexesList.Contains(7)) FullValueLbl.Background = Brushes.YellowGreen;
+                if (comboBoxSelectedIndexesList.Contains(8) == false && comboBoxSelectedIndexesList.Contains(6) && comboBoxSelectedIndexesList.Contains(7)) FullValueLbl.Background = Brushes.Blue;
                 else if (comboBoxSelectedIndexesList.Contains(8) == false) FullValueLbl.Background = Brushes.Red;
-                if (comboBoxSelectedIndexesList.Contains(10) == false) DocTypeLbl.Background = Brushes.Red;
+                if (comboBoxSelectedIndexesList.Contains(10) == false) DocTypeLbl.Background = Brushes.Blue;
             }
         }
-
         private void ExcelDataGrid_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             ComboBoxesScrollViewer.ScrollToHorizontalOffset(e.HorizontalOffset);
-        }
-
-        private void AddDocumentsBtn_Click(object sender, RoutedEventArgs e)
-        {
-            int currentRow = 0;
-            int totalRows = excelDataTable.Rows.Count;
-            while (currentRow < totalRows)
-            {
-                InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromExcelUploader(_operationType, currentRow, comboBoxList, excelDataTable);
-                currentRow++;
-            }  
-        }
+        } 
     }
 }
