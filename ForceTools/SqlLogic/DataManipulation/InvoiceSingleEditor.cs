@@ -114,6 +114,11 @@ namespace ForceTools
                             sqlCommand.Parameters.AddWithValue("@Account", kontragent.LastPurchaseAccount);
                             sqlCommand.Parameters.AddWithValue("@Note", kontragent.LastPurchaseNote);
                         }
+                        else if (kontragent.LastPurchaseAccount != null)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@Account", kontragent.LastPurchaseAccount);
+                            sqlCommand.Parameters.AddWithValue("@Note", interpreter.Note);
+                        }
                         else
                         {
                             sqlCommand.Parameters.AddWithValue("@Account", interpreter.DefaultPurchaseAccount);
@@ -127,7 +132,12 @@ namespace ForceTools
                             sqlCommand.Parameters.AddWithValue("@Account", kontragent.LastSaleAccount);
                             sqlCommand.Parameters.AddWithValue("@Note", kontragent.LastSaleNote);
                         }
-                        else
+                        else if (kontragent.LastSaleAccount != null)
+                        {
+                            sqlCommand.Parameters.AddWithValue("@Account", kontragent.LastSaleAccount);
+                            sqlCommand.Parameters.AddWithValue("@Note", interpreter.Note);
+                        }
+                        else 
                         {
                             sqlCommand.Parameters.AddWithValue("@Account", interpreter.DefaultSaleAccount);
                             sqlCommand.Parameters.AddWithValue("@Note", interpreter.Note);
