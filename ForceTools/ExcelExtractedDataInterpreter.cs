@@ -77,7 +77,7 @@ namespace ForceTools
         private decimal InterperetFullValue(ExcelDataExtractor dataExtractor)
         {
             decimal.TryParse(dataExtractor.FullValue, out decimal fullValue);
-            if(fullValue <= 0) fullValue = Convert.ToDecimal(dataExtractor.DanuchnaOsnova) + Convert.ToDecimal(dataExtractor.Dds);
+            if (fullValue <= 0) fullValue = Convert.ToDecimal(dataExtractor.DanuchnaOsnova) + Convert.ToDecimal(dataExtractor.Dds);
             return fullValue;
         }
         private DateTime InterperetDocumentDate(ExcelDataExtractor dataExtractor)
@@ -94,14 +94,14 @@ namespace ForceTools
         }
         private int InterperetDocumentType(ExcelDataExtractor dataExtractor)
         {
-            int docType = 0;
-            if (dataExtractor.DocType != string.Empty)
+            string extractedDocTypeString = dataExtractor.DocType.ToLower();
+            if (extractedDocTypeString != string.Empty)
             {
-                if (dataExtractor.DocType.Contains("фактура")) docType = 1;
-                if (dataExtractor.DocType.Contains("кредитно")) docType = 3;
+                if (extractedDocTypeString.Contains("кредитно")) return 3;
             }
-            else docType = 1;
-            return docType;
+            if (DanOsn < 0 || FullValue < 0) return 3;
+
+            return 1;
         }
         private byte[] GetImageFromBytes()
         {
