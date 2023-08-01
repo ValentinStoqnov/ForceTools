@@ -10,25 +10,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="100"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <!--Testing here-->
         <Button x:Name="UploadExcelBtn" Grid.Row="0" Content="Качване на Excel лист" Click="UploadExcelBtn_Click"/>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Label x:Name="DocNumLbl" Content="Номер Документ" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,0" Width="100"/>
-            <Label x:Name="DateLbl" Content="Дата" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,0" Width="100"/>
+        <WrapPanel Grid.Row="1" Orientation="Horizontal">
+            <Label x:Name="DocTypeLbl" Content="Тип Документ" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+            <Label x:Name="DocNumLbl" Content="Номер Документ" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+            <Label x:Name="DateLbl" Content="Дата" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
             
-            <Label x:Name="KontLbl" Content="Контрагент" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,0" Width="100"/>
-            <Label x:Name="EikLbl" Content="ЕИК" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,0" Width="100"/>
-            <Label x:Name="DdsNumLbl" Content="ДДС Номер" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,0" Width="100"/>
+            <Label x:Name="KontLbl" Content="Контрагент" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+            <Label x:Name="EikLbl" Content="ЕИК" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+            <Label x:Name="DdsNumLbl" Content="ДДС Номер" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
 
-            <Label x:Name="DoLbl" Content="ДО" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,0" Width="100"/>
-            <Label x:Name="DdsLbl" Content="ДДС" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,0" Width="100"/>
-            <Label x:Name="FullValueLbl" Content="Общо" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,0" Width="100"/>
-        </StackPanel>
+            <Label x:Name="DoLbl" Content="ДО" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+            <Label x:Name="DdsLbl" Content="ДДС" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+            <Label x:Name="FullValueLbl" Content="Общо" Background="PaleVioletRed" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+            </WrapPanel>
         <ScrollViewer x:Name="ComboBoxesScrollViewer" Grid.Row="2" 
                       VerticalScrollBarVisibility="Hidden" 
                       HorizontalScrollBarVisibility="Hidden">

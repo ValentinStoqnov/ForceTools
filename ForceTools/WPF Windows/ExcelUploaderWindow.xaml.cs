@@ -43,6 +43,7 @@ namespace ForceTools.WPF_Windows
                 ComboBoxItem cbItem7 = new ComboBoxItem() { Content = "ДДС стойност" };
                 ComboBoxItem cbItem8 = new ComboBoxItem() { Content = "Общо стойност" };
                 ComboBoxItem cbItem9 = new ComboBoxItem() { Content = "ЕИК + ДДС Ном." };
+                ComboBoxItem cbItem10 = new ComboBoxItem() { Content = "Тип Документ" };
                 newCb.Items.Add(cbItem);
                 newCb.Items.Add(cbItem1);
                 newCb.Items.Add(cbItem2);
@@ -53,6 +54,7 @@ namespace ForceTools.WPF_Windows
                 newCb.Items.Add(cbItem7);
                 newCb.Items.Add(cbItem8);
                 newCb.Items.Add(cbItem9);
+                newCb.Items.Add(cbItem10);
                 comboBoxList.Add(newCb);
                 ComboBoxesStackPanel.Children.Add(newCb);
                 newCb.SelectionChanged += NewCb_SelectionChanged;
@@ -75,6 +77,7 @@ namespace ForceTools.WPF_Windows
                 if (comboBox.SelectedIndex == 7) DdsLbl.Background = Brushes.Green;
                 if (comboBox.SelectedIndex == 8) FullValueLbl.Background = Brushes.Green;
                 if (comboBox.SelectedIndex == 9) { EikLbl.Background = Brushes.Green; DdsNumLbl.Background = Brushes.Green; }
+                if (comboBox.SelectedIndex == 10) DocTypeLbl.Background = Brushes.Green;
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 if (comboBoxSelectedIndexesList.Contains(1) == false) DocNumLbl.Background = Brushes.Red;
                 if (comboBoxSelectedIndexesList.Contains(2) == false) DateLbl.Background = Brushes.Red;
@@ -83,9 +86,9 @@ namespace ForceTools.WPF_Windows
                 if (comboBoxSelectedIndexesList.Contains(5) == false && comboBoxSelectedIndexesList.Contains(9) == false) DdsNumLbl.Background = Brushes.Red;
                 if (comboBoxSelectedIndexesList.Contains(6) == false) DoLbl.Background = Brushes.Red;
                 if (comboBoxSelectedIndexesList.Contains(7) == false) DdsLbl.Background = Brushes.Red;
-
                 if (comboBoxSelectedIndexesList.Contains(8) == false && comboBoxSelectedIndexesList.Contains(6) && comboBoxSelectedIndexesList.Contains(7)) FullValueLbl.Background = Brushes.YellowGreen;
                 else if (comboBoxSelectedIndexesList.Contains(8) == false) FullValueLbl.Background = Brushes.Red;
+                if (comboBoxSelectedIndexesList.Contains(10) == false) DocTypeLbl.Background = Brushes.Red;
             }
         }
 

@@ -15,6 +15,7 @@ namespace ForceTools
         public string DanuchnaOsnova { get; set; }
         public string Dds { get; set; }
         public string FullValue { get; set; }
+        public string DocType { get; set; }
 
         public ExcelDataExtractor(int currentRow, List<ComboBox> comboBoxList, DataTable excelDataTable)
         {
@@ -34,7 +35,8 @@ namespace ForceTools
                 if (comboBoxList[i].SelectedIndex == 6) DanuchnaOsnova = dataFromRow.Replace(".",",");
                 if (comboBoxList[i].SelectedIndex == 7) Dds = dataFromRow.Replace(".", ",");
                 if (comboBoxList[i].SelectedIndex == 8) FullValue = dataFromRow.Replace(".", ",");
-                if (comboBoxList[i].SelectedIndex == 9) { Eik = dataFromRow; DdsNumber = dataFromRow; } 
+                if (comboBoxList[i].SelectedIndex == 9) { Eik = dataFromRow; DdsNumber = dataFromRow; }
+                if (comboBoxList[i].SelectedIndex == 10) DocType = dataFromRow;
             }
         }
     }

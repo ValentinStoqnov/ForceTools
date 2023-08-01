@@ -37,6 +37,8 @@ namespace ForceTools
                 }
                 excelDataTable.LoadDataRow(singleValue, LoadOption.PreserveChanges);
             }
+            workbook.Close();
+            ExcelApp.Quit();
             return excelDataTable;
         }
     }
