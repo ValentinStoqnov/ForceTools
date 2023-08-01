@@ -37,6 +37,9 @@ namespace ForceTools.WPF_Windows
                 InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromExcelUploader(_operationType, currentRow, comboBoxList, excelDataTable);
                 currentRow++;
             }
+            MessageBox.Show($"Добавени са {totalRows} документа.");
+            this.Close();
+            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.UnAccountedDocuments, _operationType);
         }
 
         private void CreateComboBoxes()
