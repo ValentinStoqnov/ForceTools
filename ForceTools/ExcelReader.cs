@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using Microsoft.Office.Interop.Excel;
+using Microsoft.SqlServer.Management.HadrModel;
 using DataTable = System.Data.DataTable;
 
 namespace ForceTools
@@ -19,7 +20,8 @@ namespace ForceTools
 
             for (int i = 1; i <= range.Columns.Count; i++)
             {
-                excelDataTable.Columns.Add((string)valueArray[1, i]);
+                string columnName = (string)valueArray[1, i];
+                excelDataTable.Columns.Add(columnName.Replace(".",""));
             }
 
             for (int i = 2; i <= valueArray.GetLength(0); i++)
