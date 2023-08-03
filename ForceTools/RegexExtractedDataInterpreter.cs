@@ -1,5 +1,4 @@
-﻿using Microsoft.SqlServer.Management.Dmf;
-using System;
+﻿using System;
 using System.Data;
 using System.IO;
 
@@ -24,6 +23,7 @@ namespace ForceTools
             newInvoice.FullValue = InterperetFullValue(dataExtractor);
             newInvoice.Date = InterperetDocumentDate(dataExtractor);
             newInvoice.DO = InterperetDanuchnaOsnova(dataExtractor);
+            newInvoice.DDS = InterpretDanukDobavenaStoinost(newInvoice);
             newInvoice.DocTypeId = InterperetDocumentType(dataExtractor);
             newInvoice.DealKindId = GetDealKindId();
             newInvoice.Note = GetNote(operationType);
@@ -99,6 +99,10 @@ namespace ForceTools
         {
             decimal.TryParse(dataExtractor.FullValueExtract(), out decimal FullValue);
             return FullValue;
+        }
+        private decimal InterpretDanukDobavenaStoinost(Invoice newInvoice)
+        {
+            return newInvoice.FullValue - newInvoice.DO;
         }
         private DateTime InterperetDocumentDate(RegexDataExtractor dataExtractor)
         {

@@ -24,10 +24,11 @@ namespace ForceTools
             newKontragent.Name = dataExtractor.Kontragent;
             newKontragent.EIK = InterperetEik(dataExtractor);
             newKontragent.DdsNumber = InterperetDdsNumber(dataExtractor);
+            newInvoice.Date = InterperetDocumentDate(dataExtractor);
             newInvoice.Number = InterperetInvoiceNumber(dataExtractor);
             newInvoice.FullValue = InterperetFullValue(dataExtractor);
-            newInvoice.Date = InterperetDocumentDate(dataExtractor);
             newInvoice.DO = InterperetDanuchnaOsnova(dataExtractor);
+            newInvoice.DDS = InterpretDanukDobavenaStoinost(newInvoice);
             newInvoice.DocTypeId = InterperetDocumentType(dataExtractor);
             newInvoice.DealKindId = GetDealKindId();
             newInvoice.Note = GetNote(operationType);
@@ -37,29 +38,10 @@ namespace ForceTools
             Kontragent = newKontragent;
             Invoice = newInvoice;
         }
-        public DataTable GetInterpretedDataTable()
+        public object[] GetInterpretedDataTable()
         {
-            DataTable interpretedDataTable = new DataTable();
-
-            interpretedDataTable.Columns.Add("Date");
-            interpretedDataTable.Columns.Add("Number");
-            interpretedDataTable.Columns.Add("Name");
-            interpretedDataTable.Columns.Add("EIK");
-            interpretedDataTable.Columns.Add("DDSNumber");
-            interpretedDataTable.Columns.Add("DO");
-            interpretedDataTable.Columns.Add("DDS");
-            interpretedDataTable.Columns.Add("FullValue");
-            interpretedDataTable.Columns.Add("InCashAccount");
-            interpretedDataTable.Columns.Add("Account");
-            interpretedDataTable.Columns.Add("Note");
-            interpretedDataTable.Columns.Add("DocType");
-            interpretedDataTable.Columns.Add("DealType");
-
-            object[] data = new object[] { };
-
-            interpretedDataTable.Rows.Add(data);
-
-            return interpretedDataTable;
+            object[] invoiceData = new object[] { };
+            return invoiceData;
         }
         private string InterperetDdsNumber(ExcelDataExtractor dataExtractor)
         {
@@ -98,6 +80,10 @@ namespace ForceTools
             decimal.TryParse(dataExtractor.FullValue, out decimal fullValue);
             if (fullValue <= 0) fullValue = Convert.ToDecimal(dataExtractor.DanuchnaOsnova) + Convert.ToDecimal(dataExtractor.Dds);
             return fullValue;
+        }
+        private decimal InterpretDanukDobavenaStoinost(Invoice newInvoice)
+        {
+            return newInvoice.FullValue - newInvoice.DO;
         }
         private DateTime InterperetDocumentDate(ExcelDataExtractor dataExtractor)
         {
