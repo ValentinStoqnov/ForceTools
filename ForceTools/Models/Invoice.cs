@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ForceTools.Models
+namespace ForceTools
 {
     public struct Invoice
     {
@@ -16,7 +16,7 @@ namespace ForceTools.Models
         public decimal DDS;
         public decimal FullValue;
         public int AccountingStatusId;
-        public byte[] Image;
+        public byte[] ImageInBytes;
         public int DealKindId;
         public int DocTypeId;
         public int InCashAccount;
