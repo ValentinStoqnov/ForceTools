@@ -9,41 +9,57 @@ namespace ForceTools
     public class ExcelExtractedDataInterpreter : IExtractedDataInterpreter
     {
         private readonly OperationType _operationType;
-
-        public int DefaultPurchaseAccount { get; set; }
-        public int DefaultSaleAccount { get; set; }
-        public int DefaultCashRegAccount { get; set; }
-        public string DefaultNote { get; set; }
-
-        public string KontragentName { get; set; }
-        public string EIK { get; set; }
-        public string DDSNumber { get; set; }
-        public long InvoiceNumber { get; set; }
-        public decimal FullValue { get; set; }
-        public DateTime DocumentDate { get; set; }
-        public decimal DanOsn { get; set; }
-        public int DocTypeId { get; set; }
-        public int DealKindId { get; set; }
-        public string Note { get; set; }
-        public byte[] ImageInBytes { get; set; }
+        public Kontragent Kontragent { get; set; }
+        public Invoice Invoice { get; set; }
+        public InvoiceDefaultValues DefaultValues { get; set; }
 
         public ExcelExtractedDataInterpreter(OperationType operationType, int currentRow, List<ComboBox> comboBoxList, DataTable excelDataTable)
         {
+            Kontragent newKontragent = new Kontragent();
+            Invoice newInvoice = new Invoice();
+
             ExcelDataExtractor dataExtractor = new ExcelDataExtractor(currentRow, comboBoxList, excelDataTable);
             _operationType = operationType;
             SetDefaultValuesFromSqlTable();
-            KontragentName = dataExtractor.Kontragent;
-            EIK = InterperetEik(dataExtractor);
-            DDSNumber = InterperetDdsNumber(dataExtractor);
-            InvoiceNumber = InterperetInvoiceNumber(dataExtractor);
-            FullValue = InterperetFullValue(dataExtractor);
-            DocumentDate = InterperetDocumentDate(dataExtractor);
-            DanOsn = InterperetDanuchnaOsnova(dataExtractor);
-            DocTypeId = InterperetDocumentType(dataExtractor);
-            DealKindId = GetDealKindId();
-            Note = GetNote();
-            ImageInBytes = GetImageFromBytes();
-            DoFinalConversions();
+            newKontragent.Name = dataExtractor.Kontragent;
+            newKontragent.EIK = InterperetEik(dataExtractor);
+            newKontragent.DdsNumber = InterperetDdsNumber(dataExtractor);
+            newInvoice.Number = InterperetInvoiceNumber(dataExtractor);
+            newInvoice.FullValue = InterperetFullValue(dataExtractor);
+            newInvoice.Date = InterperetDocumentDate(dataExtractor);
+            newInvoice.DO = InterperetDanuchnaOsnova(dataExtractor);
+            newInvoice.DocTypeId = InterperetDocumentType(dataExtractor);
+            newInvoice.DealKindId = GetDealKindId();
+            newInvoice.Note = GetNote(operationType);
+            newInvoice.ImageInBytes = GetImageFromBytes();
+            DoFinalConversions(newInvoice);
+
+            Kontragent = newKontragent;
+            Invoice = newInvoice;
+        }
+        public DataTable GetInterpretedDataTable()
+        {
+            DataTable interpretedDataTable = new DataTable();
+
+            interpretedDataTable.Columns.Add("Date");
+            interpretedDataTable.Columns.Add("Number");
+            interpretedDataTable.Columns.Add("Name");
+            interpretedDataTable.Columns.Add("EIK");
+            interpretedDataTable.Columns.Add("DDSNumber");
+            interpretedDataTable.Columns.Add("DO");
+            interpretedDataTable.Columns.Add("DDS");
+            interpretedDataTable.Columns.Add("FullValue");
+            interpretedDataTable.Columns.Add("InCashAccount");
+            interpretedDataTable.Columns.Add("Account");
+            interpretedDataTable.Columns.Add("Note");
+            interpretedDataTable.Columns.Add("DocType");
+            interpretedDataTable.Columns.Add("DealType");
+
+            object[] data = new object[] { };
+
+            interpretedDataTable.Rows.Add(data);
+
+            return interpretedDataTable;
         }
         private string InterperetDdsNumber(ExcelDataExtractor dataExtractor)
         {
@@ -62,11 +78,14 @@ namespace ForceTools
 
         private void SetDefaultValuesFromSqlTable()
         {
+            InvoiceDefaultValues defaultValues = new InvoiceDefaultValues();
             DataTable DefaultValuesTable = InvoiceDataFilters.GetDefaultValuesDataTable();
-            DefaultPurchaseAccount = Convert.ToInt32(DefaultValuesTable.Rows[0][2]);
-            DefaultSaleAccount = Convert.ToInt32(DefaultValuesTable.Rows[1][2]);
-            DefaultCashRegAccount = Convert.ToInt32(DefaultValuesTable.Rows[2][2]);
-            DefaultNote = Convert.ToString(DefaultValuesTable.Rows[3][2]);
+            defaultValues.DefaultPurchaseAccount = Convert.ToInt32(DefaultValuesTable.Rows[0][2]);
+            defaultValues.DefaultSaleAccount = Convert.ToInt32(DefaultValuesTable.Rows[1][2]);
+            defaultValues.DefaultCashRegAccount = Convert.ToInt32(DefaultValuesTable.Rows[2][2]);
+            defaultValues.DefaultPurchaseNote = Convert.ToString(DefaultValuesTable.Rows[3][2]);
+            defaultValues.DefaultSaleNote = Convert.ToString(DefaultValuesTable.Rows[4][2]);
+            DefaultValues = defaultValues;
         }
 
         private long InterperetInvoiceNumber(ExcelDataExtractor dataExtractor)
@@ -99,7 +118,7 @@ namespace ForceTools
             {
                 if (extractedDocTypeString.Contains("кредитно")) return 3;
             }
-            if (DanOsn < 0 || FullValue < 0) return 3;
+            if (Invoice.DO < 0 || Invoice.FullValue < 0) return 3;
 
             return 1;
         }
@@ -108,16 +127,24 @@ namespace ForceTools
             byte[] ImageInBytes = File.ReadAllBytes(FileSystemHelper.ExcelPlaceHolderImage);
             return ImageInBytes;
         }
-        private string GetNote()
+        private string GetNote(OperationType operationType)
         {
-            string Note;
-            if (DocTypeId == 3)
+            string Note = "";
+            if (Invoice.DocTypeId == 3)
             {
                 Note = "КИ";
             }
             else
             {
-                Note = DefaultNote;
+                switch (operationType)
+                {
+                    case OperationType.Purchase:
+                        Note = DefaultValues.DefaultPurchaseNote;
+                        break;
+                    case OperationType.Sale:
+                        Note = DefaultValues.DefaultSaleNote;
+                        break;
+                }
             }
             return Note;
         }
@@ -127,9 +154,9 @@ namespace ForceTools
             switch (_operationType)
             {
                 case OperationType.Purchase:
-                    if (DanOsn != 0 && FullValue != 0)
+                    if (Invoice.DO != 0 && Invoice.FullValue != 0)
                     {
-                        if (DanOsn == FullValue)
+                        if (Invoice.DO == Invoice.FullValue)
                         {
                             DealKindIdInt = 12; /////////////////////////CHANGE THIS 
                         }
@@ -140,9 +167,9 @@ namespace ForceTools
                     }
                     break;
                 case OperationType.Sale:
-                    if (DanOsn != 0 && FullValue != 0)
+                    if (Invoice.DO != 0 && Invoice.FullValue != 0)
                     {
-                        if (DanOsn == FullValue)
+                        if (Invoice.DO == Invoice.FullValue)
                         {
                             DealKindIdInt = 25;
                         }
@@ -155,18 +182,18 @@ namespace ForceTools
             }
             return DealKindIdInt;
         }
-        private void DoFinalConversions()
+        private void DoFinalConversions(Invoice newInvoice)
         {
             //Converting Do,DDS,FullValue values to -values if the DocType is Kreditno and extracted values are not -values.
-            if (DocTypeId == 3)
+            if (Invoice.DocTypeId == 3)
             {
-                if (DanOsn > 0)
+                if (Invoice.DO > 0)
                 {
-                    DanOsn = -DanOsn;
+                    newInvoice.DO = -newInvoice.DO;
                 }
-                if (FullValue > 0)
+                if (Invoice.FullValue > 0)
                 {
-                    FullValue = -FullValue;
+                    newInvoice.FullValue = -newInvoice.FullValue;
                 }
             }
         }
