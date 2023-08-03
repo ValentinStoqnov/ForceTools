@@ -627,7 +627,27 @@ namespace ForceTools
                         }
                     }
                 }
-                Addstr = "INSERT INTO DefaultValues(Id, Name) VALUES (4, 'Бележка');";
+                Addstr = "INSERT INTO DefaultValues(Id, Name) VALUES (4, 'Бележка покупка');";
+                using (var myCommand = new SqlCommand(Addstr, con))
+                {
+                    try
+                    {
+                        con.Open();
+                        myCommand.ExecuteNonQuery();
+                    }
+                    catch (System.Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    finally
+                    {
+                        if (con.State == ConnectionState.Open)
+                        {
+                            con.Close();
+                        }
+                    }
+                }
+                Addstr = "INSERT INTO DefaultValues(Id, Name) VALUES (5, 'Бележка продажба');";
                 using (var myCommand = new SqlCommand(Addstr, con))
                 {
                     try
