@@ -374,6 +374,8 @@
     <Compile Include="ExcelReader.cs" />
     <Compile Include="FileSystemHelper.cs" />
     <Compile Include="IExtractedDataInterpreter.cs" />
+    <Compile Include="Models\Invoice.cs" />
+    <Compile Include="Models\InvoiceDefaultValues.cs" />
     <Compile Include="RegexExtractedDataInterpreter.cs" />
     <Compile Include="Models\Kontragent.cs" />
     <Compile Include="RegexDataExtractor.cs" />
