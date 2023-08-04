@@ -9,38 +9,56 @@ namespace ForceTools
     public class ExcelExtractedDataInterpreter : IExtractedDataInterpreter
     {
         private readonly OperationType _operationType;
+        private Invoice newInvoice = new Invoice();
+
         public Kontragent Kontragent { get; set; }
         public Invoice Invoice { get; set; }
         public InvoiceDefaultValues DefaultValues { get; set; }
 
         public ExcelExtractedDataInterpreter(OperationType operationType, int currentRow, List<ComboBox> comboBoxList, DataTable excelDataTable)
         {
-            Kontragent newKontragent = new Kontragent();
-            Invoice newInvoice = new Invoice();
-
-            ExcelDataExtractor dataExtractor = new ExcelDataExtractor(currentRow, comboBoxList, excelDataTable);
             _operationType = operationType;
+            ExcelDataExtractor dataExtractor = new ExcelDataExtractor(currentRow, comboBoxList, excelDataTable);
+            Kontragent newKontragent = KontragentEditor.GetKontragent(InterperetEik(dataExtractor));
+
             SetDefaultValuesFromSqlTable();
-            newKontragent.Name = dataExtractor.Kontragent;
-            newKontragent.EIK = InterperetEik(dataExtractor);
-            newKontragent.DdsNumber = InterperetDdsNumber(dataExtractor);
+            if (newKontragent.EIK == null)
+            {
+                newKontragent.Name = dataExtractor.Kontragent;
+                newKontragent.EIK = InterperetEik(dataExtractor);
+                newKontragent.DdsNumber = InterperetDdsNumber(dataExtractor);
+            }
+
             newInvoice.Date = InterperetDocumentDate(dataExtractor);
             newInvoice.Number = InterperetInvoiceNumber(dataExtractor);
             newInvoice.FullValue = InterperetFullValue(dataExtractor);
             newInvoice.DO = InterperetDanuchnaOsnova(dataExtractor);
-            newInvoice.DDS = InterpretDanukDobavenaStoinost(newInvoice);
+            newInvoice.DDS = InterpretDanukDobavenaStoinost();
             newInvoice.DocTypeId = InterperetDocumentType(dataExtractor);
             newInvoice.DealKindId = GetDealKindId();
-            newInvoice.Note = GetNote(operationType);
+            newInvoice.Note = GetNote(_operationType, newKontragent);
+            newInvoice.Account = GetAccount(_operationType, newKontragent);
             newInvoice.ImageInBytes = GetImageFromBytes();
-            DoFinalConversions(newInvoice);
+            DoFinalConversions();
 
             Kontragent = newKontragent;
             Invoice = newInvoice;
         }
-        public object[] GetInterpretedDataTable()
+        public ExcelExtractedDataInterpreter(OperationType operationType, int currentRow, DataTable dataTable)
         {
-            object[] invoiceData = new object[] { };
+            _operationType = operationType;
+            ExcelDataExtractor dataExtractor = new ExcelDataExtractor(currentRow, dataTable);
+            Kontragent newKontragent = dataExtractor.FullKontragent;
+            newInvoice = dataExtractor.FullInvoice;
+            newInvoice.ImageInBytes = GetImageFromBytes();
+            Kontragent = newKontragent;
+            Invoice = newInvoice;
+        }
+
+        public object[] GetInterpreterDataRow()
+        {
+            object[] invoiceData = new object[] {Invoice.Date, Invoice.Number, Kontragent.Name,Kontragent.EIK,Kontragent.DdsNumber,Invoice.DO,Invoice.DDS,
+                Invoice.FullValue,Invoice.InCashAccount,Invoice.Account,Invoice.Note,Invoice.DocTypeId,Invoice.DealKindId};
             return invoiceData;
         }
         private string InterperetDdsNumber(ExcelDataExtractor dataExtractor)
@@ -81,7 +99,7 @@ namespace ForceTools
             if (fullValue <= 0) fullValue = Convert.ToDecimal(dataExtractor.DanuchnaOsnova) + Convert.ToDecimal(dataExtractor.Dds);
             return fullValue;
         }
-        private decimal InterpretDanukDobavenaStoinost(Invoice newInvoice)
+        private decimal InterpretDanukDobavenaStoinost()
         {
             return newInvoice.FullValue - newInvoice.DO;
         }
@@ -104,7 +122,7 @@ namespace ForceTools
             {
                 if (extractedDocTypeString.Contains("кредитно")) return 3;
             }
-            if (Invoice.DO < 0 || Invoice.FullValue < 0) return 3;
+            if (newInvoice.DO < 0 || newInvoice.FullValue < 0) return 3;
 
             return 1;
         }
@@ -113,26 +131,41 @@ namespace ForceTools
             byte[] ImageInBytes = File.ReadAllBytes(FileSystemHelper.ExcelPlaceHolderImage);
             return ImageInBytes;
         }
-        private string GetNote(OperationType operationType)
+        private string GetNote(OperationType operationType, Kontragent newKontragent)
         {
             string Note = "";
-            if (Invoice.DocTypeId == 3)
-            {
-                Note = "КИ";
-            }
+            if (newInvoice.DocTypeId == 3) Note = "КИ";
             else
             {
                 switch (operationType)
                 {
                     case OperationType.Purchase:
-                        Note = DefaultValues.DefaultPurchaseNote;
+                        if (newKontragent.LastPurchaseNote != null) Note = newKontragent.LastPurchaseNote;
+                        else Note = DefaultValues.DefaultPurchaseNote;
                         break;
                     case OperationType.Sale:
-                        Note = DefaultValues.DefaultSaleNote;
+                        if (newKontragent.LastSaleNote != null) Note = newKontragent.LastSaleNote;
+                        else Note = DefaultValues.DefaultSaleNote;
                         break;
                 }
             }
             return Note;
+        }
+        private int? GetAccount(OperationType operationType, Kontragent newKontragent)
+        {
+            int? Account = 0;
+            switch (operationType)
+            {
+                case OperationType.Purchase:
+                    if (newKontragent.LastPurchaseAccount != null) Account = newKontragent.LastPurchaseAccount;
+                    else Account = DefaultValues.DefaultPurchaseAccount;
+                    break;
+                case OperationType.Sale:
+                    if (newKontragent.LastSaleAccount != null) Account = newKontragent.LastSaleAccount;
+                    else Account = DefaultValues.DefaultSaleAccount;
+                    break;
+            }
+            return Account;
         }
         private int GetDealKindId()
         {
@@ -140,9 +173,9 @@ namespace ForceTools
             switch (_operationType)
             {
                 case OperationType.Purchase:
-                    if (Invoice.DO != 0 && Invoice.FullValue != 0)
+                    if (newInvoice.DO != 0 && newInvoice.FullValue != 0)
                     {
-                        if (Invoice.DO == Invoice.FullValue)
+                        if (newInvoice.DO == newInvoice.FullValue)
                         {
                             DealKindIdInt = 12; /////////////////////////CHANGE THIS 
                         }
@@ -153,9 +186,9 @@ namespace ForceTools
                     }
                     break;
                 case OperationType.Sale:
-                    if (Invoice.DO != 0 && Invoice.FullValue != 0)
+                    if (newInvoice.DO != 0 && newInvoice.FullValue != 0)
                     {
-                        if (Invoice.DO == Invoice.FullValue)
+                        if (newInvoice.DO == newInvoice.FullValue)
                         {
                             DealKindIdInt = 25;
                         }
@@ -168,19 +201,14 @@ namespace ForceTools
             }
             return DealKindIdInt;
         }
-        private void DoFinalConversions(Invoice newInvoice)
+        private void DoFinalConversions()
         {
             //Converting Do,DDS,FullValue values to -values if the DocType is Kreditno and extracted values are not -values.
-            if (Invoice.DocTypeId == 3)
+            if (newInvoice.DocTypeId == 3)
             {
-                if (Invoice.DO > 0)
-                {
-                    newInvoice.DO = -newInvoice.DO;
-                }
-                if (Invoice.FullValue > 0)
-                {
-                    newInvoice.FullValue = -newInvoice.FullValue;
-                }
+                if (newInvoice.DO > 0) newInvoice.DO = -newInvoice.DO;
+                if (newInvoice.FullValue > 0) newInvoice.FullValue = -newInvoice.FullValue;
+                if (newInvoice.DDS > 0) newInvoice.DDS = -newInvoice.DDS;
             }
         }
     }

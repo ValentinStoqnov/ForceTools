@@ -148,12 +148,21 @@ namespace ForceTools
             string FullValue = FullValueExtractionPt2.Match(FullValueStringPt1).ToString();
             return FullValue;
         }
-        public string DateExtract()
+        public string DateExtract(RegexExtractionMethod regexExtractionMethod)
         {
-            Regex DateExtractionPT1 = new Regex(@"(?<=Дата).*", RegexOptions.IgnoreCase);
-            Regex DateExtractionPT2 = new Regex(@"\d{1,2}\.\d{1,2}\.\d{1,4}");
-            string StrDateExtPT1 = DateExtractionPT1.Match(TextFullFile).ToString();
-            string dateTime = DateExtractionPT2.Match(StrDateExtPT1).ToString();
+            Regex FullLineExtraction = new Regex(@"(?<=Дата).*", RegexOptions.IgnoreCase);
+            Regex DateOnlyExtraction = new Regex(@"\d{1,2}\.\d{1,2}\.\d{1,4}");
+            string dateTime = "";
+            switch (regexExtractionMethod)
+            {
+                case RegexExtractionMethod.One:
+                    string StrDateExtPT1 = FullLineExtraction.Match(TextFullFile).ToString();
+                    dateTime = DateOnlyExtraction.Match(StrDateExtPT1).ToString();
+                    break;
+                case RegexExtractionMethod.Two:
+                    dateTime = DateOnlyExtraction.Match(TextFullFile).ToString();
+                    break;
+            }
             return dateTime;
         }
         public string DanOsnExtract()
