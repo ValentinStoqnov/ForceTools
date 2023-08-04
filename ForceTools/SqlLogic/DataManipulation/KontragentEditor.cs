@@ -98,7 +98,13 @@ namespace ForceTools
         {
             Kontragent Kontragent = new Kontragent();
             if (CheckIfKontragentExists(kontragentEik) == false) InsertNewKontragentInSqlTable(kontragentName, kontragentEik, kontragentDdsNumber);
-
+            Kontragent = GetKontragent(kontragentEik);
+            return Kontragent;
+            
+        }
+        public static Kontragent GetKontragent(string kontragentEik)
+        {
+            Kontragent Kontragent = new Kontragent();
             using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
                 sqlConnection.Open();
@@ -106,6 +112,7 @@ namespace ForceTools
                 sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 DataTable KontByIdTb = new DataTable("KontById");
                 sqlDataAdapter.Fill(KontByIdTb);
+                if (KontByIdTb.Rows.Count < 1) return Kontragent;
                 Kontragent.Id = KontByIdTb.Rows[0].Field<int>("Id");
                 Kontragent.Name = KontByIdTb.Rows[0].Field<string>("Name");
                 Kontragent.EIK = KontByIdTb.Rows[0].Field<string>("EIK");
