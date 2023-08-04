@@ -78,15 +78,15 @@ namespace ForceTools
             RegexExtractedDataInterpreter interpreter = new RegexExtractedDataInterpreter(operationType, imageFilePath);
             InsertNewInvoiceInSqlTableFromMassUploaders(interpreter, operationType);
         }
-        public static void InsertNewInvoiceInSqlTableFromExcelUploader(OperationType operationType, int currentRow, List<ComboBox> comboBoxList, DataTable excelDataTable) 
+        public static void InsertNewInvoiceInSqlTableFromExcelUploader(OperationType operationType, int currentRow, DataTable excelDataTable) 
         { 
-            ExcelExtractedDataInterpreter interpreter = new ExcelExtractedDataInterpreter(operationType, currentRow,comboBoxList,excelDataTable);
+            ExcelExtractedDataInterpreter interpreter = new ExcelExtractedDataInterpreter(operationType, currentRow,excelDataTable);
             InsertNewInvoiceInSqlTableFromMassUploaders(interpreter, operationType);
         }
         private static void InsertNewInvoiceInSqlTableFromMassUploaders<T>(T interpreter,OperationType operationType) where T : IExtractedDataInterpreter
         {
-            Kontragent kontragent = KontragentEditor.GetOrCreateNewKontragent(interpreter.KontragentName, interpreter.EIK, interpreter.DDSNumber);
-
+            Kontragent kontragent = KontragentEditor.GetOrCreateNewKontragent(interpreter.Kontragent.Name, interpreter.Kontragent.EIK, interpreter.Kontragent.DdsNumber);
+            
             //Adding Data to Fakturi Table
             using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
@@ -94,54 +94,26 @@ namespace ForceTools
                 sqlCommand = new SqlCommand("INSERT into Fakturi (KontragentiId, Date, Number, DO, DDS, FullValue,AccountingStatusId,image,AccDate, DealKindId, DocTypeId, Account, InCashAccount, Note, PurchaseOrSale) VALUES (@KontragentiId, @Date, @Number, @DO, @DDS, @FullValue,@AccountingStatusId,@image, @AccDate, @DealKindId, @DocTypeId, @Account, @InCashAccount, @Note, @PurchaseOrSale)", sqlConnection);
 
                 sqlCommand.Parameters.AddWithValue("@KontragentiId", kontragent.Id);
-                sqlCommand.Parameters.AddWithValue("@Date", interpreter.DocumentDate);
-                sqlCommand.Parameters.AddWithValue("@Number", interpreter.InvoiceNumber);
-                sqlCommand.Parameters.AddWithValue("@DO", interpreter.DanOsn);
-                sqlCommand.Parameters.AddWithValue("@DDS", interpreter.FullValue - interpreter.DanOsn);
-                sqlCommand.Parameters.AddWithValue("@FullValue", interpreter.FullValue);
+                sqlCommand.Parameters.AddWithValue("@Date", interpreter.Invoice.Date);
+                sqlCommand.Parameters.AddWithValue("@Number", interpreter.Invoice.Number);
+                sqlCommand.Parameters.AddWithValue("@DO", interpreter.Invoice.DO);
+                sqlCommand.Parameters.AddWithValue("@DDS", interpreter.Invoice.DDS);
+                sqlCommand.Parameters.AddWithValue("@FullValue", interpreter.Invoice.FullValue);
                 sqlCommand.Parameters.AddWithValue("@AccountingStatusId", 2);
-                sqlCommand.Parameters.AddWithValue("@image", interpreter.ImageInBytes);
-                sqlCommand.Parameters.AddWithValue("@AccDate", interpreter.DocumentDate);
-                sqlCommand.Parameters.AddWithValue("@DealKindId", interpreter.DealKindId);
-                sqlCommand.Parameters.AddWithValue("@DocTypeId", interpreter.DocTypeId);
-                sqlCommand.Parameters.AddWithValue("@InCashAccount", interpreter.DefaultCashRegAccount);
+                sqlCommand.Parameters.AddWithValue("@image", interpreter.Invoice.ImageInBytes);
+                sqlCommand.Parameters.AddWithValue("@AccDate", interpreter.Invoice.Date);
+                sqlCommand.Parameters.AddWithValue("@DealKindId", interpreter.Invoice.DealKindId);
+                sqlCommand.Parameters.AddWithValue("@DocTypeId", interpreter.Invoice.DocTypeId);
+                sqlCommand.Parameters.AddWithValue("@InCashAccount", interpreter.DefaultValues.DefaultCashRegAccount);
+                sqlCommand.Parameters.AddWithValue("@Account", interpreter.Invoice.Account);
+                sqlCommand.Parameters.AddWithValue("@Note", interpreter.Invoice.Note);
                 //Setting DocType Specific info 
                 switch (operationType)
                 {
                     case OperationType.Purchase:
-                        if (kontragent.LastPurchaseAccount != null && interpreter.Note != "КИ") 
-                        {
-                            sqlCommand.Parameters.AddWithValue("@Account", kontragent.LastPurchaseAccount);
-                            sqlCommand.Parameters.AddWithValue("@Note", kontragent.LastPurchaseNote);
-                        }
-                        else if (kontragent.LastPurchaseAccount != null)
-                        {
-                            sqlCommand.Parameters.AddWithValue("@Account", kontragent.LastPurchaseAccount);
-                            sqlCommand.Parameters.AddWithValue("@Note", interpreter.Note);
-                        }
-                        else
-                        {
-                            sqlCommand.Parameters.AddWithValue("@Account", interpreter.DefaultPurchaseAccount);
-                            sqlCommand.Parameters.AddWithValue("@Note", interpreter.Note);
-                        }
                         sqlCommand.Parameters.AddWithValue("@PurchaseOrSale", "Purchase");
                         break;
                     case OperationType.Sale:
-                        if (kontragent.LastSaleAccount != null && interpreter.Note != "КИ")
-                        {
-                            sqlCommand.Parameters.AddWithValue("@Account", kontragent.LastSaleAccount);
-                            sqlCommand.Parameters.AddWithValue("@Note", kontragent.LastSaleNote);
-                        }
-                        else if (kontragent.LastSaleAccount != null)
-                        {
-                            sqlCommand.Parameters.AddWithValue("@Account", kontragent.LastSaleAccount);
-                            sqlCommand.Parameters.AddWithValue("@Note", interpreter.Note);
-                        }
-                        else 
-                        {
-                            sqlCommand.Parameters.AddWithValue("@Account", interpreter.DefaultSaleAccount);
-                            sqlCommand.Parameters.AddWithValue("@Note", interpreter.Note);
-                        }
                         sqlCommand.Parameters.AddWithValue("@PurchaseOrSale", "Sale");
                         break;
                 }
