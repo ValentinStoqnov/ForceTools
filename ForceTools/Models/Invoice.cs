@@ -16,7 +16,7 @@ namespace ForceTools
         public int DealKindId;
         public int DocTypeId;
         public int InCashAccount;
-        public int Account;
+        public int? Account;
         public string Note;
         public string PurchaseOrSale; 
     }
