@@ -40,7 +40,7 @@ namespace ForceTools.WPF_Windows
             int totalRows = excelDataTable.Rows.Count;
             while (currentRow < totalRows)
             {
-                InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromExcelUploader(_operationType, currentRow, excelDataTable);
+                InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromExcelUploader(_operationType, currentRow, FinalEditDataTable);
                 currentRow++;
             }
             MessageBox.Show($"Добавени са {totalRows} документа.");
