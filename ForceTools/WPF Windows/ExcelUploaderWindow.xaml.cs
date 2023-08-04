@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace ForceTools.WPF_Windows
 {
-    public partial class ExcelUploaderWindow : Window
+    public partial class ExcelUploaderWindow : Window, INotifyPropertyChanged
     {
         private readonly OperationType _operationType;
         private readonly List<ComboBox> comboBoxList = new List<ComboBox>();
         private readonly List<int> comboBoxSelectedIndexesList = new List<int>();
         private DataTable excelDataTable;
+        private DataTable _FinalEditDataTable;
+        public DataTable FinalEditDataTable { get { return _FinalEditDataTable; } set { _FinalEditDataTable = value; OnPropertyChanged(); } }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ExcelUploaderWindow(OperationType operationType)
         {
@@ -28,18 +34,51 @@ namespace ForceTools.WPF_Windows
             ExcelDataGrid.ItemsSource = excelDataTable.DefaultView;
             CreateComboBoxes();
         }
-        private void AddDocumentsBtn_Click(object sender, RoutedEventArgs e)
+        private void ConfirmFinalEditBtn_Click(object sender, RoutedEventArgs e)
         {
             int currentRow = 0;
             int totalRows = excelDataTable.Rows.Count;
             while (currentRow < totalRows)
             {
-                InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromExcelUploader(_operationType, currentRow, comboBoxList, excelDataTable);
+                InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromExcelUploader(_operationType, currentRow, excelDataTable);
                 currentRow++;
             }
             MessageBox.Show($"Добавени са {totalRows} документа.");
             this.Close();
             UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.UnAccountedDocuments, _operationType);
+        }
+        private void AddDocumentsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int currentRow = 0;
+            int totalRows = excelDataTable.Rows.Count;
+
+            FinalEditDataTable = new DataTable();
+            FinalEditDataTable.Columns.Add("Date");
+            FinalEditDataTable.Columns.Add("Number");
+            FinalEditDataTable.Columns.Add("Name");
+            FinalEditDataTable.Columns.Add("EIK");
+            FinalEditDataTable.Columns.Add("DDSNumber");
+            FinalEditDataTable.Columns.Add("DO");
+            FinalEditDataTable.Columns.Add("DDS");
+            FinalEditDataTable.Columns.Add("FullValue");
+            FinalEditDataTable.Columns.Add("InCashAccount");
+            FinalEditDataTable.Columns.Add("Account");
+            FinalEditDataTable.Columns.Add("Note");
+            FinalEditDataTable.Columns.Add("DocType");
+            FinalEditDataTable.Columns.Add("DealKind");
+
+            
+            while (currentRow < totalRows)
+            {
+                ExcelExtractedDataInterpreter interpreter = new ExcelExtractedDataInterpreter(_operationType,currentRow,comboBoxList,excelDataTable);
+                FinalEditDataTable.Rows.Add(interpreter.GetInterpreterDataRow());
+                currentRow++;
+            }
+
+            ExcelDataGrid.Visibility = Visibility.Hidden;
+            AddDocumentsBtn.Visibility = Visibility.Hidden;
+            FinalEditDataGrid.Visibility = Visibility.Visible;
+            ConfirmFinalEditBtn.Visibility = Visibility.Visible;
         }
 
         private void CreateComboBoxes()
@@ -107,6 +146,10 @@ namespace ForceTools.WPF_Windows
         private void ExcelDataGrid_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             ComboBoxesScrollViewer.ScrollToHorizontalOffset(e.HorizontalOffset);
-        } 
+        }
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

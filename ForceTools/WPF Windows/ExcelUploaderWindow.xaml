@@ -42,7 +42,166 @@
             </StackPanel>
         </ScrollViewer>
         <DataGrid x:Name="ExcelDataGrid" Grid.Row="3" MinColumnWidth="100" ColumnWidth="100" ScrollViewer.ScrollChanged="ExcelDataGrid_ScrollChanged" CanUserReorderColumns="False"/>
+        <DataGrid x:Name="FinalEditDataGrid" 
+                  AutoGenerateColumns="False" 
+                  Visibility="Hidden"
+                  Grid.Row="2"
+                  Grid.RowSpan="2"
+                  CanUserAddRows="False"
+                  HorizontalGridLinesBrush="#FF9E9E9E" 
+                  VerticalGridLinesBrush="#FF9E9E9E" 
+                  ItemsSource="{Binding FinalEditDataTable, RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
+            </DataGrid.BorderBrush>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Date, StringFormat=d, ConverterCulture=en-GB}" Header="Дата" MinWidth="100" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Date , FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#19FF0000"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Number}" Header="Номер" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Number, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#19FF0000"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Контрагент" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Name, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#19FF0000"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding EIK}" Header="ЕИК" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding EIK, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#19FF0000"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding DDSNumber}" Header="ДДС Номер" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding DDSNumber, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#19FF0000"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding DO}" Header="ДО" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding DO, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#19FF0000"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding DDS}" Header="ДДС" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding DDS, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#FFF0F0F0"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding FullValue}" Header="Стойност" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding FullValue, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#19FF0000"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding InCashAccount}" Header="В брой" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding InCashAccount, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#FFF0F0F0"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Account}" Header="Сметка" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Account, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#19FF0000"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Note}" Header="Бележка" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Note, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#FFF0F0F0"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding DocType}" Header="Тип Документ" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding DocType, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#19FF0000"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding DealKind}" Header="Тип сделка" MinWidth="100">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding DealKind, FallbackValue=0, TargetNullValue=0}" Value="0">
+                                    <Setter Property="Background" Value="#19FF0000"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <Button x:Name="AddDocumentsBtn" Grid.Row="4" Content="Добави документите" Click="AddDocumentsBtn_Click"/>
+        <Button x:Name="ConfirmFinalEditBtn" Grid.Row="4" Content="Запиши документите" Click="ConfirmFinalEditBtn_Click" Visibility="Hidden"/>
 
     </Grid>
 </Window>
