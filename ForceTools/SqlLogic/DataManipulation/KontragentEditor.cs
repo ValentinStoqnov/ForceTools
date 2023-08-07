@@ -11,7 +11,7 @@ namespace ForceTools
         private static SqlCommand sqlCommand;
         private static SqlDataAdapter sqlDataAdapter;
 
-        public static void UpdateKontragent(Kontragent kontragent)
+        public static void UpdateKontragentName(Kontragent kontragent)
         {
             using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
@@ -19,7 +19,7 @@ namespace ForceTools
                 sqlCommand = new SqlCommand($"Select * from Kontragenti where Kontragenti.Id = {kontragent.Id}", sqlConnection);
                 sqlDataAdapter = new SqlDataAdapter(sqlCommand);
                 sqlDataAdapter.Fill(KontragentTable);
-                //UNFINISHED METHOD ////////////////////////////////////////////////////
+
                 KontragentTable.Rows[0][1] = kontragent.Name;
 
                 SqlCommandBuilder builder = new SqlCommandBuilder(sqlDataAdapter);

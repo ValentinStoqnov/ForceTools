@@ -16,6 +16,11 @@ namespace ForceTools
         public static void UpdateKontragentAndInvoiceDataFields(int InvoiceId, string kontText, string eikText, string ddsNumberText, string docDateText, string docNumberText, string doText, string ddsText, string fullValueText, int? dealKindId, int? docTypeId, string AccNumText, string inCashAccountText, string noteText, OperationType operationType)
         {
             Kontragent kontragent = KontragentEditor.GetOrCreateNewKontragent(kontText, eikText, ddsNumberText);
+            if (kontragent.Name != kontText)
+            {
+                kontragent.Name = kontText;
+                KontragentEditor.UpdateKontragentName(kontragent);
+            }
             if (operationType == OperationType.Purchase)
             {
                 kontragent.LastPurchaseAccount = Convert.ToInt32(AccNumText);
