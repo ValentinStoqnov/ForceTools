@@ -33,7 +33,7 @@ namespace ForceTools
             newInvoice.Number = InterperetInvoiceNumber(dataExtractor);
             newInvoice.FullValue = InterperetFullValue(dataExtractor);
             newInvoice.DO = InterperetDanuchnaOsnova(dataExtractor);
-            newInvoice.DDS = InterpretDanukDobavenaStoinost();
+            newInvoice.DDS = InterpretDanukDobavenaStoinost(dataExtractor);
             newInvoice.DocTypeId = InterperetDocumentType(dataExtractor);
             newInvoice.DealKindId = GetDealKindId();
             newInvoice.Note = GetNote(_operationType, newKontragent);
@@ -96,24 +96,31 @@ namespace ForceTools
         private decimal InterperetFullValue(ExcelDataExtractor dataExtractor)
         {
             decimal.TryParse(dataExtractor.FullValue, out decimal fullValue);
-            if (fullValue <= 0) fullValue = Convert.ToDecimal(dataExtractor.DanuchnaOsnova) + Convert.ToDecimal(dataExtractor.Dds);
+            if (fullValue == 0) fullValue = Convert.ToDecimal(dataExtractor.DanuchnaOsnova) + Convert.ToDecimal(dataExtractor.Dds);
+            fullValue = Math.Round(fullValue, 2);
             return fullValue;
         }
-        private decimal InterpretDanukDobavenaStoinost()
+        private decimal InterpretDanukDobavenaStoinost(ExcelDataExtractor dataExtractor)
         {
-            return newInvoice.FullValue - newInvoice.DO;
-        }
-        private DateTime InterperetDocumentDate(ExcelDataExtractor dataExtractor)
-        {
-            DateTime.TryParse(dataExtractor.Date, out DateTime dateTime);
-            return dateTime;
+            var DecimalParseBool = decimal.TryParse(dataExtractor.Dds, out decimal dds);
+            if (DecimalParseBool == true) return Math.Round(dds,2);
+            else return newInvoice.FullValue - newInvoice.DO;
+
         }
         private decimal InterperetDanuchnaOsnova(ExcelDataExtractor dataExtractor)
         {
             decimal.TryParse(dataExtractor.DanuchnaOsnova, out decimal danuchnaOsnova);
             if (danuchnaOsnova == 0 && Convert.ToDecimal(dataExtractor.FullValue) > 0 && Convert.ToDecimal(dataExtractor.Dds) > 0)
                 danuchnaOsnova = Convert.ToDecimal(dataExtractor.FullValue) - Convert.ToDecimal(dataExtractor.Dds);
+            if (danuchnaOsnova == 0 && Convert.ToDecimal(dataExtractor.FullValue) < 0 && Convert.ToDecimal(dataExtractor.Dds) < 0)
+                danuchnaOsnova = Convert.ToDecimal(dataExtractor.FullValue) - Convert.ToDecimal(dataExtractor.Dds);
+            danuchnaOsnova = Math.Round(danuchnaOsnova, 2);
             return danuchnaOsnova;
+        }
+        private DateTime InterperetDocumentDate(ExcelDataExtractor dataExtractor)
+        {
+            DateTime.TryParse(dataExtractor.Date, out DateTime dateTime);
+            return dateTime;
         }
         private int InterperetDocumentType(ExcelDataExtractor dataExtractor)
         {
@@ -209,6 +216,10 @@ namespace ForceTools
                 if (newInvoice.DO > 0) newInvoice.DO = -newInvoice.DO;
                 if (newInvoice.FullValue > 0) newInvoice.FullValue = -newInvoice.FullValue;
                 if (newInvoice.DDS > 0) newInvoice.DDS = -newInvoice.DDS;
+            }
+            if (newInvoice.DDS != 0 && newInvoice.FullValue != 0)
+            {
+                if (newInvoice.FullValue - newInvoice.DDS != newInvoice.DO) newInvoice.DO = newInvoice.FullValue - newInvoice.DDS;
             }
         }
     }
