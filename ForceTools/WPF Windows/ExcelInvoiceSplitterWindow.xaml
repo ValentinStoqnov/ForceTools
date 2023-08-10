@@ -1,0 +1,68 @@
+﻿<Window x:Class="ForceTools.WPF_Windows.ExcelInvoiceSplitterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ForceTools.WPF_Windows"
+        mc:Ignorable="d"
+        Height="150" Width="1500">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Width="100" TextAlignment="Center" Text="Дата"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Номер"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Контрагент"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="ЕИК"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="ДДС №"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Дан. основа"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="ДДС"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Общо"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Сметка в брой"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Сметка"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Бележка"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Тип Докумнт"/>
+                <TextBlock Width="100" TextAlignment="Center" Text="Тип Сделка"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Width="100" x:Name="SplitDateTb" IsEnabled="False"/>
+                <TextBox Width="100" x:Name="SplitNumberTb" IsEnabled="False"/>
+                <TextBox Width="100" x:Name="SplitNameTb" IsEnabled="False"/>
+                <TextBox Width="100" x:Name="SplitEIKTb" IsEnabled="False"/>
+                <TextBox Width="100" x:Name="SplitDDSNumberTb" IsEnabled="False"/>
+                <TextBox Width="100" x:Name="SplitDoTb"/>
+                <TextBox Width="100" x:Name="SplitDDSTb"/>
+                <TextBox Width="100" x:Name="SplitFullValueTb"/>
+                <TextBox Width="100" x:Name="SplitInCashAccTb"/>
+                <TextBox Width="100" x:Name="SplitAccountTb"/>
+                <TextBox Width="100" x:Name="SplitNoteTb"/>
+                <TextBox Width="100" x:Name="SplitDocTypeTb"/>
+                <TextBox Width="100" x:Name="SplitDealTypeTb"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Width="100" x:Name="NewDateTb" IsEnabled="False"/>
+                <TextBox Width="100" x:Name="NewNumberTb" IsEnabled="False"/>
+                <TextBox Width="100" x:Name="NewNameTb" IsEnabled="False"/>
+                <TextBox Width="100" x:Name="NewEIKTb" IsEnabled="False"/>
+                <TextBox Width="100" x:Name="NewDDSNumberTb" IsEnabled="False"/>
+                <TextBox Width="100" x:Name="NewDoTb" TextChanged="NewDoTb_TextChanged"/>
+                <TextBox Width="100" x:Name="NewDDSTb" TextChanged="NewDDSTb_TextChanged"/>
+                <TextBox Width="100" x:Name="NewFullValueTb" TextChanged="NewFullValueTb_TextChanged"/>
+                <TextBox Width="100" x:Name="NewInCashAccTb"/>
+                <TextBox Width="100" x:Name="NewAccountTb"/>
+                <TextBox Width="100" x:Name="NewNoteTb"/>
+                <TextBox Width="100" x:Name="NewDocTypeTb"/>
+                <TextBox Width="100" x:Name="NewDealTypeTb"/>
+            </StackPanel>
+        </StackPanel>
+        <Button x:Name="FinishEditBtn" 
+                Height="30"
+                VerticalAlignment="Bottom"
+                Content="Редактирай" 
+                Grid.Row="1"
+                Click="FinishEditBtn_Click"/>
+    </Grid>
+</Window>
