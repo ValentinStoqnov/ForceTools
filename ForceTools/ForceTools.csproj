@@ -338,6 +338,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WPF Windows\ExcelInvoiceSplitterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WPF Windows\ExcelUploaderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -371,6 +375,7 @@
     <Compile Include="ExcelDataExtractor.cs" />
     <Compile Include="ExcelExporter.cs" />
     <Compile Include="ExcelExtractedDataInterpreter.cs" />
+    <Compile Include="ExcelFinalEditDataTableEditor.cs" />
     <Compile Include="ExcelReader.cs" />
     <Compile Include="FileSystemHelper.cs" />
     <Compile Include="IExtractedDataInterpreter.cs" />
@@ -406,6 +411,9 @@
     </Compile>
     <Compile Include="WPF Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPF Windows\ExcelInvoiceSplitterWindow.xaml.cs">
+      <DependentUpon>ExcelInvoiceSplitterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPF Windows\ExcelUploaderWindow.xaml.cs">
       <DependentUpon>ExcelUploaderWindow.xaml</DependentUpon>
