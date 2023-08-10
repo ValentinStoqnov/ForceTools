@@ -25,7 +25,38 @@ namespace ForceTools.WPF_Windows
             _operationType = operationType;
             InitializeComponent();
         }
-
+        private void CreateComboBoxes()
+        {
+            for (int i = 0; i < ExcelDataGrid.Columns.Count; i++)
+            {
+                ComboBox newCb = new ComboBox() { MaxWidth = 100, Width = 100, Height = 30 };
+                ComboBoxItem cbItem = new ComboBoxItem() { Content = "Null" };
+                ComboBoxItem cbItem1 = new ComboBoxItem() { Content = "Номер Док." };
+                ComboBoxItem cbItem2 = new ComboBoxItem() { Content = "Дата" };
+                ComboBoxItem cbItem3 = new ComboBoxItem() { Content = "Контрагент" };
+                ComboBoxItem cbItem4 = new ComboBoxItem() { Content = "ЕИК" };
+                ComboBoxItem cbItem5 = new ComboBoxItem() { Content = "ДДС Ном." };
+                ComboBoxItem cbItem6 = new ComboBoxItem() { Content = "Данъчна основа" };
+                ComboBoxItem cbItem7 = new ComboBoxItem() { Content = "ДДС стойност" };
+                ComboBoxItem cbItem8 = new ComboBoxItem() { Content = "Общо стойност" };
+                ComboBoxItem cbItem9 = new ComboBoxItem() { Content = "ЕИК + ДДС Ном." };
+                ComboBoxItem cbItem10 = new ComboBoxItem() { Content = "Тип Документ" };
+                newCb.Items.Add(cbItem);
+                newCb.Items.Add(cbItem1);
+                newCb.Items.Add(cbItem2);
+                newCb.Items.Add(cbItem3);
+                newCb.Items.Add(cbItem4);
+                newCb.Items.Add(cbItem5);
+                newCb.Items.Add(cbItem6);
+                newCb.Items.Add(cbItem7);
+                newCb.Items.Add(cbItem8);
+                newCb.Items.Add(cbItem9);
+                newCb.Items.Add(cbItem10);
+                comboBoxList.Add(newCb);
+                ComboBoxesStackPanel.Children.Add(newCb);
+                newCb.SelectionChanged += NewCb_SelectionChanged;
+            }
+        }
         private void UploadExcelBtn_Click(object sender, RoutedEventArgs e)
         {
             string filePath = FileSystemHelper.OpenFileDialogAndGetExcelFilePath();
@@ -80,38 +111,15 @@ namespace ForceTools.WPF_Windows
             FinalEditDataGrid.Visibility = Visibility.Visible;
             ConfirmFinalEditBtn.Visibility = Visibility.Visible;
         }
-
-        private void CreateComboBoxes()
+        private void FinalEditInvoiceSplitBtn_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < ExcelDataGrid.Columns.Count; i++)
-            {
-                ComboBox newCb = new ComboBox() { MaxWidth = 100, Width = 100, Height = 30 };
-                ComboBoxItem cbItem = new ComboBoxItem() { Content = "Null" };
-                ComboBoxItem cbItem1 = new ComboBoxItem() { Content = "Номер Док." };
-                ComboBoxItem cbItem2 = new ComboBoxItem() { Content = "Дата" };
-                ComboBoxItem cbItem3 = new ComboBoxItem() { Content = "Контрагент" };
-                ComboBoxItem cbItem4 = new ComboBoxItem() { Content = "ЕИК" };
-                ComboBoxItem cbItem5 = new ComboBoxItem() { Content = "ДДС Ном." };
-                ComboBoxItem cbItem6 = new ComboBoxItem() { Content = "Данъчна основа" };
-                ComboBoxItem cbItem7 = new ComboBoxItem() { Content = "ДДС стойност" };
-                ComboBoxItem cbItem8 = new ComboBoxItem() { Content = "Общо стойност" };
-                ComboBoxItem cbItem9 = new ComboBoxItem() { Content = "ЕИК + ДДС Ном." };
-                ComboBoxItem cbItem10 = new ComboBoxItem() { Content = "Тип Документ" };
-                newCb.Items.Add(cbItem);
-                newCb.Items.Add(cbItem1);
-                newCb.Items.Add(cbItem2);
-                newCb.Items.Add(cbItem3);
-                newCb.Items.Add(cbItem4);
-                newCb.Items.Add(cbItem5);
-                newCb.Items.Add(cbItem6);
-                newCb.Items.Add(cbItem7);
-                newCb.Items.Add(cbItem8);
-                newCb.Items.Add(cbItem9);
-                newCb.Items.Add(cbItem10);
-                comboBoxList.Add(newCb);
-                ComboBoxesStackPanel.Children.Add(newCb);
-                newCb.SelectionChanged += NewCb_SelectionChanged;
-            }
+            int SelectedPosition = FinalEditDataGrid.SelectedIndex;
+            int InsertPosition = FinalEditDataGrid.SelectedIndex + 1;
+            DataTable sortedDataTable = FinalEditDataTable.DefaultView.ToTable();
+            ExcelInvoiceSplitterWindow editingWindow = new ExcelInvoiceSplitterWindow(this, sortedDataTable, SelectedPosition, InsertPosition);
+            editingWindow.ShowDialog();
+            FinalEditDataGrid.SelectedIndex = InsertPosition;
+            FinalEditDataGrid.CurrentCell = new DataGridCellInfo(FinalEditDataGrid.Items[InsertPosition], FinalEditDataGrid.Columns[1]);
         }
         private void NewCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
