@@ -57,7 +57,7 @@
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem x:Name="FinalEditInvoiceNewDocBtn" Header="Нов документ"/>
-                    <MenuItem x:Name="FinalEditInvoiceSplitBtn" Header="Раздели документа"/>
+                    <MenuItem x:Name="FinalEditInvoiceSplitBtn" Header="Раздели документа" Click="FinalEditInvoiceSplitBtn_Click"/>
                     <MenuItem x:Name="FinalEditInvoiceDeleteBtn" Header="Изтрий"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
