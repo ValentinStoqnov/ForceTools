@@ -54,6 +54,13 @@
             <DataGrid.BorderBrush>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
             </DataGrid.BorderBrush>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="FinalEditInvoiceNewDocBtn" Header="Нов документ"/>
+                    <MenuItem x:Name="FinalEditInvoiceSplitBtn" Header="Раздели документа"/>
+                    <MenuItem x:Name="FinalEditInvoiceDeleteBtn" Header="Изтрий"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Date, StringFormat=d, ConverterCulture=en-GB}" Header="Дата" MinWidth="100" >
                     <DataGridTextColumn.ElementStyle>
