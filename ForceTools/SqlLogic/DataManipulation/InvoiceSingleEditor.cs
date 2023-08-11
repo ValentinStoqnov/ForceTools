@@ -109,7 +109,7 @@ namespace ForceTools
                 sqlCommand.Parameters.AddWithValue("@AccDate", interpreter.Invoice.Date);
                 sqlCommand.Parameters.AddWithValue("@DealKindId", interpreter.Invoice.DealKindId);
                 sqlCommand.Parameters.AddWithValue("@DocTypeId", interpreter.Invoice.DocTypeId);
-                sqlCommand.Parameters.AddWithValue("@InCashAccount", interpreter.DefaultValues.DefaultCashRegAccount);
+                sqlCommand.Parameters.AddWithValue("@InCashAccount", interpreter.Invoice.InCashAccount);
                 sqlCommand.Parameters.AddWithValue("@Account", interpreter.Invoice.Account);
                 sqlCommand.Parameters.AddWithValue("@Note", interpreter.Invoice.Note);
                 //Setting DocType Specific info 
