@@ -69,7 +69,8 @@ namespace ForceTools.WPF_Pages
                     DefaultPurchaseTb.Text = Dt.Rows[0][2].ToString();
                     DefaultSaleTb.Text = Dt.Rows[1][2].ToString();
                     DefaultCashRegTb.Text = Dt.Rows[2][2].ToString();
-                    DefaultNoteTb.Text = Dt.Rows[3][2].ToString();
+                    DefaultPurchaseNoteTb.Text = Dt.Rows[3][2].ToString();
+                    DefaultSaleNoteTb.Text = Dt.Rows[4][2].ToString();
                 }
             }
         }
@@ -152,7 +153,8 @@ namespace ForceTools.WPF_Pages
                         Dt.Rows[0][2] = Convert.ToInt32(DefaultPurchaseTb.Text);
                         Dt.Rows[1][2] = Convert.ToInt32(DefaultSaleTb.Text);
                         Dt.Rows[2][2] = Convert.ToInt32(DefaultCashRegTb.Text);
-                        Dt.Rows[3][2] = Convert.ToString(DefaultNoteTb.Text);
+                        Dt.Rows[3][2] = Convert.ToString(DefaultPurchaseNoteTb.Text);
+                        Dt.Rows[4][2] = Convert.ToString(DefaultSaleNoteTb.Text);
 
                         SqlCommandBuilder builder = new SqlCommandBuilder(sda);
                         sda.UpdateCommand = builder.GetUpdateCommand();

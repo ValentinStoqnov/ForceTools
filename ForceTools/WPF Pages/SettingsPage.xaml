@@ -247,8 +247,10 @@
                             <TextBox x:Name="DefaultSaleTb"/>
                             <Label Content="В брой - сметка:"/>
                             <TextBox x:Name="DefaultCashRegTb"/>
-                            <Label Content="Бележка:"/>
-                            <TextBox x:Name="DefaultNoteTb"/>
+                            <Label Content="Бележка за покупка:"/>
+                            <TextBox x:Name="DefaultPurchaseNoteTb"/>
+                            <Label Content="Бележка за продажба:"/>
+                            <TextBox x:Name="DefaultSaleNoteTb"/>
                             <Label x:Name="SuccessLbl"
                    Content="Успешно записани промени"
                    HorizontalAlignment="Center"
