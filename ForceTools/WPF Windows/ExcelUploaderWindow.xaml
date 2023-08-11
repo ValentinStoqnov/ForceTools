@@ -29,6 +29,7 @@
             <Label x:Name="DoLbl" Content="ДО" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
             <Label x:Name="DdsLbl" Content="ДДС" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
             <Label x:Name="FullValueLbl" Content="Общо" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+            <Label x:Name="InCashLbl" Content="Плащане в брой" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
             </WrapPanel>
         <ScrollViewer x:Name="ComboBoxesScrollViewer" Grid.Row="2" 
                       VerticalScrollBarVisibility="Hidden" 
