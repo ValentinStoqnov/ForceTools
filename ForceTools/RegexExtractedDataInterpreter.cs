@@ -31,12 +31,19 @@ namespace ForceTools
             newInvoice.DDS = InterpretDanukDobavenaStoinost();
             newInvoice.DocTypeId = InterperetDocumentType(dataExtractor);
             newInvoice.DealKindId = GetDealKindId();
+            newInvoice.InCashAccount = InterpreterInCashAccount();
             newInvoice.Note = GetNote(operationType, Kontragent);
             newInvoice.Account = GetAccount(operationType, Kontragent);
             newInvoice.ImageInBytes = GetImageFromBytes(imageFilePath);
             DoFinalConversions();
             Invoice = newInvoice;
         }
+
+        private int InterpreterInCashAccount()
+        {
+            return DefaultValues.DefaultCashRegAccount;
+        }
+
         private void SetDefaultValuesFromSqlTable()
         {
             InvoiceDefaultValues defaultValues = new InvoiceDefaultValues();

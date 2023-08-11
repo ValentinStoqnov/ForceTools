@@ -37,6 +37,7 @@ namespace ForceTools
             newInvoice.DocTypeId = InterperetDocumentType(dataExtractor);
             newInvoice.DealKindId = GetDealKindId();
             newInvoice.Note = GetNote(_operationType, newKontragent);
+            newInvoice.InCashAccount = InterpreterInCashAccount(dataExtractor);
             newInvoice.Account = GetAccount(_operationType, newKontragent);
             newInvoice.ImageInBytes = GetImageFromBytes();
             DoFinalConversions();
@@ -44,6 +45,15 @@ namespace ForceTools
             Kontragent = newKontragent;
             Invoice = newInvoice;
         }
+
+        private int InterpreterInCashAccount(ExcelDataExtractor dataExtractor)
+        {
+            if (dataExtractor.InCashAccount.Contains("банк")) return 0;
+            if (dataExtractor.InCashAccount.Contains("брой")) return DefaultValues.DefaultCashRegAccount;
+
+            return DefaultValues.DefaultCashRegAccount;
+        }
+
         public ExcelExtractedDataInterpreter(OperationType operationType, int currentRow, DataTable dataTable)
         {
             _operationType = operationType;
