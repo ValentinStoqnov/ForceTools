@@ -16,6 +16,7 @@ namespace ForceTools
         public string Dds { get; set; }
         public string FullValue { get; set; }
         public string DocType { get; set; }
+        public string InCashAccount { get; set; }
 
         public Kontragent FullKontragent { get; set; }
         public Invoice FullInvoice { get; set; }
@@ -45,6 +46,7 @@ namespace ForceTools
                 if (comboBoxList[i].SelectedIndex == 8) FullValue = dataFromRow.Replace(".", ",");
                 if (comboBoxList[i].SelectedIndex == 9) { Eik = dataFromRow; DdsNumber = dataFromRow; }
                 if (comboBoxList[i].SelectedIndex == 10) DocType = dataFromRow;
+                if (comboBoxList[i].SelectedIndex == 11) InCashAccount = dataFromRow.ToLower();
             }
         }
         private Invoice GetInvoiceFromSortedDataTable(int currentRow, DataTable dataTable)
