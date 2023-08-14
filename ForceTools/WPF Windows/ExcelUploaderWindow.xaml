@@ -50,7 +50,8 @@
                   Grid.RowSpan="2"
                   CanUserAddRows="False"
                   HorizontalGridLinesBrush="#FF9E9E9E" 
-                  VerticalGridLinesBrush="#FF9E9E9E" 
+                  VerticalGridLinesBrush="#FF9E9E9E"
+                  PreviewKeyDown="FinalEditDataGrid_PreviewKeyDown"
                   ItemsSource="{Binding FinalEditDataTable, RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.BorderBrush>
                 <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveBorderColorKey}}"/>
@@ -184,28 +185,56 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding DocType}" Header="Тип Документ" MinWidth="100">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding DocType, FallbackValue=0, TargetNullValue=0}" Value="0">
-                                    <Setter Property="Background" Value="#19FF0000"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding DealKind}" Header="Тип сделка" MinWidth="100">
-                    <DataGridTextColumn.ElementStyle>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding DealKind, FallbackValue=0, TargetNullValue=0}" Value="0">
-                                    <Setter Property="Background" Value="#19FF0000"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGridTextColumn.ElementStyle>
-                </DataGridTextColumn>
+                <DataGridTemplateColumn Header="Тип Документ" MinWidth="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DocType}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox x:Name="DocTypeEditingTextBox" 
+                                         Text="{Binding DocType}" 
+                                         TextChanged="DocTypeEditingTextBox_TextChanged"/>
+                                <Popup>
+                                    <DataGrid x:Name="DocTypeDataGrid"
+                                              IsReadOnly="True"
+                                              CanUserAddRows="False"
+                                              SelectionMode="Single"
+                                              ItemsSource="{Binding DocTypesDataTable,RelativeSource={RelativeSource AncestorType=Window}, UpdateSourceTrigger=PropertyChanged}"
+                                              PreviewKeyDown="DocTypeDataGrid_PreviewKeyDown">
+                                    </DataGrid>
+                                </Popup>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Тип сделка" MinWidth="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding DealKind}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBox x:Name="DealKindEditingTextBox" 
+                                         Text="{Binding DealKind}" 
+                                         TextChanged="DealKindEditingTextBox_TextChanged"/>
+                                <Popup>
+                                    <DataGrid x:Name="DealKindDataGrid"
+                                              IsReadOnly="True"
+                                              CanUserAddRows="False"
+                                              SelectionMode="Single"
+                                              ItemsSource="{Binding KindOfDealsDataTable,RelativeSource={RelativeSource AncestorType=Window}, UpdateSourceTrigger=PropertyChanged}"
+                                              PreviewKeyDown="DealKindDataGrid_PreviewKeyDown">
+                                    </DataGrid>
+                                </Popup>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="AddDocumentsBtn" Grid.Row="4" Content="Добави документите" Click="AddDocumentsBtn_Click"/>

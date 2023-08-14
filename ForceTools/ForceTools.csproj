@@ -396,6 +396,7 @@
     <Compile Include="SqlLogic\DataRetrieval\InvoiceDataFilters.cs" />
     <Compile Include="InvoiceDataReader.cs" />
     <Compile Include="SqlLogic\DataRetrieval\InvoiceExtractionDataRetriever.cs" />
+    <Compile Include="SqlLogic\DataRetrieval\SavedTypesRetriever.cs" />
     <Compile Include="SqlLogic\SqlConnectionsHandler.cs" />
     <Compile Include="UiNavigationHelper.cs" />
     <Compile Include="BaseOpcEvent.cs" />
