@@ -48,9 +48,9 @@ namespace ForceTools
 
         private int InterpreterInCashAccount(ExcelDataExtractor dataExtractor)
         {
+            if (dataExtractor.InCashAccount == null) return DefaultValues.DefaultCashRegAccount;
             if (dataExtractor.InCashAccount.Contains("банк")) return 0;
             if (dataExtractor.InCashAccount.Contains("брой")) return DefaultValues.DefaultCashRegAccount;
-
             return DefaultValues.DefaultCashRegAccount;
         }
 
@@ -113,7 +113,7 @@ namespace ForceTools
         private decimal InterpretDanukDobavenaStoinost(ExcelDataExtractor dataExtractor)
         {
             var DecimalParseBool = decimal.TryParse(dataExtractor.Dds, out decimal dds);
-            if (DecimalParseBool == true) return Math.Round(dds,2);
+            if (DecimalParseBool == true) return Math.Round(dds, 2);
             else return newInvoice.FullValue - newInvoice.DO;
 
         }
@@ -134,7 +134,8 @@ namespace ForceTools
         }
         private int InterperetDocumentType(ExcelDataExtractor dataExtractor)
         {
-            string extractedDocTypeString = dataExtractor.DocType.ToLower();
+            string extractedDocTypeString = string.Empty;
+            if (dataExtractor.DocType != null) extractedDocTypeString = dataExtractor.DocType.ToLower();
             if (extractedDocTypeString != string.Empty)
             {
                 if (extractedDocTypeString.Contains("кредитно")) return 3;
