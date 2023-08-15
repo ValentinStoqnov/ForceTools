@@ -12,7 +12,7 @@ namespace ForceTools
         public string Kontragent { get; set; }
         public string Eik { get; set; }
         public string DdsNumber { get; set; }
-        public string DanuchnaOsnova { get; set; }
+        public List<string> DanuchnaOsnovaList { get; set; } = new List<string>();
         public string Dds { get; set; }
         public string FullValue { get; set; }
         public string DocType { get; set; }
@@ -41,7 +41,7 @@ namespace ForceTools
                 if (comboBoxList[i].SelectedIndex == 3) Kontragent = dataFromRow;
                 if (comboBoxList[i].SelectedIndex == 4) Eik = dataFromRow;
                 if (comboBoxList[i].SelectedIndex == 5) DdsNumber = dataFromRow;
-                if (comboBoxList[i].SelectedIndex == 6) DanuchnaOsnova = dataFromRow.Replace(".", ",");
+                if (comboBoxList[i].SelectedIndex == 6) DanuchnaOsnovaList.Add(dataFromRow.Replace(".", ","));
                 if (comboBoxList[i].SelectedIndex == 7) Dds = dataFromRow.Replace(".", ",");
                 if (comboBoxList[i].SelectedIndex == 8) FullValue = dataFromRow.Replace(".", ",");
                 if (comboBoxList[i].SelectedIndex == 9) { Eik = dataFromRow; DdsNumber = dataFromRow; }
