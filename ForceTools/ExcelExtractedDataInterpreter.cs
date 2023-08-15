@@ -122,10 +122,9 @@ namespace ForceTools
             decimal danuchnaOsnova = 0;
             if (dataExtractor.DanuchnaOsnovaList.Count > 1)
             {
-                decimal danuchnaOsnovaFromMultiColumns = 0;
                 foreach (string danuchnaOsnovaString in dataExtractor.DanuchnaOsnovaList)
                 {
-                    decimal.TryParse(danuchnaOsnovaString, out danuchnaOsnovaFromMultiColumns);
+                    decimal.TryParse(danuchnaOsnovaString, out decimal danuchnaOsnovaFromMultiColumns);
                     if (danuchnaOsnovaFromMultiColumns != 0) danuchnaOsnova = danuchnaOsnovaFromMultiColumns;
                 }
             }
