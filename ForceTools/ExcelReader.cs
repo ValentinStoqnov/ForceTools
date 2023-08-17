@@ -21,7 +21,9 @@ namespace ForceTools
             for (int i = 1; i <= range.Columns.Count; i++)
             {
                 string columnName = (string)valueArray[1, i];
-                excelDataTable.Columns.Add(columnName.Replace(".",""));
+                columnName = columnName.Replace(".", "");
+                columnName = columnName.Replace("/", "-");
+                excelDataTable.Columns.Add(columnName);
             }
 
             for (int i = 2; i <= valueArray.GetLength(0); i++)
