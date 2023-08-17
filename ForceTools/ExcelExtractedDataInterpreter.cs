@@ -106,16 +106,20 @@ namespace ForceTools
         private decimal InterperetFullValue(ExcelDataExtractor dataExtractor)
         {
             decimal.TryParse(dataExtractor.FullValue, out decimal fullValue);
-            if (fullValue == 0) fullValue = InterperetDanuchnaOsnova(dataExtractor) + Convert.ToDecimal(dataExtractor.Dds);
+            if (fullValue == 0) fullValue = InterperetDanuchnaOsnova(dataExtractor) + InterpretDanukDobavenaStoinost(dataExtractor);
             fullValue = Math.Round(fullValue, 2);
             return fullValue;
         }
         private decimal InterpretDanukDobavenaStoinost(ExcelDataExtractor dataExtractor)
         {
-            var DecimalParseBool = decimal.TryParse(dataExtractor.Dds, out decimal dds);
-            if (DecimalParseBool == true) return Math.Round(dds, 2);
-            else return newInvoice.FullValue - newInvoice.DO;
-
+            decimal dds = 0;
+            foreach (string ddsString in dataExtractor.DdsList)
+            {
+                var DecimalParseBool = decimal.TryParse(ddsString, out decimal ddsParsed);
+                if (DecimalParseBool == true && ddsParsed != 0) dds = Math.Round(ddsParsed, 2);
+            }
+            if (dds == 0 && newInvoice.FullValue != 0 && newInvoice.DO != 0) dds = newInvoice.FullValue - newInvoice.DO;
+            return dds;
         }
         private decimal InterperetDanuchnaOsnova(ExcelDataExtractor dataExtractor)
         {
@@ -130,10 +134,10 @@ namespace ForceTools
             }
             else decimal.TryParse(dataExtractor.DanuchnaOsnovaList[0], out danuchnaOsnova);
 
-            if (danuchnaOsnova == 0 && Convert.ToDecimal(dataExtractor.FullValue) > 0 && Convert.ToDecimal(dataExtractor.Dds) > 0)
-                danuchnaOsnova = Convert.ToDecimal(dataExtractor.FullValue) - Convert.ToDecimal(dataExtractor.Dds);
-            if (danuchnaOsnova == 0 && Convert.ToDecimal(dataExtractor.FullValue) < 0 && Convert.ToDecimal(dataExtractor.Dds) < 0)
-                danuchnaOsnova = Convert.ToDecimal(dataExtractor.FullValue) - Convert.ToDecimal(dataExtractor.Dds);
+            if (danuchnaOsnova == 0 && Convert.ToDecimal(dataExtractor.FullValue) > 0 && InterpretDanukDobavenaStoinost(dataExtractor) > 0)
+                danuchnaOsnova = Convert.ToDecimal(dataExtractor.FullValue) - InterpretDanukDobavenaStoinost(dataExtractor);
+            if (danuchnaOsnova == 0 && Convert.ToDecimal(dataExtractor.FullValue) < 0 && InterpretDanukDobavenaStoinost(dataExtractor) < 0)
+                danuchnaOsnova = Convert.ToDecimal(dataExtractor.FullValue) - InterpretDanukDobavenaStoinost(dataExtractor);
             danuchnaOsnova = Math.Round(danuchnaOsnova, 2);
             return danuchnaOsnova;
         }
