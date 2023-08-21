@@ -15,8 +15,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <!--Testing here-->
-        <Button x:Name="UploadExcelBtn" Grid.Row="0" Content="Качване на Excel лист" Click="UploadExcelBtn_Click"/>
+        <Button x:Name="UploadExcelBtn" Grid.Row="0" Content="Качване на Excel лист" Click="UploadExcelBtn_Click" Style="{StaticResource UploaderButton}"/>
         <WrapPanel Grid.Row="1" Orientation="Horizontal">
             <Label x:Name="DocTypeLbl" Content="Тип Документ" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
             <Label x:Name="DocNumLbl" Content="Номер Документ" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
@@ -237,8 +236,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="AddDocumentsBtn" Grid.Row="4" Content="Добави документите" Click="AddDocumentsBtn_Click"/>
-        <Button x:Name="ConfirmFinalEditBtn" Grid.Row="4" Content="Запиши документите" Click="ConfirmFinalEditBtn_Click" Visibility="Hidden"/>
+        <Button x:Name="AddDocumentsBtn" Grid.Row="4" Content="Добави документите" Click="AddDocumentsBtn_Click" Style="{StaticResource UploaderButton}"/>
+        <Button x:Name="ConfirmFinalEditBtn" Grid.Row="4" Content="Запиши документите" Click="ConfirmFinalEditBtn_Click" Visibility="Hidden" Style="{StaticResource UploaderButton}"/>
 
     </Grid>
 </Window>
