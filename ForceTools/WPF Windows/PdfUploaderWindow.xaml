@@ -8,19 +8,16 @@
         WindowStartupLocation="CenterScreen" Closed="Window_Closed">
     <Grid x:Name="MainGrid">
         <Grid.RowDefinitions>
-            <RowDefinition MaxHeight="35"/>
+            <RowDefinition MaxHeight="30"/>
             <RowDefinition />
-            <RowDefinition MaxHeight="25"/>
+            <RowDefinition MaxHeight="30"/>
         </Grid.RowDefinitions>
         <Button x:Name="PdfUploadBtn" 
                 Grid.Row="0" 
                 Content="Качване на PDF" 
-                HorizontalAlignment="Left" 
+                HorizontalAlignment="Center" 
                 Click="PdfUploadBtn_Click" 
-                Background="#0078D4"
-                Foreground="White"
-                Margin="5,5,0,5"
-                Padding="5,0,5,0"/>
+                Style="{StaticResource UploaderButton}"/>
         <ListView Grid.Row="1"
                   x:Name="PuWListView" 
                   ItemsSource="{Binding MainList,RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}"
@@ -115,12 +112,10 @@
                VerticalAlignment="Center"
                HorizontalAlignment="Center"/>
         <Button x:Name="PdfAddBtn" 
-                Width="150" 
                 Grid.Row="2" 
                 Content="Добави документите"
-                Background="#0078D4"
-                Foreground="White" 
-                Click="PdfAddBtn_Click"/>
+                Click="PdfAddBtn_Click"
+                Style="{StaticResource UploaderButton}"/>
         <Popup IsOpen="{Binding ProgbarPopupOpen, RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}" 
                Placement="Center" Height="35" Width="450">
             <Grid>
