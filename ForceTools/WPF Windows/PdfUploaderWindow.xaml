@@ -121,7 +121,6 @@
                 Background="#0078D4"
                 Foreground="White" 
                 Click="PdfAddBtn_Click"/>
-        <Button x:Name="test" Content="test" Grid.Row="0" MaxWidth="50" Click="test_Click"/>
         <Popup IsOpen="{Binding ProgbarPopupOpen, RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}" 
                Placement="Center" Height="35" Width="450">
             <Grid>

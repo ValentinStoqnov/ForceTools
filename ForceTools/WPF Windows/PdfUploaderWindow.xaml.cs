@@ -72,12 +72,6 @@ namespace ForceTools
             SetPurchaseOrSaleLbl();
         }
 
-        private void test_Click(object sender, RoutedEventArgs e)
-        {
-            MainList.MainList.Clear();
-            GC.Collect();
-        }
-
         private void SetPurchaseOrSaleLbl()
         {
             switch (OperationType)
