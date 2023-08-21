@@ -22,7 +22,7 @@
         "Entry"
         {
         "MsmKey" = "8:_00D5DA939DC29360AE9827A71B049E0C"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -34,19 +34,19 @@
         "Entry"
         {
         "MsmKey" = "8:_0223891417598B852486D62F6A186D63"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_02D0C1E4607B97236A92AFB1092F0B72"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_03889E095C4BF1B3DD755602CAA48353"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -70,13 +70,7 @@
         "Entry"
         {
         "MsmKey" = "8:_03F181495934A44986970A389D7C847C"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,7 +82,7 @@
         "Entry"
         {
         "MsmKey" = "8:_0679B844939128BB33B49C29EC788C3F"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -106,7 +100,7 @@
         "Entry"
         {
         "MsmKey" = "8:_076EF0BE658A87265E2352C1C1D482C5"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -118,49 +112,49 @@
         "Entry"
         {
         "MsmKey" = "8:_0C56949821E7C91C192AD7BAC68D034A"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_0CE0E5B9E27C3380D94335A583E96F5A"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_0D20585AC600338D3B287F4CF1B8B185"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_0DADB35929833F14EE1848F2703A25DF"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1252FFA4252E6B63D815259EF717A969"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1363DD37E003BE313DE1BC1E290683E8"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1539D2CAB487A13970A6E5085E8694A9"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_15B7D7B0289E2492A4EA596EACE22E52"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -172,7 +166,7 @@
         "Entry"
         {
         "MsmKey" = "8:_1748D5B921B32637D39F247B50674EBE"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -184,13 +178,13 @@
         "Entry"
         {
         "MsmKey" = "8:_19B2EE8A8D7F030AC20E3AE6C2D34D28"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1ACA92353BE42FF5310F22647602D259"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -202,49 +196,49 @@
         "Entry"
         {
         "MsmKey" = "8:_1B27F272F637496D6CE7BA4E3C7A2CFA"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1B883347CE45620F388AC2C79462BDE6"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1E35BD62084121A21CB37085BDFF0786"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_1F4F6F1D52A0A87FCD79886C7EA8A831"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_207F11D30FE916F1D99E532CE01A9F40"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_213A97FCD5F9608D37D22F844724C4BF"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_2473E6DC69279A7468CEDCC2580AAF44"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_24D181398C25B4AAE2BF72A4EC482B02"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -310,7 +304,7 @@
         "Entry"
         {
         "MsmKey" = "8:_265E2557A221DECAF80278986C8B8D0A"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -376,25 +370,25 @@
         "Entry"
         {
         "MsmKey" = "8:_282EEA699FE528847B3B4B6BE95CFC2F"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_29173404C8D5109D7736D7ED83A723E7"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_2A386101B440DEC86EB6FF23F1124A91"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_2CF7494EDCC095BEB4F629B2F68E696B"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -406,13 +400,13 @@
         "Entry"
         {
         "MsmKey" = "8:_2D74E8B6ADF2043DE0B119DF7BBBADAA"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_2FCC3A6360C1CA8BD4F56BADE691436A"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -424,19 +418,19 @@
         "Entry"
         {
         "MsmKey" = "8:_30E5CDD530D6B9BF8A5409D65DB09248"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_341A999DDA473414561DD25A8418635F"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_353B1D4362873B1DD2971B146634ED41"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -448,7 +442,13 @@
         "Entry"
         {
         "MsmKey" = "8:_36D8D29027088B03CA87562475E82379"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_36D8D29027088B03CA87562475E82379"
+        "OwnerKey" = "8:_8BB1D680FEE041BA84AED3D8F442B94A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -484,43 +484,43 @@
         "Entry"
         {
         "MsmKey" = "8:_3CA4655A6CAA53E1B03B9206C4D5EE73"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3CB645E0150AF975E37A808D2AD5DC48"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3D5DB6AC0D18FA108F8A6EE8372E23E5"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3EBBF9924FA65F576A6672CF86D716DE"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_406375A6ED901140EE905B96786EE1FD"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_42E914293CA9A6A0DFB0CD4570D94862"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_477060A7B23FE1BC8C5EC5881204B044"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -532,25 +532,25 @@
         "Entry"
         {
         "MsmKey" = "8:_4880D40B174B55413917EA32960F5759"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_48CDF6583DD6A90606ACFA52730249BD"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4A6F6EF89EA5A33B1862590093B88B66"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4B6136D3460A0956F31F4EFB8A94CF9F"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -574,13 +574,13 @@
         "Entry"
         {
         "MsmKey" = "8:_4D289D782010906C70D056A489BF3A90"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_4E6C9E37E3017785C438DA99FD540498"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -592,7 +592,7 @@
         "Entry"
         {
         "MsmKey" = "8:_508E3620B75F9E610C8C6612189B280C"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -604,7 +604,7 @@
         "Entry"
         {
         "MsmKey" = "8:_540E2156879FC54266E9A3C137AE595B"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -616,19 +616,19 @@
         "Entry"
         {
         "MsmKey" = "8:_5579AD80A51BCB15ABE3E872317DDAF0"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_59B85CFF051B5BD7A60CAD021D009780"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5A12E4E593DEEC916FA5A8085BBD8C02"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -640,25 +640,25 @@
         "Entry"
         {
         "MsmKey" = "8:_5B758405BCBEFCC00185A83D0081797A"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5CBFFEDD4B1ED4E5A7A90528A129CD23"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_5E0810C94B2108449822D77DACF936CF"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_610F2DAD3E79C0CAD6C9C74773E06EF1"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -682,13 +682,19 @@
         "Entry"
         {
         "MsmKey" = "8:_615A78A6391E39FCA1672075EF7AF244"
+        "OwnerKey" = "8:_8BB1D680FEE041BA84AED3D8F442B94A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_615A78A6391E39FCA1672075EF7AF244"
         "OwnerKey" = "8:_29173404C8D5109D7736D7ED83A723E7"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_631F761397270E861AFEBD0DEE69C18A"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -700,7 +706,7 @@
         "Entry"
         {
         "MsmKey" = "8:_64C287A880E44AAD463C1FD2F6740664"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -718,13 +724,13 @@
         "Entry"
         {
         "MsmKey" = "8:_653490BD3BEC5D9ABD38829EA9079C20"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_67E041953730B1123DAA0582BA64D0B6"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -742,7 +748,7 @@
         "Entry"
         {
         "MsmKey" = "8:_6AE3539C639AA4B913711F53A5DE675D"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -754,37 +760,37 @@
         "Entry"
         {
         "MsmKey" = "8:_6B0598DF43A1E6F899859319B5824A33"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6B92ACD37A5F5F6AF0C1BFD892EC7662"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6D48FEA00D799B588C2C08D7F143AB79"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6D4DAEBF37C838EC381F8F93E154ACF6"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6D63204713595E94A3D932D170BD4611"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6DAA57458FA9AF713BB0889C2492FBC2"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -802,7 +808,7 @@
         "Entry"
         {
         "MsmKey" = "8:_71C0DCBEF90DCF93AFE0F9E014B4EE42"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -838,7 +844,7 @@
         "Entry"
         {
         "MsmKey" = "8:_738D63D821F39C0E6E1F359451F49A24"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -874,7 +880,7 @@
         "Entry"
         {
         "MsmKey" = "8:_753FC9E3437506C41744DE47D6EBC419"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -886,67 +892,67 @@
         "Entry"
         {
         "MsmKey" = "8:_77E632E661903C479547AFBAE8DE4CA0"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_796BF729F566A9BAEEC1D4D672321BE0"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_79FF7A9EDBF78E10DCB655E71284A949"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7B80AA25830BAD3BC22041A791E85FA9"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7DA969EAE44A3EF4AD4D8C220DE3B214"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7DACBF0FF25A6DC81C98258F5DEE4CC5"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7E6AC314E823497AE5D6A8F8F9FD66E1"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7EFD63EADA3B3BEECB1314CD1FD2744F"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_7FEBB69D5B64A30727E598B91688066A"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_81BA3D185D53E75B11DD4DE160B64971"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_8336D6777EF375A51D5D59489DB7DBF3"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -958,7 +964,7 @@
         "Entry"
         {
         "MsmKey" = "8:_839F942FA18807645E312904F9A3A532"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -976,7 +982,7 @@
         "Entry"
         {
         "MsmKey" = "8:_83DD6A62B882F8B3576DB3AE45D580FD"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -987,8 +993,14 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8551AB4BCD99DF1CC616610754D5B61D"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1006,7 +1018,7 @@
         "Entry"
         {
         "MsmKey" = "8:_858E8739E23C50D1DB53996A0E3B264B"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1024,25 +1036,31 @@
         "Entry"
         {
         "MsmKey" = "8:_85A8449CFE18544D3677401356FF7E86"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_862876736E7FF9DD0C9D584EF02FEFE6"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_8760CCC4B2C5ED099D1A42972BE7EB73"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8BB1D680FEE041BA84AED3D8F442B94A"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_8BB63F6881485BF9C4ED5BBBD2C765F9"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1054,7 +1072,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8C3DF14F346FC4580536096AA2B8B906"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1084,13 +1102,13 @@
         "Entry"
         {
         "MsmKey" = "8:_8D9817991E7A3EC17B601FDB381265D5"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_8E7CFA3523B54AB21CB870AE8EBE3819"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1102,7 +1120,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8E96DD7B0D73425BDB318DA6CF0BBF46"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1114,7 +1132,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8EE6BF8CB56A919A820001EE3F0B5073"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1126,7 +1144,7 @@
         "Entry"
         {
         "MsmKey" = "8:_8EFB1FD472B8D55B768817AFA86BE6F5"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1138,13 +1156,13 @@
         "Entry"
         {
         "MsmKey" = "8:_8FF2C50718436BC72E8FE4011004BF58"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_90161D134B09CE7941EDE422F8F02340"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1162,19 +1180,19 @@
         "Entry"
         {
         "MsmKey" = "8:_92554824146EF2898646F629B130F638"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_945589B9D737702591EC254C590EB673"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_96204E14F7A2D96C53879754066BA5C1"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1306,19 +1324,19 @@
         "Entry"
         {
         "MsmKey" = "8:_9C0E0BD64B5A80FDC7CC594038F85022"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9C976E2FB4C281A355386FFE0C652AC7"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9D1A8D0BEAA6A80E0F31ECFBAC61740F"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1396,13 +1414,13 @@
         "Entry"
         {
         "MsmKey" = "8:_9D962630CFE037841DD72F233D925328"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_9E519843FFDE94053A6C24D69A5C2129"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1414,7 +1432,7 @@
         "Entry"
         {
         "MsmKey" = "8:_A04A75229E60BB60619EB429AAF2A327"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1450,7 +1468,7 @@
         "Entry"
         {
         "MsmKey" = "8:_A2419549B43C874D7A70467C74B13FDC"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1462,7 +1480,7 @@
         "Entry"
         {
         "MsmKey" = "8:_A247966F1A59B542D8106773ABFD7000"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1474,31 +1492,31 @@
         "Entry"
         {
         "MsmKey" = "8:_A310E2DED542EEA004B1DA86303552DD"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A49D34357BC0F3EE463E6994496C34D4"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A531C1F1174F42E7E8F14A85272CA59E"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A53DA3E075BA825039731E8590D88A98"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A7AA0C590B3856A44498E83AB0E73432"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1516,7 +1534,7 @@
         "Entry"
         {
         "MsmKey" = "8:_AD015A20B93945EE43B82664EB9D28C1"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1558,7 +1576,7 @@
         "Entry"
         {
         "MsmKey" = "8:_AE07DADCE180A116E4C61038AF54BA23"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1570,7 +1588,7 @@
         "Entry"
         {
         "MsmKey" = "8:_AE87BD10E12CDD89B8CBB7D981946BC4"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1588,43 +1606,43 @@
         "Entry"
         {
         "MsmKey" = "8:_AFB9D767E1E9933B71611327207F9D84"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_AFFF2436EF4DA65B0A0C3EDB3D5AE0E6"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B026E287AF2970F348C168BD1482EB78"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B063296357F052315702C2392E9CA2D7"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B29F86AED8239BE515272CB3054CF3C8"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B2FEC22D42E1EACF7E37E6AC42FB2028"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B4962197CFF7475C1DB9941D9B3B75DE"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1636,7 +1654,7 @@
         "Entry"
         {
         "MsmKey" = "8:_B6894319CC1AF8714439DF5525CC9218"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1654,37 +1672,37 @@
         "Entry"
         {
         "MsmKey" = "8:_B7808884676F14D157F9944E5ED3A333"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_B920DD39115B89940E0F4C49D649DE04"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_BA0E708620F46D0C8F2443A77F88BEA0"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_BA59EDA9B94182465C8F50F9DCAD6016"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_BB6C993B8258F1D874328B8FAD80D58C"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_BDF3FE5E855D06F6619EF5E57F70C448"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1696,7 +1714,7 @@
         "Entry"
         {
         "MsmKey" = "8:_BF49862EDDA5D90B83C6EDD9E9E661ED"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1732,19 +1750,19 @@
         "Entry"
         {
         "MsmKey" = "8:_C095A1D7604FB019F362EA8A0C960C6A"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_C45BF1206172830E953AA4B90F3C021A"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_C501E47235902D526D6F871C1F31E788"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1762,7 +1780,7 @@
         "Entry"
         {
         "MsmKey" = "8:_C64473B5F2ECD87810BF6E50FED95356"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1774,7 +1792,7 @@
         "Entry"
         {
         "MsmKey" = "8:_C6F8503F26EACBC2C45C9A250FB613A9"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1786,7 +1804,7 @@
         "Entry"
         {
         "MsmKey" = "8:_C94C2F72A94C7D5A74E6E6AE5B9E021B"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1798,7 +1816,7 @@
         "Entry"
         {
         "MsmKey" = "8:_CC41CE5827BC746AA35A00D2D3A05AA0"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1810,7 +1828,7 @@
         "Entry"
         {
         "MsmKey" = "8:_CD66F3EC4AF5ABCE6196A9960BFCAD08"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1834,19 +1852,19 @@
         "Entry"
         {
         "MsmKey" = "8:_D50BC2888D553CC6CFBAAED0BF609AAC"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_D6E442E84D51C302E25CAE1213DB6858"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_D8384F0B6D191F0C18CDA7C2B13ADC67"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1858,7 +1876,7 @@
         "Entry"
         {
         "MsmKey" = "8:_D83F9FFF8275D45B4AB554AD5C16ED7D"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1876,7 +1894,7 @@
         "Entry"
         {
         "MsmKey" = "8:_D9140220BD5D235EB1DC5BD3E8D0CB66"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1900,7 +1918,7 @@
         "Entry"
         {
         "MsmKey" = "8:_DAECCB7FA89D6C99A7248B0AFDAE0BE0"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1912,7 +1930,7 @@
         "Entry"
         {
         "MsmKey" = "8:_DDBCCA1DBB4C4E432B04BCEEDDD24D2D"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1966,19 +1984,19 @@
         "Entry"
         {
         "MsmKey" = "8:_DFAA5BD7CDA3CC026831455220B9C4E1"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E1C9B0D24E54F9A0AB59236D5BA67386"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E2B18C0DF42B664629BF25235DA7E351"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1996,61 +2014,61 @@
         "Entry"
         {
         "MsmKey" = "8:_E7D37F1C326F579D543018877C430E13"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E965BFD0436F19A645D90DAFF61D728F"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EA68B4BCC8AFFA29FC690760A52552D5"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EC25E12B44486281E1820DAAFE4F4F40"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_ECDF4D8CD599FF0501040E7A5361607D"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EE3BD5F37AF24578BB4CCFDE3A0DD11D"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_EE87E9D6C049A8DA6707ADB4AC02F54F"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F11EB58C56EC86FD125D647A2B9312FC"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F520332A93E0D6A9E08B506F070D4CCC"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F52040D292A8B55E6C19AAADE1DAFE85"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2074,13 +2092,13 @@
         "Entry"
         {
         "MsmKey" = "8:_F8603071A51568A9345D5298B83FD45C"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_F8633F3F832671DC609BB9166394821E"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -2092,31 +2110,31 @@
         "Entry"
         {
         "MsmKey" = "8:_FAF00F59736B695B65291E37B06D7E7B"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_FC3A0E360334E74BA4DC2D08601FBE74"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_FF5EF9EE5CD96271255277990EFF71D7"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7EFD63EADA3B3BEECB1314CD1FD2744F"
+        "OwnerKey" = "8:_83F2FC06E8C94B5AA6606A550FA48A53"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0445CC961E1A4F05B30444A4A111D587"
+        "OwnerKey" = "8:_8BB1D680FEE041BA84AED3D8F442B94A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -3127,6 +3145,12 @@
         "OwnerKey" = "8:_E2B95D74221F2F819B368F3C26902001"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_7EFD63EADA3B3BEECB1314CD1FD2744F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -3145,6 +3169,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -3161,6 +3193,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -3200,7 +3240,7 @@
                     "_00D5DA939DC29360AE9827A71B049E0C"
                     {
                     "Name" = "8:Microsoft.IdentityModel.Abstractions.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.IdentityModel.Abstractions.dll"
@@ -3211,7 +3251,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3231,7 +3271,7 @@
                     "_0223891417598B852486D62F6A186D63"
                     {
                     "Name" = "8:System.Collections.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Collections.dll"
@@ -3242,7 +3282,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3262,7 +3302,7 @@
                     "_02D0C1E4607B97236A92AFB1092F0B72"
                     {
                     "Name" = "8:System.IO.MemoryMappedFiles.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.MemoryMappedFiles.dll"
@@ -3273,7 +3313,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3293,7 +3333,7 @@
                     "_03889E095C4BF1B3DD755602CAA48353"
                     {
                     "Name" = "8:netstandard.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:netstandard.dll"
@@ -3304,7 +3344,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3324,7 +3364,7 @@
                     "_03F181495934A44986970A389D7C847C"
                     {
                     "Name" = "8:System.ServiceModel.Primitives.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ServiceModel.Primitives.dll"
@@ -3335,7 +3375,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3355,7 +3395,7 @@
                     "_0679B844939128BB33B49C29EC788C3F"
                     {
                     "Name" = "8:Microsoft.SqlServer.SqlClrProvider.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.SqlClrProvider.dll"
@@ -3366,7 +3406,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3386,7 +3426,7 @@
                     "_076EF0BE658A87265E2352C1C1D482C5"
                     {
                     "Name" = "8:System.IO.FileSystem.DriveInfo.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.FileSystem.DriveInfo.dll"
@@ -3397,7 +3437,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3437,7 +3477,7 @@
                     "_0C56949821E7C91C192AD7BAC68D034A"
                     {
                     "Name" = "8:System.Net.Primitives.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.Primitives.dll"
@@ -3448,7 +3488,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3468,7 +3508,7 @@
                     "_0CE0E5B9E27C3380D94335A583E96F5A"
                     {
                     "Name" = "8:System.Xml.XPath.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Xml.XPath.dll"
@@ -3479,7 +3519,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3499,7 +3539,7 @@
                     "_0D20585AC600338D3B287F4CF1B8B185"
                     {
                     "Name" = "8:System.Net.WebHeaderCollection.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.WebHeaderCollection.dll"
@@ -3510,7 +3550,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3530,7 +3570,7 @@
                     "_0DADB35929833F14EE1848F2703A25DF"
                     {
                     "Name" = "8:System.ObjectModel.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ObjectModel.dll"
@@ -3541,7 +3581,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3561,7 +3601,7 @@
                     "_1252FFA4252E6B63D815259EF717A969"
                     {
                     "Name" = "8:System.ComponentModel.EventBasedAsync.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ComponentModel.EventBasedAsync.dll"
@@ -3572,7 +3612,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3592,7 +3632,7 @@
                     "_1363DD37E003BE313DE1BC1E290683E8"
                     {
                     "Name" = "8:System.Diagnostics.Debug.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.Debug.dll"
@@ -3603,7 +3643,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3623,7 +3663,7 @@
                     "_1539D2CAB487A13970A6E5085E8694A9"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.CollectorEnum.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.CollectorEnum.dll"
@@ -3634,7 +3674,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3654,7 +3694,7 @@
                     "_15B7D7B0289E2492A4EA596EACE22E52"
                     {
                     "Name" = "8:System.Globalization.Calendars.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Globalization.Calendars.dll"
@@ -3665,7 +3705,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3685,7 +3725,7 @@
                     "_1748D5B921B32637D39F247B50674EBE"
                     {
                     "Name" = "8:Microsoft.SqlServer.ServiceBrokerEnum.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.ServiceBrokerEnum.dll"
@@ -3696,7 +3736,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3716,7 +3756,7 @@
                     "_19B2EE8A8D7F030AC20E3AE6C2D34D28"
                     {
                     "Name" = "8:Microsoft.SqlServer.Assessment.Types.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Assessment.Types.dll"
@@ -3727,7 +3767,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3747,7 +3787,7 @@
                     "_1ACA92353BE42FF5310F22647602D259"
                     {
                     "Name" = "8:Microsoft.Data.Tools.Sql.BatchParser.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.Data.Tools.Sql.BatchParser.dll"
@@ -3758,7 +3798,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3778,7 +3818,7 @@
                     "_1B27F272F637496D6CE7BA4E3C7A2CFA"
                     {
                     "Name" = "8:System.Diagnostics.Process.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.Process.dll"
@@ -3789,7 +3829,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3809,7 +3849,7 @@
                     "_1B883347CE45620F388AC2C79462BDE6"
                     {
                     "Name" = "8:System.Runtime.InteropServices.WindowsRuntime.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.InteropServices.WindowsRuntime.dll"
@@ -3820,7 +3860,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3840,7 +3880,7 @@
                     "_1E35BD62084121A21CB37085BDFF0786"
                     {
                     "Name" = "8:System.Threading.Thread.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Threading.Thread.dll"
@@ -3851,7 +3891,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3871,7 +3911,7 @@
                     "_1F4F6F1D52A0A87FCD79886C7EA8A831"
                     {
                     "Name" = "8:Microsoft.SqlServer.Dmf.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Dmf.dll"
@@ -3882,7 +3922,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3902,7 +3942,7 @@
                     "_207F11D30FE916F1D99E532CE01A9F40"
                     {
                     "Name" = "8:System.Runtime.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.dll"
@@ -3913,7 +3953,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3933,7 +3973,7 @@
                     "_213A97FCD5F9608D37D22F844724C4BF"
                     {
                     "Name" = "8:System.Diagnostics.Tools.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.Tools.dll"
@@ -3944,7 +3984,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3964,7 +4004,7 @@
                     "_2473E6DC69279A7468CEDCC2580AAF44"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.XEventEnum.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.XEventEnum.dll"
@@ -3975,7 +4015,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -3995,7 +4035,7 @@
                     "_24D181398C25B4AAE2BF72A4EC482B02"
                     {
                     "Name" = "8:System.Resources.Writer.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Resources.Writer.dll"
@@ -4006,7 +4046,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4026,7 +4066,7 @@
                     "_265E2557A221DECAF80278986C8B8D0A"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.Sdk.Sfc.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.Sdk.Sfc.dll"
@@ -4037,7 +4077,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4057,7 +4097,7 @@
                     "_282EEA699FE528847B3B4B6BE95CFC2F"
                     {
                     "Name" = "8:System.Collections.NonGeneric.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Collections.NonGeneric.dll"
@@ -4068,7 +4108,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4088,7 +4128,7 @@
                     "_29173404C8D5109D7736D7ED83A723E7"
                     {
                     "Name" = "8:System.IO.Compression.ZipFile.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.Compression.ZipFile.dll"
@@ -4099,7 +4139,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4119,7 +4159,7 @@
                     "_2A386101B440DEC86EB6FF23F1124A91"
                     {
                     "Name" = "8:System.Linq.Queryable.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Linq.Queryable.dll"
@@ -4130,7 +4170,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4150,7 +4190,7 @@
                     "_2CF7494EDCC095BEB4F629B2F68E696B"
                     {
                     "Name" = "8:System.Net.NetworkInformation.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.NetworkInformation.dll"
@@ -4161,7 +4201,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4181,7 +4221,7 @@
                     "_2D74E8B6ADF2043DE0B119DF7BBBADAA"
                     {
                     "Name" = "8:BouncyCastle.Crypto.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:BouncyCastle.Crypto.dll"
@@ -4192,7 +4232,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4212,7 +4252,7 @@
                     "_2FCC3A6360C1CA8BD4F56BADE691436A"
                     {
                     "Name" = "8:System.Runtime.Handles.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.Handles.dll"
@@ -4223,7 +4263,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4243,7 +4283,7 @@
                     "_30E5CDD530D6B9BF8A5409D65DB09248"
                     {
                     "Name" = "8:Microsoft.SqlServer.WmiEnum.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.WmiEnum.dll"
@@ -4254,7 +4294,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4274,7 +4314,7 @@
                     "_341A999DDA473414561DD25A8418635F"
                     {
                     "Name" = "8:System.Linq.Parallel.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Linq.Parallel.dll"
@@ -4285,7 +4325,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4305,7 +4345,7 @@
                     "_353B1D4362873B1DD2971B146634ED41"
                     {
                     "Name" = "8:System.Runtime.InteropServices.RuntimeInformation.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.InteropServices.RuntimeInformation.dll"
@@ -4316,7 +4356,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4336,7 +4376,7 @@
                     "_36D8D29027088B03CA87562475E82379"
                     {
                     "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
@@ -4347,7 +4387,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4387,7 +4427,7 @@
                     "_3CA4655A6CAA53E1B03B9206C4D5EE73"
                     {
                     "Name" = "8:System.Resources.Reader.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Resources.Reader.dll"
@@ -4398,7 +4438,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4418,7 +4458,7 @@
                     "_3CB645E0150AF975E37A808D2AD5DC48"
                     {
                     "Name" = "8:System.Threading.Timer.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Threading.Timer.dll"
@@ -4429,7 +4469,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4480,7 +4520,7 @@
                     "_3EBBF9924FA65F576A6672CF86D716DE"
                     {
                     "Name" = "8:System.Security.Principal.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.Principal.dll"
@@ -4491,7 +4531,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4511,7 +4551,7 @@
                     "_406375A6ED901140EE905B96786EE1FD"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.Collector.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.Collector.dll"
@@ -4522,7 +4562,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4542,7 +4582,7 @@
                     "_42E914293CA9A6A0DFB0CD4570D94862"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.XEventDbScopedEnum.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.XEventDbScopedEnum.dll"
@@ -4553,7 +4593,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4573,7 +4613,7 @@
                     "_477060A7B23FE1BC8C5EC5881204B044"
                     {
                     "Name" = "8:System.Reflection.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Reflection.dll"
@@ -4584,7 +4624,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4604,7 +4644,7 @@
                     "_4880D40B174B55413917EA32960F5759"
                     {
                     "Name" = "8:PDFiumSharp.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:PDFiumSharp.dll"
@@ -4615,7 +4655,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4635,7 +4675,7 @@
                     "_48CDF6583DD6A90606ACFA52730249BD"
                     {
                     "Name" = "8:System.Text.RegularExpressions.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Text.RegularExpressions.dll"
@@ -4646,7 +4686,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4666,7 +4706,7 @@
                     "_4A6F6EF89EA5A33B1862590093B88B66"
                     {
                     "Name" = "8:System.ComponentModel.Annotations.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ComponentModel.Annotations.dll"
@@ -4677,7 +4717,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4697,7 +4737,7 @@
                     "_4B6136D3460A0956F31F4EFB8A94CF9F"
                     {
                     "Name" = "8:Microsoft.SqlServer.Dmf.Common.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Dmf.Common.dll"
@@ -4708,7 +4748,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4728,7 +4768,7 @@
                     "_4D289D782010906C70D056A489BF3A90"
                     {
                     "Name" = "8:System.Security.Cryptography.ProtectedData.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.Cryptography.ProtectedData.dll"
@@ -4739,7 +4779,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4759,7 +4799,7 @@
                     "_4E6C9E37E3017785C438DA99FD540498"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.RegisteredServers.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.RegisteredServers.dll"
@@ -4770,7 +4810,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4790,7 +4830,7 @@
                     "_508E3620B75F9E610C8C6612189B280C"
                     {
                     "Name" = "8:System.Diagnostics.DiagnosticSource.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.DiagnosticSource.dll"
@@ -4801,7 +4841,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4821,7 +4861,7 @@
                     "_540E2156879FC54266E9A3C137AE595B"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.XEventDbScoped.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.XEventDbScoped.dll"
@@ -4832,7 +4872,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4852,7 +4892,7 @@
                     "_5579AD80A51BCB15ABE3E872317DDAF0"
                     {
                     "Name" = "8:System.Memory.Data.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Memory.Data.dll"
@@ -4863,7 +4903,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4883,7 +4923,7 @@
                     "_59B85CFF051B5BD7A60CAD021D009780"
                     {
                     "Name" = "8:System.Dynamic.Runtime.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Dynamic.Runtime.dll"
@@ -4894,7 +4934,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4914,7 +4954,7 @@
                     "_5A12E4E593DEEC916FA5A8085BBD8C02"
                     {
                     "Name" = "8:Microsoft.SqlServer.Assessment.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Assessment.dll"
@@ -4925,7 +4965,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4945,7 +4985,7 @@
                     "_5B758405BCBEFCC00185A83D0081797A"
                     {
                     "Name" = "8:System.Drawing.Primitives.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Drawing.Primitives.dll"
@@ -4956,7 +4996,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -4976,7 +5016,7 @@
                     "_5CBFFEDD4B1ED4E5A7A90528A129CD23"
                     {
                     "Name" = "8:System.Linq.Expressions.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Linq.Expressions.dll"
@@ -4987,7 +5027,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5007,7 +5047,7 @@
                     "_5E0810C94B2108449822D77DACF936CF"
                     {
                     "Name" = "8:System.Net.Http.Rtc.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.Http.Rtc.dll"
@@ -5018,7 +5058,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5038,7 +5078,7 @@
                     "_610F2DAD3E79C0CAD6C9C74773E06EF1"
                     {
                     "Name" = "8:Azure.Core.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Azure.Core.dll"
@@ -5049,7 +5089,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5069,7 +5109,7 @@
                     "_615A78A6391E39FCA1672075EF7AF244"
                     {
                     "Name" = "8:System.IO.Compression.FileSystem.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.Compression.FileSystem.dll"
@@ -5080,7 +5120,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5100,7 +5140,7 @@
                     "_631F761397270E861AFEBD0DEE69C18A"
                     {
                     "Name" = "8:System.Security.Cryptography.Csp.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.Cryptography.Csp.dll"
@@ -5111,7 +5151,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5131,7 +5171,7 @@
                     "_64C287A880E44AAD463C1FD2F6740664"
                     {
                     "Name" = "8:Microsoft.Bcl.AsyncInterfaces.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.Bcl.AsyncInterfaces.dll"
@@ -5142,7 +5182,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5162,7 +5202,7 @@
                     "_653490BD3BEC5D9ABD38829EA9079C20"
                     {
                     "Name" = "8:System.ServiceModel.Security.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ServiceModel.Security.dll"
@@ -5173,7 +5213,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5193,7 +5233,7 @@
                     "_67E041953730B1123DAA0582BA64D0B6"
                     {
                     "Name" = "8:System.Xml.XDocument.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Xml.XDocument.dll"
@@ -5204,7 +5244,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5224,7 +5264,7 @@
                     "_6A77F095730B8BA7AF3E64A400B38081"
                     {
                     "Name" = "8:System.Net.Http.WebRequest.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.Http.WebRequest.dll"
@@ -5235,7 +5275,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5255,7 +5295,7 @@
                     "_6AE3539C639AA4B913711F53A5DE675D"
                     {
                     "Name" = "8:Microsoft.IdentityModel.Protocols.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.IdentityModel.Protocols.dll"
@@ -5266,7 +5306,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5286,7 +5326,7 @@
                     "_6B0598DF43A1E6F899859319B5824A33"
                     {
                     "Name" = "8:System.Configuration.ConfigurationManager.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Configuration.ConfigurationManager.dll"
@@ -5297,7 +5337,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5317,7 +5357,7 @@
                     "_6B92ACD37A5F5F6AF0C1BFD892EC7662"
                     {
                     "Name" = "8:System.Security.Principal.Windows.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.Principal.Windows.dll"
@@ -5328,7 +5368,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5348,7 +5388,7 @@
                     "_6D48FEA00D799B588C2C08D7F143AB79"
                     {
                     "Name" = "8:System.Threading.ThreadPool.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Threading.ThreadPool.dll"
@@ -5359,7 +5399,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5379,7 +5419,7 @@
                     "_6D4DAEBF37C838EC381F8F93E154ACF6"
                     {
                     "Name" = "8:Pdf2Image.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Pdf2Image.dll"
@@ -5390,7 +5430,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5410,7 +5450,7 @@
                     "_6D63204713595E94A3D932D170BD4611"
                     {
                     "Name" = "8:System.Runtime.CompilerServices.VisualC.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.CompilerServices.VisualC.dll"
@@ -5421,7 +5461,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5441,7 +5481,7 @@
                     "_6DAA57458FA9AF713BB0889C2492FBC2"
                     {
                     "Name" = "8:System.Security.Cryptography.X509Certificates.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.Cryptography.X509Certificates.dll"
@@ -5452,7 +5492,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5492,7 +5532,7 @@
                     "_71C0DCBEF90DCF93AFE0F9E014B4EE42"
                     {
                     "Name" = "8:System.Threading.Tasks.Extensions.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Threading.Tasks.Extensions.dll"
@@ -5503,7 +5543,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5523,7 +5563,7 @@
                     "_738D63D821F39C0E6E1F359451F49A24"
                     {
                     "Name" = "8:Microsoft.IdentityModel.Tokens.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.IdentityModel.Tokens.dll"
@@ -5534,7 +5574,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5554,7 +5594,7 @@
                     "_753FC9E3437506C41744DE47D6EBC419"
                     {
                     "Name" = "8:Microsoft.Identity.Client.Extensions.Msal.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.Identity.Client.Extensions.Msal.dll"
@@ -5565,7 +5605,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5585,7 +5625,7 @@
                     "_77E632E661903C479547AFBAE8DE4CA0"
                     {
                     "Name" = "8:System.Drawing.Common.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Drawing.Common.dll"
@@ -5596,7 +5636,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5616,7 +5656,7 @@
                     "_796BF729F566A9BAEEC1D4D672321BE0"
                     {
                     "Name" = "8:System.ServiceModel.Duplex.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ServiceModel.Duplex.dll"
@@ -5627,7 +5667,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5647,7 +5687,7 @@
                     "_79FF7A9EDBF78E10DCB655E71284A949"
                     {
                     "Name" = "8:System.Xml.XmlSerializer.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Xml.XmlSerializer.dll"
@@ -5658,7 +5698,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5678,7 +5718,7 @@
                     "_7B80AA25830BAD3BC22041A791E85FA9"
                     {
                     "Name" = "8:System.Text.Encoding.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Text.Encoding.dll"
@@ -5689,7 +5729,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5709,7 +5749,7 @@
                     "_7DA969EAE44A3EF4AD4D8C220DE3B214"
                     {
                     "Name" = "8:System.Security.AccessControl.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.AccessControl.dll"
@@ -5720,7 +5760,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5740,7 +5780,7 @@
                     "_7DACBF0FF25A6DC81C98258F5DEE4CC5"
                     {
                     "Name" = "8:System.Globalization.Extensions.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Globalization.Extensions.dll"
@@ -5751,7 +5791,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5771,7 +5811,7 @@
                     "_7E6AC314E823497AE5D6A8F8F9FD66E1"
                     {
                     "Name" = "8:System.Threading.Tasks.Parallel.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Threading.Tasks.Parallel.dll"
@@ -5782,7 +5822,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5802,7 +5842,7 @@
                     "_7EFD63EADA3B3BEECB1314CD1FD2744F"
                     {
                     "Name" = "8:Microsoft.Win32.Primitives.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.Win32.Primitives.dll"
@@ -5813,7 +5853,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5833,7 +5873,7 @@
                     "_7FEBB69D5B64A30727E598B91688066A"
                     {
                     "Name" = "8:System.Reflection.Primitives.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Reflection.Primitives.dll"
@@ -5844,7 +5884,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5864,7 +5904,7 @@
                     "_81BA3D185D53E75B11DD4DE160B64971"
                     {
                     "Name" = "8:System.Runtime.Numerics.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.Numerics.dll"
@@ -5875,7 +5915,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5895,7 +5935,7 @@
                     "_8336D6777EF375A51D5D59489DB7DBF3"
                     {
                     "Name" = "8:System.Runtime.Serialization.Formatters.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.Serialization.Formatters.dll"
@@ -5906,7 +5946,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5926,7 +5966,7 @@
                     "_839F942FA18807645E312904F9A3A532"
                     {
                     "Name" = "8:Microsoft.Identity.Client.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.Identity.Client.dll"
@@ -5937,7 +5977,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5957,7 +5997,7 @@
                     "_83DD6A62B882F8B3576DB3AE45D580FD"
                     {
                     "Name" = "8:Azure.Identity.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Azure.Identity.dll"
@@ -5968,7 +6008,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -5988,7 +6028,7 @@
                     "_8551AB4BCD99DF1CC616610754D5B61D"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.HadrData.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.HadrData.dll"
@@ -5999,7 +6039,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6019,7 +6059,7 @@
                     "_858E8739E23C50D1DB53996A0E3B264B"
                     {
                     "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Newtonsoft.Json.dll"
@@ -6030,7 +6070,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6050,7 +6090,7 @@
                     "_85A8449CFE18544D3677401356FF7E86"
                     {
                     "Name" = "8:Microsoft.IdentityModel.Protocols.OpenIdConnect.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.IdentityModel.Protocols.OpenIdConnect.dll"
@@ -6061,7 +6101,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6081,7 +6121,7 @@
                     "_862876736E7FF9DD0C9D584EF02FEFE6"
                     {
                     "Name" = "8:System.Linq.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Linq.dll"
@@ -6092,7 +6132,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6112,7 +6152,7 @@
                     "_8760CCC4B2C5ED099D1A42972BE7EB73"
                     {
                     "Name" = "8:System.Collections.Specialized.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Collections.Specialized.dll"
@@ -6123,7 +6163,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6143,7 +6183,7 @@
                     "_8BB63F6881485BF9C4ED5BBBD2C765F9"
                     {
                     "Name" = "8:System.Reflection.Emit.Lightweight.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Reflection.Emit.Lightweight.dll"
@@ -6154,7 +6194,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6174,7 +6214,7 @@
                     "_8C3DF14F346FC4580536096AA2B8B906"
                     {
                     "Name" = "8:System.Buffers.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Buffers.dll"
@@ -6185,7 +6225,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6205,7 +6245,7 @@
                     "_8D9817991E7A3EC17B601FDB381265D5"
                     {
                     "Name" = "8:System.Net.Sockets.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.Sockets.dll"
@@ -6216,7 +6256,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6236,7 +6276,7 @@
                     "_8E7CFA3523B54AB21CB870AE8EBE3819"
                     {
                     "Name" = "8:System.IO.UnmanagedMemoryStream.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.UnmanagedMemoryStream.dll"
@@ -6247,7 +6287,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6267,7 +6307,7 @@
                     "_8E96DD7B0D73425BDB318DA6CF0BBF46"
                     {
                     "Name" = "8:System.Text.Encodings.Web.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Text.Encodings.Web.dll"
@@ -6278,7 +6318,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6298,7 +6338,7 @@
                     "_8EE6BF8CB56A919A820001EE3F0B5073"
                     {
                     "Name" = "8:iTextSharp.LGPLv2.Core.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:iTextSharp.LGPLv2.Core.dll"
@@ -6309,7 +6349,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6329,7 +6369,7 @@
                     "_8EFB1FD472B8D55B768817AFA86BE6F5"
                     {
                     "Name" = "8:System.Diagnostics.StackTrace.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.StackTrace.dll"
@@ -6340,7 +6380,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6380,7 +6420,7 @@
                     "_8FF2C50718436BC72E8FE4011004BF58"
                     {
                     "Name" = "8:System.IO.IsolatedStorage.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.IsolatedStorage.dll"
@@ -6391,7 +6431,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6411,7 +6451,7 @@
                     "_90161D134B09CE7941EDE422F8F02340"
                     {
                     "Name" = "8:System.Diagnostics.FileVersionInfo.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.FileVersionInfo.dll"
@@ -6422,7 +6462,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6442,7 +6482,7 @@
                     "_92554824146EF2898646F629B130F638"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.XEvent.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.XEvent.dll"
@@ -6453,7 +6493,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6473,7 +6513,7 @@
                     "_945589B9D737702591EC254C590EB673"
                     {
                     "Name" = "8:System.Diagnostics.TraceSource.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.TraceSource.dll"
@@ -6484,7 +6524,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6504,7 +6544,7 @@
                     "_96204E14F7A2D96C53879754066BA5C1"
                     {
                     "Name" = "8:Microsoft.SqlServer.ConnectionInfo.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.ConnectionInfo.dll"
@@ -6515,7 +6555,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6535,7 +6575,7 @@
                     "_9C0E0BD64B5A80FDC7CC594038F85022"
                     {
                     "Name" = "8:System.ComponentModel.TypeConverter.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ComponentModel.TypeConverter.dll"
@@ -6546,7 +6586,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6566,7 +6606,7 @@
                     "_9C976E2FB4C281A355386FFE0C652AC7"
                     {
                     "Name" = "8:System.Reflection.Extensions.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Reflection.Extensions.dll"
@@ -6577,7 +6617,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6597,7 +6637,7 @@
                     "_9D1A8D0BEAA6A80E0F31ECFBAC61740F"
                     {
                     "Name" = "8:Microsoft.Data.SqlClient.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.Data.SqlClient.dll"
@@ -6608,7 +6648,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6628,7 +6668,7 @@
                     "_9D962630CFE037841DD72F233D925328"
                     {
                     "Name" = "8:System.Runtime.InteropServices.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.InteropServices.dll"
@@ -6639,7 +6679,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6659,7 +6699,7 @@
                     "_9E519843FFDE94053A6C24D69A5C2129"
                     {
                     "Name" = "8:System.Security.Cryptography.Algorithms.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.Cryptography.Algorithms.dll"
@@ -6670,7 +6710,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6690,7 +6730,7 @@
                     "_A04A75229E60BB60619EB429AAF2A327"
                     {
                     "Name" = "8:Microsoft.IdentityModel.Logging.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.IdentityModel.Logging.dll"
@@ -6701,7 +6741,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6721,7 +6761,7 @@
                     "_A2419549B43C874D7A70467C74B13FDC"
                     {
                     "Name" = "8:System.ComponentModel.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ComponentModel.dll"
@@ -6732,7 +6772,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6752,7 +6792,7 @@
                     "_A247966F1A59B542D8106773ABFD7000"
                     {
                     "Name" = "8:System.Numerics.Vectors.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Numerics.Vectors.dll"
@@ -6763,7 +6803,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6783,7 +6823,7 @@
                     "_A310E2DED542EEA004B1DA86303552DD"
                     {
                     "Name" = "8:System.Runtime.Extensions.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.Extensions.dll"
@@ -6794,7 +6834,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6814,7 +6854,7 @@
                     "_A49D34357BC0F3EE463E6994496C34D4"
                     {
                     "Name" = "8:System.Net.WebSockets.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.WebSockets.dll"
@@ -6825,7 +6865,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6845,7 +6885,7 @@
                     "_A531C1F1174F42E7E8F14A85272CA59E"
                     {
                     "Name" = "8:System.Console.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Console.dll"
@@ -6856,7 +6896,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6876,7 +6916,7 @@
                     "_A53DA3E075BA825039731E8590D88A98"
                     {
                     "Name" = "8:System.IO.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.dll"
@@ -6887,7 +6927,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6907,7 +6947,7 @@
                     "_A7AA0C590B3856A44498E83AB0E73432"
                     {
                     "Name" = "8:System.Reflection.Emit.ILGeneration.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Reflection.Emit.ILGeneration.dll"
@@ -6918,7 +6958,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6938,7 +6978,7 @@
                     "_AD015A20B93945EE43B82664EB9D28C1"
                     {
                     "Name" = "8:Microsoft.SqlServer.Smo.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Smo.dll"
@@ -6949,7 +6989,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -6969,7 +7009,7 @@
                     "_AE07DADCE180A116E4C61038AF54BA23"
                     {
                     "Name" = "8:System.ServiceModel.Http.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ServiceModel.Http.dll"
@@ -6980,7 +7020,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7000,7 +7040,7 @@
                     "_AE87BD10E12CDD89B8CBB7D981946BC4"
                     {
                     "Name" = "8:System.Text.Json.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Text.Json.dll"
@@ -7011,7 +7051,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7031,7 +7071,7 @@
                     "_AFB9D767E1E9933B71611327207F9D84"
                     {
                     "Name" = "8:System.Threading.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Threading.dll"
@@ -7042,7 +7082,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7062,7 +7102,7 @@
                     "_AFFF2436EF4DA65B0A0C3EDB3D5AE0E6"
                     {
                     "Name" = "8:System.Threading.Overlapped.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Threading.Overlapped.dll"
@@ -7073,7 +7113,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7093,7 +7133,7 @@
                     "_B026E287AF2970F348C168BD1482EB78"
                     {
                     "Name" = "8:System.Net.WebSockets.Client.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.WebSockets.Client.dll"
@@ -7104,7 +7144,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7124,7 +7164,7 @@
                     "_B063296357F052315702C2392E9CA2D7"
                     {
                     "Name" = "8:System.ComponentModel.Primitives.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ComponentModel.Primitives.dll"
@@ -7135,7 +7175,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7155,7 +7195,7 @@
                     "_B29F86AED8239BE515272CB3054CF3C8"
                     {
                     "Name" = "8:Microsoft.SqlServer.PolicyEnum.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.PolicyEnum.dll"
@@ -7166,7 +7206,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7186,7 +7226,7 @@
                     "_B2FEC22D42E1EACF7E37E6AC42FB2028"
                     {
                     "Name" = "8:System.Security.SecureString.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.SecureString.dll"
@@ -7197,7 +7237,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7217,7 +7257,7 @@
                     "_B4962197CFF7475C1DB9941D9B3B75DE"
                     {
                     "Name" = "8:Microsoft.SqlServer.RegSvrEnum.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.RegSvrEnum.dll"
@@ -7228,7 +7268,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7248,7 +7288,7 @@
                     "_B6894319CC1AF8714439DF5525CC9218"
                     {
                     "Name" = "8:System.ValueTuple.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ValueTuple.dll"
@@ -7259,7 +7299,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7279,7 +7319,7 @@
                     "_B7808884676F14D157F9944E5ED3A333"
                     {
                     "Name" = "8:System.Globalization.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Globalization.dll"
@@ -7290,7 +7330,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7310,7 +7350,7 @@
                     "_B920DD39115B89940E0F4C49D649DE04"
                     {
                     "Name" = "8:System.Xml.XmlDocument.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Xml.XmlDocument.dll"
@@ -7321,7 +7361,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7341,7 +7381,7 @@
                     "_BA0E708620F46D0C8F2443A77F88BEA0"
                     {
                     "Name" = "8:System.Diagnostics.Contracts.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.Contracts.dll"
@@ -7352,7 +7392,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7372,7 +7412,7 @@
                     "_BA59EDA9B94182465C8F50F9DCAD6016"
                     {
                     "Name" = "8:System.IO.FileSystem.Watcher.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.FileSystem.Watcher.dll"
@@ -7383,7 +7423,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7403,7 +7443,7 @@
                     "_BB6C993B8258F1D874328B8FAD80D58C"
                     {
                     "Name" = "8:System.IO.FileSystem.Primitives.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.FileSystem.Primitives.dll"
@@ -7414,7 +7454,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7434,7 +7474,7 @@
                     "_BDF3FE5E855D06F6619EF5E57F70C448"
                     {
                     "Name" = "8:System.Xml.XPath.XDocument.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Xml.XPath.XDocument.dll"
@@ -7445,7 +7485,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7465,7 +7505,7 @@
                     "_BF49862EDDA5D90B83C6EDD9E9E661ED"
                     {
                     "Name" = "8:Microsoft.SqlServer.SqlEnum.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.SqlEnum.dll"
@@ -7476,7 +7516,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7496,7 +7536,7 @@
                     "_C095A1D7604FB019F362EA8A0C960C6A"
                     {
                     "Name" = "8:System.Security.Permissions.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.Permissions.dll"
@@ -7507,7 +7547,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7527,7 +7567,7 @@
                     "_C45BF1206172830E953AA4B90F3C021A"
                     {
                     "Name" = "8:System.Runtime.Serialization.Primitives.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.Serialization.Primitives.dll"
@@ -7538,7 +7578,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7558,7 +7598,7 @@
                     "_C501E47235902D526D6F871C1F31E788"
                     {
                     "Name" = "8:System.Runtime.Serialization.Json.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.Serialization.Json.dll"
@@ -7569,7 +7609,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7609,7 +7649,7 @@
                     "_C64473B5F2ECD87810BF6E50FED95356"
                     {
                     "Name" = "8:Microsoft.IdentityModel.JsonWebTokens.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.IdentityModel.JsonWebTokens.dll"
@@ -7620,7 +7660,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7640,7 +7680,7 @@
                     "_C6F8503F26EACBC2C45C9A250FB613A9"
                     {
                     "Name" = "8:System.Data.Common.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Data.Common.dll"
@@ -7651,7 +7691,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7691,7 +7731,7 @@
                     "_C94C2F72A94C7D5A74E6E6AE5B9E021B"
                     {
                     "Name" = "8:System.Runtime.Serialization.Xml.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.Serialization.Xml.dll"
@@ -7702,7 +7742,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7722,7 +7762,7 @@
                     "_CC41CE5827BC746AA35A00D2D3A05AA0"
                     {
                     "Name" = "8:System.IdentityModel.Tokens.Jwt.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IdentityModel.Tokens.Jwt.dll"
@@ -7733,7 +7773,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7753,7 +7793,7 @@
                     "_CD66F3EC4AF5ABCE6196A9960BFCAD08"
                     {
                     "Name" = "8:System.Diagnostics.TextWriterTraceListener.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.TextWriterTraceListener.dll"
@@ -7764,7 +7804,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7804,7 +7844,7 @@
                     "_D3EBF8255A2407791D229A570BEEAFFE"
                     {
                     "Name" = "8:System.IO.Compression.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.Compression.dll"
@@ -7815,7 +7855,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7835,7 +7875,7 @@
                     "_D50BC2888D553CC6CFBAAED0BF609AAC"
                     {
                     "Name" = "8:System.Security.Claims.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.Claims.dll"
@@ -7846,7 +7886,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7866,7 +7906,7 @@
                     "_D6E442E84D51C302E25CAE1213DB6858"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.Assessment.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.Assessment.dll"
@@ -7877,7 +7917,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7897,7 +7937,7 @@
                     "_D8384F0B6D191F0C18CDA7C2B13ADC67"
                     {
                     "Name" = "8:Microsoft.SqlServer.SqlWmiManagement.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.SqlWmiManagement.dll"
@@ -7908,7 +7948,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7928,7 +7968,7 @@
                     "_D83F9FFF8275D45B4AB554AD5C16ED7D"
                     {
                     "Name" = "8:Microsoft.SqlServer.SmoExtended.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.SmoExtended.dll"
@@ -7939,7 +7979,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7959,7 +7999,7 @@
                     "_D9140220BD5D235EB1DC5BD3E8D0CB66"
                     {
                     "Name" = "8:System.Runtime.CompilerServices.Unsafe.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Runtime.CompilerServices.Unsafe.dll"
@@ -7970,7 +8010,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -7990,7 +8030,7 @@
                     "_DAECCB7FA89D6C99A7248B0AFDAE0BE0"
                     {
                     "Name" = "8:System.Security.Cryptography.Encoding.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.Cryptography.Encoding.dll"
@@ -8001,7 +8041,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8021,7 +8061,7 @@
                     "_DDBCCA1DBB4C4E432B04BCEEDDD24D2D"
                     {
                     "Name" = "8:System.Memory.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Memory.dll"
@@ -8032,7 +8072,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8072,7 +8112,7 @@
                     "_DFAA5BD7CDA3CC026831455220B9C4E1"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.SqlScriptPublish.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.SqlScriptPublish.dll"
@@ -8083,7 +8123,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8103,7 +8143,7 @@
                     "_E1C9B0D24E54F9A0AB59236D5BA67386"
                     {
                     "Name" = "8:System.Threading.Tasks.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Threading.Tasks.dll"
@@ -8114,7 +8154,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8134,7 +8174,7 @@
                     "_E2B18C0DF42B664629BF25235DA7E351"
                     {
                     "Name" = "8:System.AppContext.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.AppContext.dll"
@@ -8145,7 +8185,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8165,7 +8205,7 @@
                     "_E2B95D74221F2F819B368F3C26902001"
                     {
                     "Name" = "8:System.Diagnostics.Tracing.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.Tracing.dll"
@@ -8176,7 +8216,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8216,7 +8256,7 @@
                     "_E7D37F1C326F579D543018877C430E13"
                     {
                     "Name" = "8:System.Security.Cryptography.Primitives.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Security.Cryptography.Primitives.dll"
@@ -8227,7 +8267,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8247,7 +8287,7 @@
                     "_E965BFD0436F19A645D90DAFF61D728F"
                     {
                     "Name" = "8:System.IO.FileSystem.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.FileSystem.dll"
@@ -8258,7 +8298,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8278,7 +8318,7 @@
                     "_EA68B4BCC8AFFA29FC690760A52552D5"
                     {
                     "Name" = "8:System.IO.Pipes.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.IO.Pipes.dll"
@@ -8289,7 +8329,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8309,7 +8349,7 @@
                     "_EC25E12B44486281E1820DAAFE4F4F40"
                     {
                     "Name" = "8:System.Net.NameResolution.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.NameResolution.dll"
@@ -8320,7 +8360,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8340,7 +8380,7 @@
                     "_ECDF4D8CD599FF0501040E7A5361607D"
                     {
                     "Name" = "8:System.Net.Security.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.Security.dll"
@@ -8351,7 +8391,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8371,7 +8411,7 @@
                     "_EE3BD5F37AF24578BB4CCFDE3A0DD11D"
                     {
                     "Name" = "8:System.Reflection.Emit.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Reflection.Emit.dll"
@@ -8382,7 +8422,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8402,7 +8442,7 @@
                     "_EE87E9D6C049A8DA6707ADB4AC02F54F"
                     {
                     "Name" = "8:System.Collections.Concurrent.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Collections.Concurrent.dll"
@@ -8413,7 +8453,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8433,7 +8473,7 @@
                     "_F11EB58C56EC86FD125D647A2B9312FC"
                     {
                     "Name" = "8:System.Resources.ResourceManager.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Resources.ResourceManager.dll"
@@ -8444,7 +8484,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8464,7 +8504,7 @@
                     "_F520332A93E0D6A9E08B506F070D4CCC"
                     {
                     "Name" = "8:System.Net.Requests.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.Requests.dll"
@@ -8475,7 +8515,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8495,7 +8535,7 @@
                     "_F52040D292A8B55E6C19AAADE1DAFE85"
                     {
                     "Name" = "8:System.ServiceModel.NetTcp.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.ServiceModel.NetTcp.dll"
@@ -8506,7 +8546,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8526,7 +8566,7 @@
                     "_F724938140E45713829C3D50A92BD2A8"
                     {
                     "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
@@ -8537,7 +8577,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8557,7 +8597,7 @@
                     "_F8603071A51568A9345D5298B83FD45C"
                     {
                     "Name" = "8:System.Text.Encoding.Extensions.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Text.Encoding.Extensions.dll"
@@ -8568,7 +8608,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8588,7 +8628,7 @@
                     "_F8633F3F832671DC609BB9166394821E"
                     {
                     "Name" = "8:System.Net.Ping.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Net.Ping.dll"
@@ -8599,7 +8639,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8619,7 +8659,7 @@
                     "_FAF00F59736B695B65291E37B06D7E7B"
                     {
                     "Name" = "8:Microsoft.SqlServer.Smo.Notebook.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Smo.Notebook.dll"
@@ -8630,7 +8670,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8650,7 +8690,7 @@
                     "_FC3A0E360334E74BA4DC2D08601FBE74"
                     {
                     "Name" = "8:Microsoft.SqlServer.Management.HadrModel.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:Microsoft.SqlServer.Management.HadrModel.dll"
@@ -8661,7 +8701,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8681,7 +8721,7 @@
                     "_FF5EF9EE5CD96271255277990EFF71D7"
                     {
                     "Name" = "8:System.Xml.ReaderWriter.dll"
-                    "Attributes" = "3:514"
+                    "Attributes" = "3:512"
                     }
                 }
             "SourcePath" = "8:System.Xml.ReaderWriter.dll"
@@ -8692,7 +8732,7 @@
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:TRUE"
+            "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
@@ -8792,7 +8832,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ForceTools"
         "ProductCode" = "8:{3305BA4F-6AC8-4A3E-B291-C16E5C17C810}"
-        "PackageCode" = "8:{2FE975BD-0D92-4C71-8964-D9891AB975CF}"
+        "PackageCode" = "8:{B8591EF1-C219-41B5-8C94-AAD9E775E4F6}"
         "UpgradeCode" = "8:{6A90C5C8-8DF0-449E-A955-5DF7613D20DA}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -9311,9 +9351,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0445CC961E1A4F05B30444A4A111D587"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_83F2FC06E8C94B5AA6606A550FA48A53"
             {
-            "SourcePath" = "8:..\\ForceTools\\obj\\Release\\ForceTools.exe"
+            "SourcePath" = "8:..\\ForceTools\\obj\\Debug\\ForceTools.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_C74AB521AE144E8286BDABE2516C8695"
@@ -9334,6 +9374,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{8035C889-E2FA-4A4B-99C6-9089F51DC803}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8BB1D680FEE041BA84AED3D8F442B94A"
+            {
+            "SourcePath" = "8:..\\ForceToolsUpdater\\obj\\Debug\\ForceToolsUpdater.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_C74AB521AE144E8286BDABE2516C8695"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{0CF19CB9-F52A-4255-B5B2-9A3B714A5BDB}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
