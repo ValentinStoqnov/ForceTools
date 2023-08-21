@@ -1,26 +1,12 @@
-﻿using ForceTools.ViewModels;
-using iTextSharp.text;
-using Microsoft.SqlServer.Management.Smo;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Data.Sql;
-using System.Data.SqlClient;
+﻿using System;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
+using System.Net;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace ForceTools.WPF_Windows
 {
-    /// <summary>
-    /// Interaction logic for LoginWindow.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
         public string Account { get; set; }
@@ -31,13 +17,39 @@ namespace ForceTools.WPF_Windows
         public LoginWindow()
         {
             InitializeComponent();
-            //SqlConnectionsHandler.RemoveSavedServersFromConfig();
             PasswordTb.Focus();
             //Account = "sa";
             //Password = "1";
             FileSystemHelper.CheckAndCreateDatabaseFolder();
             FileSystemHelper.CheckAndCreateTempFolder();
             SetUpWindowControls();
+        }
+
+        private void CheckForUpdates()
+        {
+
+            Version localVersion = new Version(Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            VersionLabel.Content = $"v: {localVersion}";
+
+            try
+            {
+                WebClient webClient = new WebClient();
+                Version onlineVersion = new Version(webClient.DownloadString("https://raw.githubusercontent.com/ValentinStoqnov/ForceToolsUpdateFiles/main/Version"));
+                int isVersionNewerResult = onlineVersion.CompareTo(localVersion);
+                if (isVersionNewerResult == 1)
+                {
+                    var messageBoxResult = MessageBox.Show($"Налична е нова версия на ForceTools: {onlineVersion}, искате ли да обновите програмата?","Нова версия",MessageBoxButton.YesNo,MessageBoxImage.Question);
+                    if (messageBoxResult == MessageBoxResult.Yes)
+                    {
+                        this.Close();
+                        Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"/ForceToolsUpdater.exe");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking for updates: {ex}");
+            }
         }
 
         private async Task GetServers()
@@ -76,7 +88,7 @@ namespace ForceTools.WPF_Windows
                 UiNavigationHelper.OpenMainWindow(Account);
                 this.Close();
             }
-            else 
+            else
             {
                 if (isFirstTimeLogin == true)
                 {
@@ -125,5 +137,9 @@ namespace ForceTools.WPF_Windows
             LoadingAnimationMe.Position = new TimeSpan(0, 0, 1);
         }
 
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            CheckForUpdates();
+        }
     }
 }
