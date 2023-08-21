@@ -326,6 +326,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ResourceDictionaries\ColorsDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WPF Pages\FirmPackets.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -602,9 +606,7 @@
   <ItemGroup>
     <Resource Include="Assets\PassIconBlack.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ResourceDictionaries\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Assets\ExcelPlaceholderImage.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
