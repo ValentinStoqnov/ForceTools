@@ -60,6 +60,8 @@
         </StackPanel>
         <Button x:Name="FinishEditBtn" 
                 Height="30"
+                Background="{StaticResource ButtonBackgroundBlueBrush}"
+                Foreground="{StaticResource ButtonForegroundLightBrush}"
                 VerticalAlignment="Bottom"
                 Content="Редактирай" 
                 Grid.Row="1"
