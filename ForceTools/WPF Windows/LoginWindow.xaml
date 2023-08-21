@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ForceTools.WPF_Windows"
         mc:Ignorable="d"
-        Height="650" Width="800" WindowStartupLocation="CenterScreen">
+        Height="650" Width="800" WindowStartupLocation="CenterScreen" ContentRendered="Window_ContentRendered">
     <Window.Icon>
         <DrawingImage />
     </Window.Icon>
@@ -117,5 +117,10 @@
                 </Button.Resources>
             </Button>
         </StackPanel>
+        <Label x:Name="VersionLabel" 
+               Content="v:" 
+               Grid.Row="3" 
+               HorizontalAlignment="Right"
+               VerticalAlignment="Bottom"/>
     </Grid>
 </Window>
