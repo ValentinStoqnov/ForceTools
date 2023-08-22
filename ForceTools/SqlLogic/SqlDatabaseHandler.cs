@@ -5,7 +5,7 @@ using System.Data;
 using System.Windows;
 using System.Collections.ObjectModel;
 using ForceTools.Models;
-using Microsoft.SqlServer.Management.Smo;
+using System.Collections.Generic;
 
 namespace ForceTools
 {
@@ -14,12 +14,8 @@ namespace ForceTools
         // SqlConnectionString ---> Dynamic Connection string for Database use
         // DefaultServerString ---> Dynamic Connection string for Server use
 
-
-        private static string DataFolderPath = AppDomain.CurrentDomain.BaseDirectory + "\\Database";
-
-        public static void CreateNewDatabase(string DbName, string Connection)
+        private static void CreateDatabase(string DbName, string Connection)
         {
-            #region Creating The Database
             using (var con = new SqlConnection(Connection))
             {
                 #region Code for instantiating filenames - Unused
@@ -35,7 +31,7 @@ namespace ForceTools
                 //    filenameLdf = baseName + ++i + ".ldf";
                 //} while (filesMdf.Contains(filenameMdf) && filesLdf.Contains(filenameLdf));
                 #endregion
-                string DbLocation = System.IO.Path.Combine(DataFolderPath, DbName);
+                string DbLocation = System.IO.Path.Combine(FileSystemHelper.DataFolderPath, DbName);
 
                 string Dbstr = "CREATE DATABASE " + $"\"{DbName}\"" + " ON PRIMARY " +
                 "(NAME = " + $"\"{DbName}\"" + "," +
@@ -53,11 +49,11 @@ namespace ForceTools
                     {
                         con.Open();
                         myCommand.ExecuteNonQuery();
-                        MessageBox.Show("DataBase is Created Successfully", "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (System.Exception ex)
                     {
                         MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
                     }
                     finally
                     {
@@ -68,27 +64,104 @@ namespace ForceTools
                     }
                 }
             }
-            #endregion
-            #region Creating The Tables
-            //New DB connection String
-            string ConStringForTheNewlyCreatedDB = $"{ConfigurationManager.ConnectionStrings["DefaultSqlConnection"].ConnectionString};Initial Catalog={DbName}"; ;
+        }
+        private static void CreateTables(string ConStringForTheNewlyCreatedDB)
+        {
+            List<string> SqlTablesCreationQuarryList = new List<string>();
+            //Fakturi Table
+            SqlTablesCreationQuarryList.Add(@"CREATE TABLE [dbo].[Fakturi] (
+                                                 [Id]                     INT             IDENTITY (1, 1) NOT NULL,
+                                                 [DocPayableReceivableId] INT             NULL,
+                                                 [KontragentiId]          BIGINT          NULL,
+                                                 [AccDate]                DATE            NULL,
+                                                 [Date]                   DATE            NULL,
+                                                 [Number]                 BIGINT          NULL,
+                                                 [DO]                     DECIMAL (18, 2) NULL,
+                                                 [DDS]                    DECIMAL (18, 2) NULL,
+                                                 [FullValue]              DECIMAL (18, 2) NULL,
+                                                 [DealKindId]             INT             NULL,
+                                                 [DocTypeId]              INT             NULL,
+                                                 [Account]                INT             NULL,
+                                                 [InCashAccount]          INT             NULL,
+                                                 [Note]                   NVARCHAR (50)   NULL,
+                                                 [Image]                  IMAGE           NULL,
+                                                 [AccountingStatusId]     INT             NULL,
+                                                 [PurchaseOrSale]         NVARCHAR (20)   NULL,
+                                                 PRIMARY KEY CLUSTERED ([Id] ASC)
+                                             );");
 
-            #region Creating Fakturi Table
+            SqlTablesCreationQuarryList.Add(@"CREATE TABLE [dbo].[AccountingStatuses] (
+                                                [Id]               INT        NOT NULL,
+                                                [AccountingStatus] NCHAR (15) NOT NULL,
+                                                PRIMARY KEY CLUSTERED ([Id] ASC)
+                                            );");
+            SqlTablesCreationQuarryList.Add(@"CREATE TABLE [dbo].[ImportList] (
+                                                [Id]                 INT             IDENTITY (1, 1) NOT NULL,
+                                                [KontragentiId]      BIGINT          NULL,
+                                                [Date]               DATE            NULL,
+                                                [Number]             BIGINT          NULL,
+                                                [DO]                 DECIMAL (18, 2) NULL,
+                                                [DDS]                DECIMAL (18, 2) NULL,
+                                                [FullValue]          DECIMAL (18, 2) NULL,
+                                                [AccountingStatusId] INT             NULL,
+                                                [NameAndEik]         NVARCHAR (50)   NULL,
+                                                PRIMARY KEY CLUSTERED ([Id] ASC)
+                                            );");
+            SqlTablesCreationQuarryList.Add(@"CREATE TABLE [dbo].[Kontragenti] (
+                                                [Id]             INT           IDENTITY (1, 1) NOT NULL,
+                                                [Name]           NVARCHAR (50) NULL,
+                                                [EIK]            NVARCHAR (12) NULL,
+                                                [DDSNumber]      NVARCHAR (50) NULL,
+                                                [LastUsedDataId] INT           NULL,
+                                                PRIMARY KEY CLUSTERED ([Id] ASC)
+                                            );");
+            SqlTablesCreationQuarryList.Add(@"CREATE TABLE [dbo].[KindOfDeals] (
+                                                [Id]         INT           NOT NULL,
+                                                [Percentage] NVARCHAR (5)  NULL,
+                                                [DealName]   NVARCHAR (50) NULL,
+                                                PRIMARY KEY CLUSTERED ([Id] ASC)
+                                            );");
+            SqlTablesCreationQuarryList.Add(@"CREATE TABLE [dbo].[DocumentTypes] (
+                                                [Id]       INT           NOT NULL,
+                                                [TypeName] NVARCHAR (30) NULL,
+                                                PRIMARY KEY CLUSTERED ([Id] ASC)
+                                            );");
+            SqlTablesCreationQuarryList.Add(@"CREATE TABLE [dbo].[Accounts] (
+                                                [Account]     INT           NOT NULL,
+                                                [AccountName] NVARCHAR (65) NULL,
+                                                PRIMARY KEY CLUSTERED ([Account] ASC)
+                                            );");
+            SqlTablesCreationQuarryList.Add(@"CREATE TABLE [dbo].[DefaultValues] (
+                                            	[Id] INT NOT NULL PRIMARY KEY, 
+                                                [Name] NVARCHAR(50) NULL, 
+                                                [Value] NVARCHAR(50) NULL
+                                            )");
+            SqlTablesCreationQuarryList.Add(@"CREATE TABLE [dbo].[LastUsedKontragentData] (
+                                                [Id]           INT           IDENTITY (1, 1) NOT NULL,
+                                                [PurchaseAcc]  INT           NULL,
+                                                [SaleAcc]      INT           NULL,
+                                                [PurchaseNote] NVARCHAR (50) NULL,
+                                                [SaleNote]     NVARCHAR (50) NULL,
+                                                PRIMARY KEY CLUSTERED ([Id] ASC)
+                                            )");
             using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
             {
-                string Dbstr = "CREATE TABLE [dbo].[Fakturi] (\r\n    [Id]                     INT             IDENTITY (1, 1) NOT NULL,\r\n    [DocPayableReceivableId] INT             NULL,\r\n    [KontragentiId]          BIGINT          NULL,\r\n    [AccDate]                DATE            NULL,\r\n    [Date]                   DATE            NULL,\r\n    [Number]                 BIGINT          NULL,\r\n    [DO]                     DECIMAL (18, 2) NULL,\r\n    [DDS]                    DECIMAL (18, 2) NULL,\r\n    [FullValue]              DECIMAL (18, 2) NULL,\r\n    [DealKindId]             INT             NULL,\r\n    [DocTypeId]              INT             NULL,\r\n    [Account]                INT             NULL,\r\n    [InCashAccount]          INT             NULL,\r\n    [Note]                   NVARCHAR (50)   NULL,\r\n    [Image]                  IMAGE           NULL,\r\n    [AccountingStatusId]     INT             NULL,\r\n    [PurchaseOrSale]         NVARCHAR (20)   NULL,\r\n    PRIMARY KEY CLUSTERED ([Id] ASC)\r\n);";
-
-
-                using (var myCommand = new SqlCommand(Dbstr, con))
+                using (var myCommand = new SqlCommand("", con))
                 {
+                    myCommand.Connection = con;
                     try
                     {
                         con.Open();
-                        myCommand.ExecuteNonQuery();
+                        foreach (string quarry in SqlTablesCreationQuarryList)
+                        {
+                            myCommand.CommandText = quarry;
+                            myCommand.ExecuteNonQuery();
+                        }
                     }
-                    catch (System.Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
                     }
                     finally
                     {
@@ -99,158 +172,52 @@ namespace ForceTools
                     }
                 }
             }
+        }
+        private static void InsertDefaultDataInTables(string ConStringForTheNewlyCreatedDB)
+        {
+            string[] QuaryArray = new string[]
+                {
+                    "INSERT INTO DocumentTypes(Id, TypeName) VALUES (1, 'Фактура');",
+                    "INSERT INTO DocumentTypes(Id, TypeName) VALUES (2, 'Дебитно известие');",
+                    "INSERT INTO DocumentTypes(Id, TypeName) VALUES (3, 'Кредитно известие');",
+                    "INSERT INTO DocumentTypes(Id, TypeName) VALUES (4, 'Протокол или друг документ');",
 
-            #endregion
-            #region Creating AccountingStatuses Table
-            using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
+                    "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (1, 'Нови');",
+                    "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (2, 'Неосчетоводени');",
+                    "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (3, 'ГотовиЗаЕкспорт');",
+                    "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (4, 'Експортирани');",
+                    "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (5, 'Осчетоводени');",
+
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (21, '20%','Продажба със ставка 20%');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (24, '9%','Продажба със ставка 9%');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (25, '0%','Продажба със ставка 0%');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (12, '20%','Покупка с пълен ДК');",
+
+                    "INSERT INTO DefaultValues(Id, Name, Value) VALUES (1, 'Покупки Сметка', 602);",
+                    "INSERT INTO DefaultValues(Id, Name, Value) VALUES (2, 'Продажби Сметка', 703);",
+                    "INSERT INTO DefaultValues(Id, Name, Value) VALUES (3, 'Каса Сметка', 503);",
+                    "INSERT INTO DefaultValues(Id, Name) VALUES (4, 'Бележка покупка');",
+                    "INSERT INTO DefaultValues(Id, Name) VALUES (5, 'Бележка продажба');",
+                };
+
+            using (var myCommand = new SqlCommand())
             {
-                #region Creating the Table
-
-                string Dbstr = "CREATE TABLE [dbo].[AccountingStatuses] (\r\n    [Id]               INT        NOT NULL,\r\n    [AccountingStatus] NCHAR (15) NOT NULL,\r\n    PRIMARY KEY CLUSTERED ([Id] ASC)\r\n);";
-
-
-                using (var myCommand = new SqlCommand(Dbstr, con))
+                using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
                 {
+                    myCommand.Connection = con;
                     try
                     {
                         con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
+                        foreach (string Quarry in QuaryArray)
                         {
-                            con.Close();
+                            myCommand.CommandText = Quarry;
+                            myCommand.ExecuteNonQuery();
                         }
                     }
-                }
-                #endregion
-                #region Adding Info in the table
-                string Addstr = "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (1, 'Нови');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (2, 'Неосчетоводени');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (3, 'ГотовиЗаЕкспорт');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (4, 'Експортирани');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (5, 'Осчетоводени');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                #endregion
-                con.Close();
-            }
-
-            #endregion
-            #region Creating ImportList Table
-            using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
-            {
-                string Dbstr = "CREATE TABLE [dbo].[ImportList] (\r\n    [Id]                 INT             IDENTITY (1, 1) NOT NULL,\r\n    [KontragentiId]      BIGINT          NULL,\r\n    [Date]               DATE            NULL,\r\n    [Number]             BIGINT          NULL,\r\n    [DO]                 DECIMAL (18, 2) NULL,\r\n    [DDS]                DECIMAL (18, 2) NULL,\r\n    [FullValue]          DECIMAL (18, 2) NULL,\r\n    [AccountingStatusId] INT             NULL,\r\n    [NameAndEik]         NVARCHAR (50)   NULL,\r\n    PRIMARY KEY CLUSTERED ([Id] ASC)\r\n);";
-
-
-                using (var myCommand = new SqlCommand(Dbstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
+                        return;
                     }
                     finally
                     {
@@ -261,445 +228,15 @@ namespace ForceTools
                     }
                 }
             }
-            #endregion
-            #region Creating Kontragenti Table
-            using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
-            {
-                string Dbstr = "CREATE TABLE [dbo].[Kontragenti] (\r\n    [Id]             INT           IDENTITY (1, 1) NOT NULL,\r\n    [Name]           NVARCHAR (50) NULL,\r\n    [EIK]            NVARCHAR (12) NULL,\r\n    [DDSNumber]      NVARCHAR (50) NULL,\r\n    [LastUsedDataId] INT           NULL,\r\n    PRIMARY KEY CLUSTERED ([Id] ASC)\r\n);";
+        }
 
-
-                using (var myCommand = new SqlCommand(Dbstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-            }
-            #endregion
-            #region Creating KindOfDeals Table
-            using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
-            {
-                #region Creating the Table
-                string Dbstr = "CREATE TABLE [dbo].[KindOfDeals] (\r\n    [Id]         INT           NOT NULL,\r\n    [Percentage] NVARCHAR (5)  NULL,\r\n    [DealName]   NVARCHAR (50) NULL,\r\n    PRIMARY KEY CLUSTERED ([Id] ASC)\r\n);";
-
-
-                using (var myCommand = new SqlCommand(Dbstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                #endregion
-                #region Adding Info in the table
-                string Addstr = "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (21, '20%','Продажба със ставка 20%');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (24, '9%','Продажба със ставка 9%');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (25, '0%','Продажба със ставка 0%');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (12, '20%','Покупка с пълен ДК');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                #endregion
-            }
-            #endregion
-            #region Creating DocumentTypes Table
-            using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
-            {
-                #region Creating the Table
-                string Dbstr = "CREATE TABLE [dbo].[DocumentTypes] (\r\n    [Id]       INT           NOT NULL,\r\n    [TypeName] NVARCHAR (30) NULL,\r\n    PRIMARY KEY CLUSTERED ([Id] ASC)\r\n);";
-
-
-                using (var myCommand = new SqlCommand(Dbstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                #endregion
-                #region Adding Info in the table
-                string Addstr = "INSERT INTO DocumentTypes(Id, TypeName) VALUES (1, 'Фактура');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO DocumentTypes(Id, TypeName) VALUES (2, 'Дебитно известие');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO DocumentTypes(Id, TypeName) VALUES (3, 'Кредитно известие');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO DocumentTypes(Id, TypeName) VALUES (4, 'Протокол или друг документ');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                #endregion
-            }
-            #endregion
-            #region Creating Accounts Table
-            using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
-            {
-                string Dbstr = "CREATE TABLE [dbo].[Accounts] (\r\n    [Account]     INT           NOT NULL,\r\n    [AccountName] NVARCHAR (65) NULL,\r\n    PRIMARY KEY CLUSTERED ([Account] ASC)\r\n);";
-
-
-                using (var myCommand = new SqlCommand(Dbstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-            }
-            #endregion
-            #region Creating DefaultValues Table
-
-            using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
-            {
-                #region Creating the Table
-                string Dbstr = "CREATE TABLE [dbo].[DefaultValues]\r\n(\r\n\t[Id] INT NOT NULL PRIMARY KEY, \r\n    [Name] NVARCHAR(50) NULL, \r\n    [Value] NVARCHAR(50) NULL\r\n)";
-
-
-                using (var myCommand = new SqlCommand(Dbstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                #endregion
-                #region Adding Info in the table
-                string Addstr = "INSERT INTO DefaultValues(Id, Name, Value) VALUES (1, 'Покупки Сметка', 602);";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO DefaultValues(Id, Name, Value) VALUES (2, 'Продажби Сметка', 703);";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO DefaultValues(Id, Name, Value) VALUES (3, 'Каса Сметка', 503);";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO DefaultValues(Id, Name) VALUES (4, 'Бележка покупка');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                Addstr = "INSERT INTO DefaultValues(Id, Name) VALUES (5, 'Бележка продажба');";
-                using (var myCommand = new SqlCommand(Addstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-                #endregion
-            }
-
-
-            #endregion
-            #region Creating LastUsedKontragentData Table
-            using (var con = new SqlConnection(ConStringForTheNewlyCreatedDB))
-            {
-                string Dbstr = "CREATE TABLE [dbo].[LastUsedKontragentData] (\r\n    [Id]           INT           IDENTITY (1, 1) NOT NULL,\r\n    [PurchaseAcc]  INT           NULL,\r\n    [SaleAcc]      INT           NULL,\r\n    [PurchaseNote] NVARCHAR (50) NULL,\r\n    [SaleNote]     NVARCHAR (50) NULL,\r\n    PRIMARY KEY CLUSTERED ([Id] ASC)\r\n)";
-
-
-                using (var myCommand = new SqlCommand(Dbstr, con))
-                {
-                    try
-                    {
-                        con.Open();
-                        myCommand.ExecuteNonQuery();
-                    }
-                    catch (System.Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString(), "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            con.Close();
-                        }
-                    }
-                }
-            }
-            #endregion
-            #endregion
+        public static void CreateNewDatabase(string DbName, string Connection)
+        {
+            string ConStringForTheNewlyCreatedDB = $"{ConfigurationManager.ConnectionStrings["DefaultSqlConnection"].ConnectionString};Initial Catalog={DbName}";
+            CreateDatabase(DbName, Connection);
+            CreateTables(ConStringForTheNewlyCreatedDB);
+            InsertDefaultDataInTables(ConStringForTheNewlyCreatedDB);
+            MessageBox.Show($"Датабаза \"{DbName}\" е създадена успешно.", "ForceTools", MessageBoxButton.OK, MessageBoxImage.Information);
         }
         public static void DeleteDatabase(string DbName, string Connection)
         {
@@ -820,6 +357,6 @@ namespace ForceTools
                 }
             }
             return databaseObserbavleCollection;
-        }
+        }  
     }
 }
