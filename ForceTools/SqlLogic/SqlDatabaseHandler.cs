@@ -179,7 +179,8 @@ namespace ForceTools
                     "INSERT INTO DocumentTypes(Id, TypeName) VALUES (1, 'Фактура');",
                     "INSERT INTO DocumentTypes(Id, TypeName) VALUES (2, 'Дебитно известие');",
                     "INSERT INTO DocumentTypes(Id, TypeName) VALUES (3, 'Кредитно известие');",
-                    "INSERT INTO DocumentTypes(Id, TypeName) VALUES (4, 'Протокол или друг документ');",
+                    "INSERT INTO DocumentTypes(Id, TypeName) VALUES (7, 'Митническа декларация');",
+                    "INSERT INTO DocumentTypes(Id, TypeName) VALUES (9, 'Протокол или друг документ');",
 
                     "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (1, 'Нови');",
                     "INSERT INTO AccountingStatuses(Id, AccountingStatus) VALUES (2, 'Неосчетоводени');",
