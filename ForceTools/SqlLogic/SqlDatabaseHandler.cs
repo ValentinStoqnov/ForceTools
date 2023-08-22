@@ -68,7 +68,6 @@ namespace ForceTools
         private static void CreateTables(string ConStringForTheNewlyCreatedDB)
         {
             List<string> SqlTablesCreationQuarryList = new List<string>();
-            //Fakturi Table
             SqlTablesCreationQuarryList.Add(@"CREATE TABLE [dbo].[Fakturi] (
                                                  [Id]                     INT             IDENTITY (1, 1) NOT NULL,
                                                  [DocPayableReceivableId] INT             NULL,
@@ -192,6 +191,19 @@ namespace ForceTools
                     "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (24, '9%','Продажба със ставка 9%');",
                     "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (25, '0%','Продажба със ставка 0%');",
                     "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (12, '20%','Покупка с пълен ДК');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (13, '9%','Покупка с частичен ДК');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (22, null,'ВОП');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (26, null,'ВОД');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (171, '0%','Покупка на хляб без право на ДК');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (172, '20%','Покупка на хляб с пълен ДК');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (173, '9%','Покупка на хляб с частичен ДК');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (174, '0%','Продажба на хляб');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (175, null,'ВОП на хляб');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (181, '0%','Покупка на брашно без право на ДК');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (182, '20%','Покупка на брашно с пълен ДК');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (183, '9%','Покупка на брашно с частичен ДК');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (184, '0%','Продажба на брашно');",
+                    "INSERT INTO KindOfDeals(Id, Percentage, DealName) VALUES (185, null,'ВОП на брашно');",
 
                     "INSERT INTO DefaultValues(Id, Name, Value) VALUES (1, 'Покупки Сметка', 602);",
                     "INSERT INTO DefaultValues(Id, Name, Value) VALUES (2, 'Продажби Сметка', 703);",
