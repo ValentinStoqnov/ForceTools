@@ -61,7 +61,7 @@
             <DataGrid x:Name="FinalEditDataGrid" 
                   AutoGenerateColumns="False" 
                   Visibility="Hidden"
-                  Grid.Row="2"
+                  Grid.Row="1"
                   Grid.RowSpan="2"
                   CanUserAddRows="False"
                   HorizontalGridLinesBrush="#FF9E9E9E" 
