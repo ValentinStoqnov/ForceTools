@@ -10,26 +10,28 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <Button x:Name="UploadExcelBtn" Grid.Row="0" Content="Качване на Excel лист" Click="UploadExcelBtn_Click" Style="{StaticResource UploaderButton}"/>
-        <WrapPanel Grid.Row="1" Orientation="Horizontal">
-            <Label x:Name="DocTypeLbl" Content="Тип Документ" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
-            <Label x:Name="DocNumLbl" Content="Номер Документ" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
-            <Label x:Name="DateLbl" Content="Дата" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+        <Border Grid.Row="1" BorderThickness="0,1" BorderBrush="Gray">
+            <WrapPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Label x:Name="DocTypeLbl" Content="Тип Документ" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+                <Label x:Name="DocNumLbl" Content="Номер Документ" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+                <Label x:Name="DateLbl" Content="Дата" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
 
-            <Label x:Name="KontLbl" Content="Контрагент" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
-            <Label x:Name="EikLbl" Content="ЕИК" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
-            <Label x:Name="DdsNumLbl" Content="ДДС Номер" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+                <Label x:Name="KontLbl" Content="Контрагент" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+                <Label x:Name="EikLbl" Content="ЕИК" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+                <Label x:Name="DdsNumLbl" Content="ДДС Номер" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
 
-            <Label x:Name="DoLbl" Content="ДО" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
-            <Label x:Name="DdsLbl" Content="ДДС" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
-            <Label x:Name="FullValueLbl" Content="Общо" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
-            <Label x:Name="InCashLbl" Content="Плащане в брой" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+                <Label x:Name="DoLbl" Content="ДО" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+                <Label x:Name="DdsLbl" Content="ДДС" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+                <Label x:Name="FullValueLbl" Content="Общо" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
+                <Label x:Name="InCashLbl" Content="Плащане в брой" Background="Gray" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
             </WrapPanel>
+        </Border>
         <ScrollViewer x:Name="ComboBoxesScrollViewer" Grid.Row="2" 
                       VerticalScrollBarVisibility="Hidden" 
                       HorizontalScrollBarVisibility="Hidden">
@@ -41,7 +43,16 @@
 
             </StackPanel>
         </ScrollViewer>
-        <DataGrid x:Name="ExcelDataGrid" Grid.Row="3" MinColumnWidth="100" ColumnWidth="100" ScrollViewer.ScrollChanged="ExcelDataGrid_ScrollChanged" CanUserReorderColumns="False"/>
+        <DataGrid x:Name="ExcelDataGrid" 
+                  Grid.Row="3" 
+                  MinColumnWidth="100" 
+                  ColumnWidth="100" 
+                  ScrollViewer.ScrollChanged="ExcelDataGrid_ScrollChanged" 
+                  CanUserReorderColumns="False"
+                  HorizontalGridLinesBrush="#FF9E9E9E" 
+                  VerticalGridLinesBrush="#FF9E9E9E"
+                  BorderBrush="Gray" 
+                  BorderThickness="0,1"/>
         <DataGrid x:Name="FinalEditDataGrid" 
                   AutoGenerateColumns="False" 
                   Visibility="Hidden"
@@ -50,6 +61,7 @@
                   CanUserAddRows="False"
                   HorizontalGridLinesBrush="#FF9E9E9E" 
                   VerticalGridLinesBrush="#FF9E9E9E"
+                  BorderThickness="0,1"
                   PreviewKeyDown="FinalEditDataGrid_PreviewKeyDown"
                   ItemsSource="{Binding FinalEditDataTable, RelativeSource={RelativeSource AncestorType=Window},UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.BorderBrush>
@@ -236,7 +248,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="AddDocumentsBtn" Grid.Row="4" Content="Добави документите" Click="AddDocumentsBtn_Click" Style="{StaticResource UploaderButton}"/>
+        <Button x:Name="AddDocumentsBtn" Grid.Row="4" Content="Добави документите" Click="AddDocumentsBtn_Click" IsEnabled="False" Style="{StaticResource UploaderButton}"/>
         <Button x:Name="ConfirmFinalEditBtn" Grid.Row="4" Content="Запиши документите" Click="ConfirmFinalEditBtn_Click" Visibility="Hidden" Style="{StaticResource UploaderButton}"/>
 
     </Grid>
