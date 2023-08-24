@@ -69,6 +69,77 @@ namespace ForceTools.WPF_Windows
                 newCb.SelectionChanged += NewCb_SelectionChanged;
             }
         }
+        private void SetLabelsBackgroundColorAccordingToFields()
+        {
+            comboBoxSelectedIndexesList.Clear();
+            foreach (var comboBox in comboBoxList)
+            {
+                comboBoxSelectedIndexesList.Add(comboBox.SelectedIndex);
+                if (comboBox.SelectedIndex == 1) DocNumLbl.Background = Brushes.Green;
+                if (comboBox.SelectedIndex == 2) DateLbl.Background = Brushes.Green;
+                if (comboBox.SelectedIndex == 3) KontLbl.Background = Brushes.Green;
+                if (comboBox.SelectedIndex == 4) EikLbl.Background = Brushes.Green;
+                if (comboBox.SelectedIndex == 5) DdsNumLbl.Background = Brushes.Green;
+                if (comboBox.SelectedIndex == 6) DoLbl.Background = Brushes.Green;
+                if (comboBox.SelectedIndex == 7) DdsLbl.Background = Brushes.Green;
+                if (comboBox.SelectedIndex == 8) FullValueLbl.Background = Brushes.Green;
+                if (comboBox.SelectedIndex == 9) { EikLbl.Background = Brushes.Green; DdsNumLbl.Background = Brushes.Green; }
+                if (comboBox.SelectedIndex == 10) DocTypeLbl.Background = Brushes.Green;
+                if (comboBox.SelectedIndex == 11) InCashLbl.Background = Brushes.Green;
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                if (comboBoxSelectedIndexesList.Contains(1) == false) DocNumLbl.Background = Brushes.Red;
+                if (comboBoxSelectedIndexesList.Contains(2) == false) DateLbl.Background = Brushes.Red;
+                if (comboBoxSelectedIndexesList.Contains(3) == false) KontLbl.Background = Brushes.Red;
+                if (comboBoxSelectedIndexesList.Contains(4) == false && comboBoxSelectedIndexesList.Contains(9) == false) EikLbl.Background = Brushes.Red;
+                if (comboBoxSelectedIndexesList.Contains(5) == false && comboBoxSelectedIndexesList.Contains(9) == false) DdsNumLbl.Background = Brushes.Red;
+                if (comboBoxSelectedIndexesList.Contains(6) == false) DoLbl.Background = Brushes.Red;
+                if (comboBoxSelectedIndexesList.Contains(7) == false) DdsLbl.Background = Brushes.Red;
+                if (comboBoxSelectedIndexesList.Contains(8) == false && comboBoxSelectedIndexesList.Contains(6) && comboBoxSelectedIndexesList.Contains(7)) FullValueLbl.Background = Brushes.Blue;
+                else if (comboBoxSelectedIndexesList.Contains(8) == false) FullValueLbl.Background = Brushes.Red;
+                if (comboBoxSelectedIndexesList.Contains(10) == false) DocTypeLbl.Background = Brushes.Blue;
+                if (comboBoxSelectedIndexesList.Contains(11) == false) InCashLbl.Background = Brushes.Blue;
+            }
+        }
+        private void CheckIfAllMendatoryComboBoxFieldsAreFilled(List<int> comboBoxSelectedIndexesList)
+        {
+            if (comboBoxSelectedIndexesList.Contains(1) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(2) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(3) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(4) == false && comboBoxSelectedIndexesList.Contains(9) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(5) == false && comboBoxSelectedIndexesList.Contains(9) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(6) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(7) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            AddDocumentsBtn.IsEnabled = true;
+        }
+
         private void UploadExcelBtn_Click(object sender, RoutedEventArgs e)
         {
             string filePath = FileSystemHelper.OpenFileDialogAndGetExcelFilePath();
@@ -76,6 +147,7 @@ namespace ForceTools.WPF_Windows
             excelDataTable = excelReader.GetDataTable(filePath);
             ExcelDataGrid.ItemsSource = excelDataTable.DefaultView;
             CreateComboBoxes();
+            SetLabelsBackgroundColorAccordingToFields();
         }
         private void AddDocumentsBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -133,86 +205,15 @@ namespace ForceTools.WPF_Windows
             FinalEditDataGrid.SelectedIndex = InsertPosition;
             FinalEditDataGrid.CurrentCell = new DataGridCellInfo(FinalEditDataGrid.Items[InsertPosition], FinalEditDataGrid.Columns[1]);
         }
+
         private void NewCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            comboBoxSelectedIndexesList.Clear();
-            foreach (var comboBox in comboBoxList)
-            {
-                comboBoxSelectedIndexesList.Add(comboBox.SelectedIndex);
-                if (comboBox.SelectedIndex == 1) DocNumLbl.Background = Brushes.Green;
-                if (comboBox.SelectedIndex == 2) DateLbl.Background = Brushes.Green;
-                if (comboBox.SelectedIndex == 3) KontLbl.Background = Brushes.Green;
-                if (comboBox.SelectedIndex == 4) EikLbl.Background = Brushes.Green;
-                if (comboBox.SelectedIndex == 5) DdsNumLbl.Background = Brushes.Green;
-                if (comboBox.SelectedIndex == 6) DoLbl.Background = Brushes.Green;
-                if (comboBox.SelectedIndex == 7) DdsLbl.Background = Brushes.Green;
-                if (comboBox.SelectedIndex == 8) FullValueLbl.Background = Brushes.Green;
-                if (comboBox.SelectedIndex == 9) { EikLbl.Background = Brushes.Green; DdsNumLbl.Background = Brushes.Green; }
-                if (comboBox.SelectedIndex == 10) DocTypeLbl.Background = Brushes.Green;
-                if (comboBox.SelectedIndex == 11) InCashLbl.Background = Brushes.Green;
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                if (comboBoxSelectedIndexesList.Contains(1) == false) DocNumLbl.Background = Brushes.Red;
-                if (comboBoxSelectedIndexesList.Contains(2) == false) DateLbl.Background = Brushes.Red;
-                if (comboBoxSelectedIndexesList.Contains(3) == false) KontLbl.Background = Brushes.Red;
-                if (comboBoxSelectedIndexesList.Contains(4) == false && comboBoxSelectedIndexesList.Contains(9) == false) EikLbl.Background = Brushes.Red;
-                if (comboBoxSelectedIndexesList.Contains(5) == false && comboBoxSelectedIndexesList.Contains(9) == false) DdsNumLbl.Background = Brushes.Red;
-                if (comboBoxSelectedIndexesList.Contains(6) == false) DoLbl.Background = Brushes.Red;
-                if (comboBoxSelectedIndexesList.Contains(7) == false) DdsLbl.Background = Brushes.Red;
-                if (comboBoxSelectedIndexesList.Contains(8) == false && comboBoxSelectedIndexesList.Contains(6) && comboBoxSelectedIndexesList.Contains(7)) FullValueLbl.Background = Brushes.Blue;
-                else if (comboBoxSelectedIndexesList.Contains(8) == false) FullValueLbl.Background = Brushes.Red;
-                if (comboBoxSelectedIndexesList.Contains(10) == false) DocTypeLbl.Background = Brushes.Blue;
-                if (comboBoxSelectedIndexesList.Contains(11) == false) InCashLbl.Background = Brushes.Blue; 
-            }
+            SetLabelsBackgroundColorAccordingToFields();
             CheckIfAllMendatoryComboBoxFieldsAreFilled(comboBoxSelectedIndexesList);
         }
-
-        private void CheckIfAllMendatoryComboBoxFieldsAreFilled(List<int> comboBoxSelectedIndexesList)
-        {
-            if (comboBoxSelectedIndexesList.Contains(1) == false)
-            {
-                AddDocumentsBtn.IsEnabled = false;
-                return;
-            }
-            if (comboBoxSelectedIndexesList.Contains(2) == false)
-            {
-                AddDocumentsBtn.IsEnabled = false;
-                return;
-            }
-            if (comboBoxSelectedIndexesList.Contains(3) == false)
-            {
-                AddDocumentsBtn.IsEnabled = false;
-                return;
-            }
-            if (comboBoxSelectedIndexesList.Contains(4) == false && comboBoxSelectedIndexesList.Contains(9) == false)
-            {
-                AddDocumentsBtn.IsEnabled = false;
-                return;
-            }
-            if (comboBoxSelectedIndexesList.Contains(5) == false && comboBoxSelectedIndexesList.Contains(9) == false)
-            {
-                AddDocumentsBtn.IsEnabled = false;
-                return;
-            }
-            if (comboBoxSelectedIndexesList.Contains(6) == false)
-            {
-                AddDocumentsBtn.IsEnabled = false;
-                return;
-            }
-            if (comboBoxSelectedIndexesList.Contains(7) == false)
-            {
-                AddDocumentsBtn.IsEnabled = false;
-                return;
-            }
-            AddDocumentsBtn.IsEnabled = true;
-        }
-
         private void ExcelDataGrid_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             ComboBoxesScrollViewer.ScrollToHorizontalOffset(e.HorizontalOffset);
-        }
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void DocTypeEditingTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -347,6 +348,9 @@ namespace ForceTools.WPF_Windows
             return null;
         }
 
-        
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
