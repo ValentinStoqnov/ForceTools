@@ -77,19 +77,6 @@ namespace ForceTools.WPF_Windows
             ExcelDataGrid.ItemsSource = excelDataTable.DefaultView;
             CreateComboBoxes();
         }
-        private void ConfirmFinalEditBtn_Click(object sender, RoutedEventArgs e)
-        {
-            int currentRow = 0;
-            int totalRows = excelDataTable.Rows.Count;
-            while (currentRow < totalRows)
-            {
-                InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromExcelUploader(_operationType, currentRow, FinalEditDataTable);
-                currentRow++;
-            }
-            MessageBox.Show($"Добавени са {totalRows} документа.");
-            this.Close();
-            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.UnAccountedDocuments, _operationType);
-        }
         private void AddDocumentsBtn_Click(object sender, RoutedEventArgs e)
         {
             int currentRow = 0;
@@ -110,10 +97,10 @@ namespace ForceTools.WPF_Windows
             FinalEditDataTable.Columns.Add("DocType");
             FinalEditDataTable.Columns.Add("DealKind");
 
-            
+
             while (currentRow < totalRows)
             {
-                ExcelExtractedDataInterpreter interpreter = new ExcelExtractedDataInterpreter(_operationType,currentRow,comboBoxList,excelDataTable);
+                ExcelExtractedDataInterpreter interpreter = new ExcelExtractedDataInterpreter(_operationType, currentRow, comboBoxList, excelDataTable);
                 FinalEditDataTable.Rows.Add(interpreter.GetInterpreterDataRow());
                 currentRow++;
             }
@@ -122,6 +109,19 @@ namespace ForceTools.WPF_Windows
             AddDocumentsBtn.Visibility = Visibility.Hidden;
             FinalEditDataGrid.Visibility = Visibility.Visible;
             ConfirmFinalEditBtn.Visibility = Visibility.Visible;
+        }
+        private void ConfirmFinalEditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int currentRow = 0;
+            int totalRows = excelDataTable.Rows.Count;
+            while (currentRow < totalRows)
+            {
+                InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromExcelUploader(_operationType, currentRow, FinalEditDataTable);
+                currentRow++;
+            }
+            MessageBox.Show($"Добавени са {totalRows} документа.");
+            this.Close();
+            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.UnAccountedDocuments, _operationType);
         }
         private void FinalEditInvoiceSplitBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -139,7 +139,6 @@ namespace ForceTools.WPF_Windows
             foreach (var comboBox in comboBoxList)
             {
                 comboBoxSelectedIndexesList.Add(comboBox.SelectedIndex);
-                Console.WriteLine(comboBox.SelectedIndex);
                 if (comboBox.SelectedIndex == 1) DocNumLbl.Background = Brushes.Green;
                 if (comboBox.SelectedIndex == 2) DateLbl.Background = Brushes.Green;
                 if (comboBox.SelectedIndex == 3) KontLbl.Background = Brushes.Green;
@@ -162,9 +161,51 @@ namespace ForceTools.WPF_Windows
                 if (comboBoxSelectedIndexesList.Contains(8) == false && comboBoxSelectedIndexesList.Contains(6) && comboBoxSelectedIndexesList.Contains(7)) FullValueLbl.Background = Brushes.Blue;
                 else if (comboBoxSelectedIndexesList.Contains(8) == false) FullValueLbl.Background = Brushes.Red;
                 if (comboBoxSelectedIndexesList.Contains(10) == false) DocTypeLbl.Background = Brushes.Blue;
-                if (comboBoxSelectedIndexesList.Contains(11) == false) InCashLbl.Background = Brushes.Blue;
+                if (comboBoxSelectedIndexesList.Contains(11) == false) InCashLbl.Background = Brushes.Blue; 
             }
+            CheckIfAllMendatoryComboBoxFieldsAreFilled(comboBoxSelectedIndexesList);
         }
+
+        private void CheckIfAllMendatoryComboBoxFieldsAreFilled(List<int> comboBoxSelectedIndexesList)
+        {
+            if (comboBoxSelectedIndexesList.Contains(1) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(2) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(3) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(4) == false && comboBoxSelectedIndexesList.Contains(9) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(5) == false && comboBoxSelectedIndexesList.Contains(9) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(6) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            if (comboBoxSelectedIndexesList.Contains(7) == false)
+            {
+                AddDocumentsBtn.IsEnabled = false;
+                return;
+            }
+            AddDocumentsBtn.IsEnabled = true;
+        }
+
         private void ExcelDataGrid_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
             ComboBoxesScrollViewer.ScrollToHorizontalOffset(e.HorizontalOffset);
