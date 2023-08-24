@@ -5,4 +5,8 @@
 
     <Color x:Key="ButtonForegroundLight">#FFFFFF</Color>
     <SolidColorBrush x:Key="ButtonForegroundLightBrush" Color="{StaticResource ButtonForegroundLight}"/>
+
+    <Color x:Key="MainMenuBackgroundDark">#FF444444</Color>
+    <SolidColorBrush x:Key="MainMenuBackgroundDarkBrush" Color="{StaticResource MainMenuBackgroundDark}"/>
+    
 </ResourceDictionary>
