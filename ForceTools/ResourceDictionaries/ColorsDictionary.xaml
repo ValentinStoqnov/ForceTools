@@ -8,5 +8,10 @@
 
     <Color x:Key="MainMenuBackgroundDark">#FF444444</Color>
     <SolidColorBrush x:Key="MainMenuBackgroundDarkBrush" Color="{StaticResource MainMenuBackgroundDark}"/>
-    
+
+    <Color x:Key="WindowBackgroundDark">#FFDEDEDE</Color>
+    <SolidColorBrush x:Key="WindowBackgroundDarkBrush" Color="{StaticResource WindowBackgroundDark}"/>
+
+    <Color x:Key="WindowBackgroundLight">#FFF0F0F0</Color>
+    <SolidColorBrush x:Key="WindowBackgroundLightBrush" Color="{StaticResource WindowBackgroundLight}"/>
 </ResourceDictionary>
