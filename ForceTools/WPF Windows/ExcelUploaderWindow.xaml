@@ -29,9 +29,9 @@
                 <Label x:Name="InCashLbl" Content="Плащане в брой" Background="{StaticResource WindowBackgroundLightBrush}" Height="20" Padding="0" Margin="5,0,5,5" Width="100"/>
 
 
-                <TextBlock Text="Задължителни полета" TextAlignment="Center" TextWrapping="Wrap" Background="{StaticResource WindowBackgroundLightBrush}" Foreground="Red" Margin="5,60,5,5"/>
-                <TextBlock Text="Автоматично-изчислими полета" TextAlignment="Center" TextWrapping="Wrap" Foreground="Blue" Background="{StaticResource WindowBackgroundLightBrush}" Margin="5,0,5,5"/>
-                <TextBlock Text="Избрани полета" Foreground="Green" TextAlignment="Center" Background="{StaticResource WindowBackgroundLightBrush}" Margin="5,0,5,5"/>
+                <TextBlock Text="Задължителни полета" FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap" Background="{StaticResource WindowBackgroundLightBrush}" Foreground="Red" Margin="5,60,5,5"/>
+                <TextBlock Text="Автоматично-изчислими полета" FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap" Foreground="Blue" Background="{StaticResource WindowBackgroundLightBrush}" Margin="5,0,5,5"/>
+                <TextBlock Text="Избрани полета" Foreground="Green" FontWeight="Bold" TextAlignment="Center" Background="{StaticResource WindowBackgroundLightBrush}" Margin="5,0,5,5"/>
             </StackPanel>
         </Border>
         <Grid Grid.Column="1" Background="{StaticResource WindowBackgroundLightBrush}">
