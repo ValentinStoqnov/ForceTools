@@ -41,9 +41,9 @@ namespace ForceTools
                 if (comboBoxList[i].SelectedIndex == 3) Kontragent = dataFromRow;
                 if (comboBoxList[i].SelectedIndex == 4) Eik = dataFromRow;
                 if (comboBoxList[i].SelectedIndex == 5) DdsNumber = dataFromRow;
-                if (comboBoxList[i].SelectedIndex == 6) DanuchnaOsnovaList.Add(dataFromRow.Replace(".", ","));
-                if (comboBoxList[i].SelectedIndex == 7) DdsList.Add(dataFromRow.Replace(".", ","));
-                if (comboBoxList[i].SelectedIndex == 8) FullValue = dataFromRow.Replace(".", ",");
+                if (comboBoxList[i].SelectedIndex == 6) DanuchnaOsnovaList.Add(dataFromRow.Replace(",", "."));
+                if (comboBoxList[i].SelectedIndex == 7) DdsList.Add(dataFromRow.Replace(",", "."));
+                if (comboBoxList[i].SelectedIndex == 8) FullValue = dataFromRow.Replace(",", ".");
                 if (comboBoxList[i].SelectedIndex == 9) { Eik = dataFromRow; DdsNumber = dataFromRow; }
                 if (comboBoxList[i].SelectedIndex == 10) DocType = dataFromRow;
                 if (comboBoxList[i].SelectedIndex == 11) InCashAccount = dataFromRow.ToLower();
