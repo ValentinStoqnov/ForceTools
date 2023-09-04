@@ -51,6 +51,8 @@ namespace ForceTools
             if (dataExtractor.InCashAccount == null) return DefaultValues.DefaultCashRegAccount;
             if (dataExtractor.InCashAccount.Contains("банк")) return 0;
             if (dataExtractor.InCashAccount.Contains("брой")) return DefaultValues.DefaultCashRegAccount;
+            if (dataExtractor.InCashAccount.Contains("платежно")) return 0;
+
             return DefaultValues.DefaultCashRegAccount;
         }
 
