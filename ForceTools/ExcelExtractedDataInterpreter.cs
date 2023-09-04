@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Windows.Controls;
 
@@ -107,7 +108,7 @@ namespace ForceTools
         }
         private decimal InterperetFullValue(ExcelDataExtractor dataExtractor)
         {
-            decimal.TryParse(dataExtractor.FullValue, out decimal fullValue);
+            decimal.TryParse(dataExtractor.FullValue, NumberStyles.AllowDecimalPoint, CultureInfo.GetCultureInfo("bg-BG"), out decimal fullValue);
             if (fullValue == 0) fullValue = InterperetDanuchnaOsnova(dataExtractor) + InterpretDanukDobavenaStoinost(dataExtractor);
             fullValue = Math.Round(fullValue, 2);
             return fullValue;
@@ -117,7 +118,7 @@ namespace ForceTools
             decimal dds = 0;
             foreach (string ddsString in dataExtractor.DdsList)
             {
-                var DecimalParseBool = decimal.TryParse(ddsString, out decimal ddsParsed);
+                var DecimalParseBool = decimal.TryParse(ddsString, NumberStyles.AllowDecimalPoint, CultureInfo.GetCultureInfo("bg-BG"), out decimal ddsParsed);
                 if (DecimalParseBool == true && ddsParsed != 0) dds = Math.Round(ddsParsed, 2);
             }
             if (dds == 0 && newInvoice.FullValue != 0 && newInvoice.DO != 0) dds = newInvoice.FullValue - newInvoice.DO;
@@ -130,7 +131,7 @@ namespace ForceTools
             {
                 foreach (string danuchnaOsnovaString in dataExtractor.DanuchnaOsnovaList)
                 {
-                    decimal.TryParse(danuchnaOsnovaString, out decimal danuchnaOsnovaFromMultiColumns);
+                    decimal.TryParse(danuchnaOsnovaString, NumberStyles.AllowDecimalPoint, CultureInfo.GetCultureInfo("bg-BG"), out decimal danuchnaOsnovaFromMultiColumns);
                     if (danuchnaOsnovaFromMultiColumns != 0) danuchnaOsnova = danuchnaOsnovaFromMultiColumns;
                 }
             }
