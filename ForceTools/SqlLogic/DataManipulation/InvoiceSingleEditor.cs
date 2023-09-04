@@ -60,9 +60,9 @@ namespace ForceTools
                 FakturiUpdateDt.Rows[0][2] = kontragent.Id;
                 FakturiUpdateDt.Rows[0][4] = Convert.ToDateTime(docDateText);
                 FakturiUpdateDt.Rows[0][5] = Convert.ToInt64(docNumberText);
-                FakturiUpdateDt.Rows[0][6] = Convert.ToDecimal(doText.Replace(".", ","));
-                FakturiUpdateDt.Rows[0][7] = Convert.ToDecimal(ddsText.Replace(".", ","));
-                FakturiUpdateDt.Rows[0][8] = Convert.ToDecimal(fullValueText.Replace(".", ","));
+                FakturiUpdateDt.Rows[0][6] = Convert.ToDecimal(doText.Replace(",", "."));
+                FakturiUpdateDt.Rows[0][7] = Convert.ToDecimal(ddsText.Replace(",", "."));
+                FakturiUpdateDt.Rows[0][8] = Convert.ToDecimal(fullValueText.Replace(",", "."));
                 FakturiUpdateDt.Rows[0][15] = 3;
                 FakturiUpdateDt.Rows[0][3] = Convert.ToDateTime(docDateText);
                 ///////////////////////////////////////////////////////////////////////////////// HARD CODED / NEEDS LOGIC 
