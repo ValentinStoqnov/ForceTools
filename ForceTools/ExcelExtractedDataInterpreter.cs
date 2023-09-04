@@ -135,12 +135,12 @@ namespace ForceTools
                     if (danuchnaOsnovaFromMultiColumns != 0) danuchnaOsnova = danuchnaOsnovaFromMultiColumns;
                 }
             }
-            else decimal.TryParse(dataExtractor.DanuchnaOsnovaList[0], out danuchnaOsnova);
+            else decimal.TryParse(dataExtractor.DanuchnaOsnovaList[0], NumberStyles.AllowDecimalPoint, CultureInfo.GetCultureInfo("bg-BG"), out danuchnaOsnova);
 
-            if (danuchnaOsnova == 0 && Convert.ToDecimal(dataExtractor.FullValue) > 0 && InterpretDanukDobavenaStoinost(dataExtractor) > 0)
-                danuchnaOsnova = Convert.ToDecimal(dataExtractor.FullValue) - InterpretDanukDobavenaStoinost(dataExtractor);
-            if (danuchnaOsnova == 0 && Convert.ToDecimal(dataExtractor.FullValue) < 0 && InterpretDanukDobavenaStoinost(dataExtractor) < 0)
-                danuchnaOsnova = Convert.ToDecimal(dataExtractor.FullValue) - InterpretDanukDobavenaStoinost(dataExtractor);
+            if (danuchnaOsnova == 0 && Convert.ToDecimal(dataExtractor.FullValue, CultureInfo.GetCultureInfo("bg-BG")) > 0 && InterpretDanukDobavenaStoinost(dataExtractor) > 0)
+                danuchnaOsnova = Convert.ToDecimal(dataExtractor.FullValue, CultureInfo.GetCultureInfo("bg-BG")) - InterpretDanukDobavenaStoinost(dataExtractor);
+            if (danuchnaOsnova == 0 && Convert.ToDecimal(dataExtractor.FullValue, CultureInfo.GetCultureInfo("bg-BG")) < 0 && InterpretDanukDobavenaStoinost(dataExtractor) < 0)
+                danuchnaOsnova = Convert.ToDecimal(dataExtractor.FullValue, CultureInfo.GetCultureInfo("bg-BG")) - InterpretDanukDobavenaStoinost(dataExtractor);
             danuchnaOsnova = Math.Round(danuchnaOsnova, 2);
             return danuchnaOsnova;
         }
