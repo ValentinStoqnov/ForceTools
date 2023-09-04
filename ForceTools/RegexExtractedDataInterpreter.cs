@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Globalization;
 using System.IO;
 
 namespace ForceTools
@@ -111,7 +112,7 @@ namespace ForceTools
         }
         private decimal InterperetFullValue(RegexDataExtractor dataExtractor)
         {
-            decimal.TryParse(dataExtractor.FullValueExtract(), out decimal FullValue);
+            decimal.TryParse(dataExtractor.FullValueExtract(), NumberStyles.AllowDecimalPoint, CultureInfo.GetCultureInfo("bg-BG"), out decimal FullValue);
             return FullValue;
         }
         private decimal InterpretDanukDobavenaStoinost()
@@ -131,7 +132,7 @@ namespace ForceTools
         }
         private decimal InterperetDanuchnaOsnova(RegexDataExtractor dataExtractor)
         {
-            decimal.TryParse(dataExtractor.DanOsnExtract(), out decimal DanuchnaOsnova);
+            decimal.TryParse(dataExtractor.DanOsnExtract(), NumberStyles.AllowDecimalPoint, CultureInfo.GetCultureInfo("bg-BG"), out decimal DanuchnaOsnova);
             return DanuchnaOsnova;
         }
         private int InterperetDocumentType(RegexDataExtractor dataExtractor)
