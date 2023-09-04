@@ -146,7 +146,7 @@ namespace ForceTools
             Regex FullValueExtractionPt2 = new Regex(@"\d{1,5},\d{0,2}");
             string FullValueStringPt1 = FullValueExtractionPt1.Match(TextFullFile).ToString().Trim().Replace(" ", "").Replace(".", ",");
             string FullValue = FullValueExtractionPt2.Match(FullValueStringPt1).ToString();
-            return FullValue;
+            return FullValue.Replace("," , "."); //Added different formating for Office PC.
         }
         public string DateExtract(RegexExtractionMethod regexExtractionMethod)
         {
@@ -171,7 +171,7 @@ namespace ForceTools
             Regex DanOsnExtractionPt2 = new Regex(@"\d{1,5},\d{0,2}|\d{1,5}\.\d{0,2}");
             string DanOsnPt1 = DanOsnExtractionPt1.Match(TextFullFile).ToString().Trim().Replace(" ", "").Replace(".", ",");
             string DoDec = DanOsnExtractionPt2.Match(DanOsnPt1).ToString();
-            return DoDec;
+            return DoDec.Replace("," , "."); //Added different formating for Office PC.
         }
         public Tuple<bool, bool, bool> DocTypeExtract()
         {
