@@ -20,7 +20,7 @@ namespace ForceTools.WPF_Windows
         private DataTable _FinalEditDataTable;
         public DataTable FinalEditDataTable { get { return _FinalEditDataTable; } set { _FinalEditDataTable = value; OnPropertyChanged(); } }
 
-
+        private DataTable errorsDataTable = new DataTable();
         private DataTable _DocTypesDataTable;
         private DataTable _KindOfDealsDataTable;
         public DataTable DocTypesDataTable { get {return _DocTypesDataTable; } set { _DocTypesDataTable = value; OnPropertyChanged(); } }
@@ -139,7 +139,11 @@ namespace ForceTools.WPF_Windows
             }
             AddDocumentsBtn.IsEnabled = true;
         }
-
+        private void SaveInvoiceWithErrorsToErrorsDataTable(int CurrentRow, DataTable dataTable)
+        {
+            DataRow errorRow = dataTable.Rows[CurrentRow];
+            errorsDataTable.Rows.Add(errorRow.ItemArray);
+        }
         private void UploadExcelBtn_Click(object sender, RoutedEventArgs e)
         {
             string filePath = FileSystemHelper.OpenFileDialogAndGetExcelFilePath();
@@ -169,7 +173,19 @@ namespace ForceTools.WPF_Windows
             FinalEditDataTable.Columns.Add("DocType");
             FinalEditDataTable.Columns.Add("DealKind");
 
-
+            errorsDataTable.Columns.Add("Date");
+            errorsDataTable.Columns.Add("Number");
+            errorsDataTable.Columns.Add("Name");
+            errorsDataTable.Columns.Add("EIK");
+            errorsDataTable.Columns.Add("DDSNumber");
+            errorsDataTable.Columns.Add("DO");
+            errorsDataTable.Columns.Add("DDS");
+            errorsDataTable.Columns.Add("FullValue");
+            errorsDataTable.Columns.Add("InCashAccount");
+            errorsDataTable.Columns.Add("Account");
+            errorsDataTable.Columns.Add("Note");
+            errorsDataTable.Columns.Add("DocType");
+            errorsDataTable.Columns.Add("DealKind");
             while (currentRow < totalRows)
             {
                 ExcelExtractedDataInterpreter interpreter = new ExcelExtractedDataInterpreter(_operationType, currentRow, comboBoxList, excelDataTable);
@@ -185,15 +201,39 @@ namespace ForceTools.WPF_Windows
         private void ConfirmFinalEditBtn_Click(object sender, RoutedEventArgs e)
         {
             int currentRow = 0;
-            int totalRows = excelDataTable.Rows.Count;
+            int totalRows = FinalEditDataTable.Rows.Count;
+            FinalEditDataTable = FinalEditDataTable;
+            if(errorsDataTable.Rows.Count>0) errorsDataTable.Rows.Clear();
             while (currentRow < totalRows)
             {
-                InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromExcelUploader(_operationType, currentRow, FinalEditDataTable);
-                currentRow++;
+                try
+                {
+                    InvoiceSingleEditor.InsertNewInvoiceInSqlTableFromExcelUploader(_operationType, currentRow, FinalEditDataTable);
+                }
+                catch
+                {
+                    SaveInvoiceWithErrorsToErrorsDataTable(currentRow, FinalEditDataTable);
+                }
+                finally 
+                {
+                    currentRow++;
+                }
             }
-            MessageBox.Show($"Добавени са {totalRows} документа.");
-            this.Close();
-            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.UnAccountedDocuments, _operationType);
+            MessageBox.Show($"Добавени : {totalRows - errorsDataTable.Rows.Count} документа. \n Грешки : {errorsDataTable.Rows.Count}");
+
+            if (errorsDataTable.Rows.Count > 0)
+            {
+                FinalEditDataTable.Rows.Clear();
+                foreach (DataRow dr in errorsDataTable.Rows)
+                {
+                    FinalEditDataTable.Rows.Add(dr.ItemArray);
+                }
+            }
+            if (errorsDataTable.Rows.Count == 0)
+            {
+                this.Close();
+                UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.UnAccountedDocuments, _operationType);
+            }
         }
         private void FinalEditInvoiceSplitBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -351,6 +391,12 @@ namespace ForceTools.WPF_Windows
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            UiNavigationHelper.MainWindow.ContentFrame.Content = new InvoiceGridPage(DocumentStatuses.UnAccountedDocuments, _operationType);
+
         }
     }
 }
