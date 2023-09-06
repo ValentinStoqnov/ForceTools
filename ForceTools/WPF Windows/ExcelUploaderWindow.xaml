@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Импортиране на фактури от Excel"
         Height="800" Width="1000"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"  
+        Closed="Window_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120"/>
