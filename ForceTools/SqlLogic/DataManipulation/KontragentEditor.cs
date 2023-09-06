@@ -105,6 +105,8 @@ namespace ForceTools
         public static Kontragent GetKontragent(string kontragentEik)
         {
             Kontragent Kontragent = new Kontragent();
+            if (kontragentEik == string.Empty) return Kontragent;
+
             using (sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionString"].ConnectionString))
             {
                 sqlConnection.Open();
