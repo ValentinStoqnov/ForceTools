@@ -46,16 +46,7 @@ namespace ForceTools
             Kontragent = newKontragent;
             Invoice = newInvoice;
         }
-
-        private int InterpreterInCashAccount(ExcelDataExtractor dataExtractor)
-        {
-            if (dataExtractor.InCashAccount == null) return DefaultValues.DefaultCashRegAccount;
-            if (dataExtractor.InCashAccount.Contains("банк")) return 0;
-            if (dataExtractor.InCashAccount.Contains("брой")) return DefaultValues.DefaultCashRegAccount;
-            if (dataExtractor.InCashAccount.Contains("платежно")) return 0;
-
-            return DefaultValues.DefaultCashRegAccount;
-        }
+        
 
         public ExcelExtractedDataInterpreter(OperationType operationType, int currentRow, DataTable dataTable)
         {
@@ -66,8 +57,25 @@ namespace ForceTools
             newInvoice.ImageInBytes = GetImageFromBytes();
             Kontragent = newKontragent;
             Invoice = newInvoice;
+            CheckIfInvoiceHasErrors(Invoice);
         }
 
+        private void CheckIfInvoiceHasErrors(Invoice newInvoice)
+        {
+            if (newInvoice.DO == 0) throw new ArgumentException();
+            if (newInvoice.FullValue == 0) throw new ArgumentException();
+            if (newInvoice.DealKindId == 0) throw new ArgumentException();
+        }
+        private int InterpreterInCashAccount(ExcelDataExtractor dataExtractor)
+        {
+            if (dataExtractor.InCashAccount == null) return DefaultValues.DefaultCashRegAccount;
+            if (dataExtractor.InCashAccount.Contains("банк")) return 0;
+            if (dataExtractor.InCashAccount.Contains("брой")) return DefaultValues.DefaultCashRegAccount;
+            if (dataExtractor.InCashAccount.Contains("платежно")) return 0;
+            if (dataExtractor.InCashAccount == "1") return DefaultValues.DefaultCashRegAccount;
+
+            return DefaultValues.DefaultCashRegAccount;
+        }
         public object[] GetInterpreterDataRow()
         {
             object[] invoiceData = new object[] {Invoice.Date, Invoice.Number, Kontragent.Name,Kontragent.EIK,Kontragent.DdsNumber,Invoice.DO,Invoice.DDS,
@@ -108,7 +116,7 @@ namespace ForceTools
         }
         private decimal InterperetFullValue(ExcelDataExtractor dataExtractor)
         {
-            decimal.TryParse(dataExtractor.FullValue, NumberStyles.AllowDecimalPoint, CultureInfo.GetCultureInfo("bg-BG"), out decimal fullValue);
+            decimal.TryParse(dataExtractor.FullValue, NumberStyles.Number, CultureInfo.GetCultureInfo("bg-BG"), out decimal fullValue);
             if (fullValue == 0) fullValue = InterperetDanuchnaOsnova(dataExtractor) + InterpretDanukDobavenaStoinost(dataExtractor);
             fullValue = Math.Round(fullValue, 2);
             return fullValue;
@@ -118,7 +126,7 @@ namespace ForceTools
             decimal dds = 0;
             foreach (string ddsString in dataExtractor.DdsList)
             {
-                var DecimalParseBool = decimal.TryParse(ddsString, NumberStyles.AllowDecimalPoint, CultureInfo.GetCultureInfo("bg-BG"), out decimal ddsParsed);
+                var DecimalParseBool = decimal.TryParse(ddsString, NumberStyles.Number, CultureInfo.GetCultureInfo("bg-BG"), out decimal ddsParsed);
                 if (DecimalParseBool == true && ddsParsed != 0) dds = Math.Round(ddsParsed, 2);
             }
             if (dds == 0 && newInvoice.FullValue != 0 && newInvoice.DO != 0) dds = newInvoice.FullValue - newInvoice.DO;
@@ -131,7 +139,7 @@ namespace ForceTools
             {
                 foreach (string danuchnaOsnovaString in dataExtractor.DanuchnaOsnovaList)
                 {
-                    decimal.TryParse(danuchnaOsnovaString, NumberStyles.AllowDecimalPoint, CultureInfo.GetCultureInfo("bg-BG"), out decimal danuchnaOsnovaFromMultiColumns);
+                    decimal.TryParse(danuchnaOsnovaString, NumberStyles.Number, CultureInfo.GetCultureInfo("bg-BG"), out decimal danuchnaOsnovaFromMultiColumns);
                     if (danuchnaOsnovaFromMultiColumns != 0) danuchnaOsnova = danuchnaOsnovaFromMultiColumns;
                 }
             }
