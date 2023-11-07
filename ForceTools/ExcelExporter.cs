@@ -37,14 +37,26 @@ namespace ForceTools
                     for (var j = 0; j < dataToExtract.Columns.Count; j++)
                     {
                         //Filling Excel rows with raw data from datatable if its not Data column
-                        if (j != 2)
+                        if (j != 2 || j != 4 || j != 5)
                         {
                             workSheet.Cells[i + 2, j + 1] = dataToExtract.Rows[i][j];
                         }
                         //Filling with Converted Data if its Data column
-                        else
+                        if (j == 2)
                         {
                             workSheet.Cells[i + 2, j + 1] = dataToExtract.Rows[i].Field<DateTime>("Дата").ToString("dd,MM,yyyy", CultureInfo.InvariantCulture).Replace(",", ".");
+                        }
+                        //Formating and Filling with Converted Data if its EIK column
+                        if (j == 4 )
+                        {
+                            workSheet.Cells[i + 2, j + 1].NumberFormat = "@";
+                            workSheet.Cells[i + 2, j + 1] = dataToExtract.Rows[i].Field<string>("ЕИК").ToString();
+                        }
+                        //Formating and Filling with Converted Data if its DDS Number column
+                        if (j == 5)
+                        {
+                            workSheet.Cells[i + 2, j + 1].NumberFormat = "@";
+                            workSheet.Cells[i + 2, j + 1] = dataToExtract.Rows[i].Field<string>("ДДС Номер").ToString();
                         }
                     }
                 }
